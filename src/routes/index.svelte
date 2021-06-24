@@ -4,6 +4,7 @@
 	import Demonstration from "sections/Demonstration.svelte"
 	import Faq from "sections/Faq.svelte"
 	import CustomersReview from "sections/CustomersReview.svelte"
+	import Contact from "sections/Contact.svelte"
 </script>
 
 <Header />
@@ -11,3 +12,4 @@
 <Demonstration />
 <Faq />
 <CustomersReview />
+<Contact />

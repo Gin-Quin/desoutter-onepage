@@ -58,6 +58,39 @@
 					"role": "Operator supervisor"
 				}
 			]
+		},
+		"contact": {
+			"title": "Get in touch!",
+			"subtitle": "A question or a request? Send us a message.",
+			"conditionsOfUse": "By clicking on this button, you accept the",
+			"conditionsOfUseLink": "General conditions of use",
+			"sendMessage": "Send my message",
+			"form": {
+				"name": {
+					"label": "Name",
+					"placeholder": "Scott"
+				},
+				"surname": {
+					"label": "Surname",
+					"placeholder": "Michael"
+				},
+				"email": {
+					"label": "Email address",
+					"placeholder": "michaelscott@dundermifflin.com"
+				},
+				"industry": {
+					"label": "Industry",
+					"placeholder": "Select an option"
+				},
+				"country": {
+					"label": "Country",
+					"placeholder": "Select an option"
+				},
+				"message": {
+					"label": "Your message",
+					"placeholder": "Send us a message"
+				}
+			}
 		}
 	}
 }
