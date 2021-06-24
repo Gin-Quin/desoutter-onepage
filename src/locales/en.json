@@ -1,0 +1,63 @@
+{
+	"Desoutter": "Desoutter",
+	"header": {
+		"ecosystem": "Ecosystem",
+		"contact": "Contact",
+		"visitDesoutterTools": "Visit Desoutter tools"
+	},
+	"section": {
+		"pyramid": {
+			"title": "Desoutter ecosystem",
+			"description": "Discover Desoutter complete range of industrial tools and customised solutions: battery assembly tools, electric screwdrivers, pneumatic fastening tools and many more."
+		},
+		"demonstration": {
+			"title": "Platform integration",
+			"description": "Get your tool calibration and conformity certificates, maintenance plans, manuals, spare parts and much more by typing your tool serial.",
+			"objects": {
+				"PLC": "PLC",
+				"MES": "MES",
+				"Virtual cable": "Virtual cable",
+				"Visiopositionning": "Visiopositionning",
+				"Sight remote HMI": "Sight remote HMI"
+			}
+		},
+		"faq": {
+			"aviation": {
+				"title": "Aviation",
+				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
+			},
+			"newEnergyVehicles": {
+				"title": "New energy vehicles",
+				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
+			},
+			"automotive": {
+				"title": "Automotive",
+				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
+			},
+			"aerospace": {
+				"title": "Aerospace",
+				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
+			},
+			"finalAutomotiveAssembly": {
+				"title": "Final automotive assembly",
+				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
+			}
+		},
+		"customersReview": {
+			"title": "What our customers say",
+			"description": "Nullam finibus molestie felis at maximus. Aenean tincidunt nulla velit, nec fermentum sem cursus eget. Donec vestibulum diam vel magna vulputate, non molestie risus ultrices. Integer felis tortor, tempus quis magna vel, hendrerit suscipit purus.",
+			"customers": [
+				{
+					"name": "Barbara Alana",
+					"company": "Company",
+					"role": "Operator supervisor"
+				},
+				{
+					"name": "Rodrigo Calvès",
+					"company": "Company",
+					"role": "Operator supervisor"
+				}
+			]
+		}
+	}
+}

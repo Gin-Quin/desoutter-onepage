@@ -1,0 +1,44 @@
+html
+	font-size: 4px // Base unit for every space
+	margin: 0
+	font-family: Helvetica
+	color: var(--dark)
+	background-color: var(--gray)
+
+body
+	font-size: 4rem
+	margin: 0
+
+*
+	box-sizing: border-box
+	line-height: 1.4em
+
+button
+	height: 14rem
+	padding: 0 5rem
+	border-radius: var(--radius)
+	border: none
+	outline: none
+	cursor: pointer
+	background-color: var(--dark)
+	color: var(--white)
+	position: relative
+	display: flex
+	gap: 2rem
+	align-items: center
+
+	&:active
+		top: 1px
+	
+	&.tag
+		height: 10rem
+		padding: 0 4rem
+		font-size: 3.5rem
+
+a
+	text-decoration: none
+	color: inherit
+
+.bold
+	font-weight: bold
+
