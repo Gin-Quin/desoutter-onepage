@@ -11,11 +11,11 @@
 	/>
 	<div class="grow" />
 	<nav>
-		<a href="/">{$_("header.ecosystem")}</a>
+		<a href="/">{$_("ecosystem")}</a>
 		<a href="/">{$_("Desoutter")}</a>
-		<a href="/">{$_("header.contact")}</a>
+		<a href="/">{$_("contact")}</a>
 		<button class="visit-tools bg-primary">
-			{$_("header.visitDesoutterTools")}
+			{$_("section.header.visitDesoutterTools")}
 			<ArrowRight size="1.5em" />
 		</button>
 	</nav>

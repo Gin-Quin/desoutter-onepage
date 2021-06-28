@@ -5,6 +5,7 @@
 	import Faq from "sections/Faq.svelte"
 	import CustomersReview from "sections/CustomersReview.svelte"
 	import Contact from "sections/Contact.svelte"
+	import Footer from "sections/Footer.svelte"
 </script>
 
 <Header />
@@ -13,3 +14,4 @@
 <Faq />
 <CustomersReview />
 <Contact />
+<Footer />

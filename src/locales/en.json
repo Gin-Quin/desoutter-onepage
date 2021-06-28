@@ -1,15 +1,21 @@
 {
 	"Desoutter": "Desoutter",
-	"header": {
-		"ecosystem": "Ecosystem",
-		"contact": "Contact",
-		"visitDesoutterTools": "Visit Desoutter tools"
-	},
+	"subscribe": "Subscribe",
+	"ecosystem": "Ecosystem",
+	"contact": "Contact",
+	"ourProducts": "Our products",
+	"services": "Services",
+
 	"section": {
+		"header": {
+			"visitDesoutterTools": "Visit Desoutter tools"
+		},
+
 		"pyramid": {
 			"title": "Desoutter ecosystem",
 			"description": "Discover Desoutter complete range of industrial tools and customised solutions: battery assembly tools, electric screwdrivers, pneumatic fastening tools and many more."
 		},
+
 		"demonstration": {
 			"title": "Platform integration",
 			"description": "Get your tool calibration and conformity certificates, maintenance plans, manuals, spare parts and much more by typing your tool serial.",
@@ -21,6 +27,7 @@
 				"Sight remote HMI": "Sight remote HMI"
 			}
 		},
+
 		"faq": {
 			"aviation": {
 				"title": "Aviation",
@@ -43,6 +50,7 @@
 				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
 			}
 		},
+
 		"customersReview": {
 			"title": "What our customers say",
 			"description": "Nullam finibus molestie felis at maximus. Aenean tincidunt nulla velit, nec fermentum sem cursus eget. Donec vestibulum diam vel magna vulputate, non molestie risus ultrices. Integer felis tortor, tempus quis magna vel, hendrerit suscipit purus.",
@@ -59,6 +67,7 @@
 				}
 			]
 		},
+
 		"contact": {
 			"title": "Get in touch!",
 			"subtitle": "A question or a request? Send us a message",
@@ -93,6 +102,17 @@
 					"placeholder": "Send us a message"
 				}
 			}
+		},
+
+		"footer": {
+			"stayConnected": "Stay connected",
+			"signUp": "Sign up for feed to keep up with Desoutter news",
+			"moreThanProductivity": "More Than Productivity",
+			"history": "Founded in 1914 and headquartered in France, Desoutter Industrial Tools is a global leader in electric and pneumatic assembly tools serving a wide range of assembly and manufacturing operations, including Aerospace, Automotive, Light and Heavy Vehicles, Off-Road, General Industry.",
+			"discoverTheBrand": "Discover the brand",
+			"legalNotice": "Legal notice and Privacy policy",
+			"SDS": "SDS",
+			"editSettings": "Edit settings"
 		}
 	}
 }
