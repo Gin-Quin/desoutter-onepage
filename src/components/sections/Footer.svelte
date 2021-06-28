@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { _ } from "svelte-i18n"
 	import Facebook from "icons/Facebook.svelte"
+	import Instagram from "icons/Instagram.svelte"
 	import Twitter from "icons/Twitter.svelte"
 
 	const socialNetworks: Array<[any, string]> = [
-		[Facebook, `/`],
 		[Twitter, `/`],
+		[Instagram, `/`],
+		[Facebook, `/`],
 	]
 </script>
 
