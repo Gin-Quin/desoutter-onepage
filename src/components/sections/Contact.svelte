@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { json, _ } from "svelte-i18n"
+	import Send from "icons/Send.svelte"
 	import FormInput from "molecules/FormInput.svelte"
 	import FormSelect from "molecules/FormSelect.svelte"
 	import FormTextArea from "molecules/FormTextArea.svelte"
@@ -21,28 +22,41 @@
 		<div class="title">{$_("section.contact.title")}</div>
 		<div class="subtitle">{$_("section.contact.subtitle")}</div>
 
-		<form class="grid">
-			<FormInput name="name" label={label("name")} placeholder={placeholder("name")} />
-			<FormInput name="surname" label={label("surname")} placeholder={placeholder("surname")} />
+		<form>
+			<div class="grid">
+				<FormInput name="name" label={label("name")} placeholder={placeholder("name")} />
+				<FormInput name="surname" label={label("surname")} placeholder={placeholder("surname")} />
 
-			<div class="span-2">
-				<FormInput name="email" label={label("email")} placeholder={placeholder("email")} />
+				<div class="span-2">
+					<FormInput name="email" label={label("email")} placeholder={placeholder("email")} />
+				</div>
+
+				<FormSelect
+					name="industry"
+					label={label("industry")}
+					placeholder={placeholder("industry")}
+					items={industries}
+				/>
+				<FormInput name="country" label={label("country")} placeholder={placeholder("country")} />
+
+				<div class="span-2">
+					<FormTextArea
+						name="message"
+						label={label("message")}
+						placeholder={placeholder("message")}
+					/>
+				</div>
 			</div>
 
-			<FormSelect
-				name="industry"
-				label={label("industry")}
-				placeholder={placeholder("industry")}
-				items={industries}
-			/>
-			<FormInput name="country" label={label("country")} placeholder={placeholder("country")} />
-
-			<div class="span-2">
-				<FormTextArea
-					name="message"
-					label={label("message")}
-					placeholder={placeholder("message")}
-				/>
+			<div class="validation row">
+				<p class="conditions">
+					{$_("section.contact.conditionsOfUse")}
+					<a href="/">{$_("section.contact.conditionsOfUseLink")}</a>
+				</p>
+				<button type="submit" class="bg-primary">
+					{$_("section.contact.sendMessage")}
+					<Send size="1.5em" />
+				</button>
 			</div>
 		</form>
 	</main>
@@ -71,12 +85,31 @@
 		margin-bottom: 7rem
 
 	form
-		grid-template-columns: repeat(2, 1fr)
 		gap: 6rem
+
+		> .grid
+			grid-template-columns: repeat(2, 1fr)
+			gap: inherit
+			align-items: center
 
 	.span-2
 		grid-column: span 2
 	
+	.conditions
+		font-size: 3.5rem
+	
+	button[type="submit"]
+		justify-self: end
+
+	.validation
+		align-items: center
+	
+	@media (max-width: 1200px)
+		.validation
+			flex-direction: column
+		.conditions
+			text-align: center
+		
 	@media (max-width: 480px)
 		form
 			grid-template-columns: 1fr

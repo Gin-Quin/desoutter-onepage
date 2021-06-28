@@ -47,4 +47,7 @@
 			padding: 0 6rem
 			gap: 3rem
 			font-size: 4rem
+		
+		> a
+			color: inherit
 </style>
