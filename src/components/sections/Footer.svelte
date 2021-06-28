@@ -58,9 +58,9 @@
 		justify-content: space-around
 		color: var(--white)
 		padding: 12.5rem 5%
+		gap: 12rem
 
 		> *
-			max-width: 40%
 			gap: 4rem
 			align-items: start
 		a
@@ -71,13 +71,14 @@
 			border: 1px solid var(--white)
 	
 	aside
-		width: 65rem
+		width: 60rem
 		
 	main
 		width: 115rem
 		
 	nav
 		align-self: center
+		text-decoration: underline
 	
 	.socialNetworks
 		gap: 3rem
@@ -97,8 +98,26 @@
 		margin-bottom: 4rem
 
 	.miscellaneous
-		gap: 7.5rem
+		gap: 3rem 7.5rem
 		font-weight: bold
 		font-size: 3rem
 
+		> a
+			text-align: center
+
+	@media (max-width: 720px)
+		footer
+			flex-direction: column
+			align-items: center
+
+			> *
+				width: 100% !important
+			
+			nav, .miscellaneous
+				justify-content: center
+				flex-direction: row
+				flex-wrap: wrap
+			
+			aside, main
+				align-items: center
 </style>
