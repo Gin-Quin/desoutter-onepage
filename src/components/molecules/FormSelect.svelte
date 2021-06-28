@@ -1,14 +1,25 @@
 <script lang="ts">
-	export let name!: string
+	import Svelect from "atoms/Svelect.svelte"
+
+	type Item = {
+		value: any
+		text?: string
+	}
+
 	export let label = ""
-	export let placeholder = ""
-	export let value: unknown = null
+	export let name: string
+	export let value: null | unknown = null
+	export let placeholder = "Select an option..."
+	export let items: Item[]
 </script>
 
 <div class="form-input">
 	<label for={name}>{label}</label>
-	<select {name} bind:value>
-		<option class="gray-2" value={null} disabled selected hidden>{placeholder}</option>
-		<slot />
-	</select>
+	<Svelect {name} bind:value {placeholder} {items}>
+		<div slot="item" let:item>
+			<slot name="item" {item}>
+				{item.text || item.value}
+			</slot>
+		</div>
+	</Svelect>
 </div>

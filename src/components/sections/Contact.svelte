@@ -1,11 +1,19 @@
 <script lang="ts">
-	import { _ } from "svelte-i18n"
+	import { json, _ } from "svelte-i18n"
 	import FormInput from "molecules/FormInput.svelte"
 	import FormSelect from "molecules/FormSelect.svelte"
 	import FormTextArea from "molecules/FormTextArea.svelte"
 
 	const label = (field: string) => $_(`section.contact.form.${field}.label`)
 	const placeholder = (field: string) => $_(`section.contact.form.${field}.placeholder`)
+
+	const industries = ($json(
+		"section.contact.form.industry.items"
+	) as string[]).map((value: string) => ({ value }))
+
+	const countries = ($json(
+		"section.contact.form.country.items"
+	) as string[]).map((value: string) => ({ value }))
 </script>
 
 <section class="row">
@@ -17,10 +25,12 @@
 			<FormInput name="name" label={label("name")} placeholder={placeholder("name")} />
 			<FormInput name="surname" label={label("surname")} placeholder={placeholder("surname")} />
 			<FormInput name="email" label={label("email")} placeholder={placeholder("email")} />
-			<FormSelect name="industry" label={label("industry")} placeholder={placeholder("industry")}>
-				<option value="zabu">ZABU</option>
-				<option value="COCO">COCO</option>
-			</FormSelect>
+			<FormSelect
+				name="industry"
+				label={label("industry")}
+				placeholder={placeholder("industry")}
+				items={industries}
+			/>
 			<FormInput name="country" label={label("country")} placeholder={placeholder("country")} />
 			<FormTextArea name="message" label={label("message")} placeholder={placeholder("message")} />
 		</form>

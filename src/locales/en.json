@@ -80,11 +80,13 @@
 				},
 				"industry": {
 					"label": "Industry",
-					"placeholder": "Select an option"
+					"placeholder": "Select an industry...",
+					"items": ["Aeronautics", "Spatial", "Automobile"]
 				},
 				"country": {
 					"label": "Country",
-					"placeholder": "Select an option"
+					"placeholder": "United Kingdom",
+					"items": ["France", "Germany", "Italy", "Spain", "United Kingdom", "United States"]
 				},
 				"message": {
 					"label": "Your message",
