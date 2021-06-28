@@ -24,7 +24,11 @@
 		<form class="grid">
 			<FormInput name="name" label={label("name")} placeholder={placeholder("name")} />
 			<FormInput name="surname" label={label("surname")} placeholder={placeholder("surname")} />
-			<FormInput name="email" label={label("email")} placeholder={placeholder("email")} />
+
+			<div class="span-2">
+				<FormInput name="email" label={label("email")} placeholder={placeholder("email")} />
+			</div>
+
 			<FormSelect
 				name="industry"
 				label={label("industry")}
@@ -32,7 +36,14 @@
 				items={industries}
 			/>
 			<FormInput name="country" label={label("country")} placeholder={placeholder("country")} />
-			<FormTextArea name="message" label={label("message")} placeholder={placeholder("message")} />
+
+			<div class="span-2">
+				<FormTextArea
+					name="message"
+					label={label("message")}
+					placeholder={placeholder("message")}
+				/>
+			</div>
 		</form>
 	</main>
 
@@ -46,5 +57,29 @@
 			width: 50%
 	
 	main
-		padding: 15vh 8vw
+		padding: 14vh 8vw
+
+	.title
+		font-size: 9rem
+		font-weight: bold
+		color: var(--black)
+		margin-bottom: 2rem
+	
+	.subtitle
+		font-size: 5rem
+		color: var(--black)
+		margin-bottom: 7rem
+
+	form
+		grid-template-columns: repeat(2, 1fr)
+		gap: 6rem
+
+	.span-2
+		grid-column: span 2
+	
+	@media (max-width: 480px)
+		form
+			grid-template-columns: 1fr
+		.span-2
+			grid-column: unset
 </style>
