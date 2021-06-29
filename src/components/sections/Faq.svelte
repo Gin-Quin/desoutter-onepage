@@ -2,7 +2,7 @@
 	import _ from "src/i18n"
 </script>
 
-<section>
+<section id="faq">
 	<div class="grid">
 		<div class="bg-gray-4">
 			<div class="content">

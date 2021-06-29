@@ -24,7 +24,7 @@
 	}
 </script>
 
-<section class="row" bind:this={section} on:wheel={onWheel}>
+<section id="ecosystem" class="row" bind:this={section} on:wheel={onWheel}>
 	<aside>
 		<div class="title bold">{$_("section.pyramid.title")}</div>
 		<p>{$_("section.pyramid.description")}</p>

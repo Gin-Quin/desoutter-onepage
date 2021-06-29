@@ -11,13 +11,15 @@
 	/>
 	<div class="grow" />
 	<nav>
-		<a href="/">{$_("ecosystem")}</a>
-		<a href="/">{$_("Desoutter")}</a>
-		<a href="/">{$_("contact")}</a>
-		<button class="visit-tools bg-primary">
-			{$_("section.header.visitDesoutterTools")}
-			<ArrowRight size="1.5em" />
-		</button>
+		<a href="#demonstration">{$_("ourProducts")}</a>
+		<a href="#faq">{$_("services")}</a>
+		<a href="#contact">{$_("contact")}</a>
+		<a class="visit-tools" href="https://www.desouttertools.com/" target="_blank">
+			<button class=" bg-primary">
+				{$_("section.header.visitDesoutterTools")}
+				<ArrowRight size="1.5em" />
+			</button>
+		</a>
 	</nav>
 </header>
 
@@ -38,16 +40,37 @@
 		// 	font-size: 6rem
 	
 	nav
-		display: contents
+		display: contents	
+		> a
+			color: inherit
+			text-align: center
+	
+	.visit-tools
+		height: 100%
 
 		> button
+			justify-content: center
+			width: 100%
 			height: 100%
 			border-radius: 0
 			font-weight: bold
 			padding: 0 6rem
 			gap: 3rem
 			font-size: 4rem
-		
-		> a
-			color: inherit
+			&:active
+				top: 0
+
+	@media (max-width: 1020px)
+		nav
+			> a:not(.visit-tools)
+				display: none
+
+	@media (max-width: 680px)
+		header
+			padding: 0
+			gap: 0
+			> img
+				display: none
+		.visit-tools
+			width: 100%
 </style>

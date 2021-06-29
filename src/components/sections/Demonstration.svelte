@@ -7,7 +7,7 @@
 	let currentObject = 0
 </script>
 
-<section class="row">
+<section id="demonstration" class="row">
 	<main>
 		<img src="/images/warehouse.png" alt="warehouse" />
 	</main>

@@ -17,7 +17,7 @@
 	) as string[]).map((value: string) => ({ value }))
 </script>
 
-<section class="row">
+<section id="contact" class="row">
 	<main>
 		<div class="title">{$_("section.contact.title")}</div>
 		<div class="subtitle">{$_("section.contact.subtitle")}</div>
