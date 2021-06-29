@@ -25,6 +25,7 @@ const config = {
 					'sections': `${__dirname}/src/components/sections`,
 					'routes': `${__dirname}/src/routes`,
 					'src': `${__dirname}/src`,
+					'style': `${__dirname}/src/style`,
 					'locales': `${__dirname}/src/locales`,
 				}
 			}
