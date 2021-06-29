@@ -124,22 +124,25 @@
 		height: 100vh
 		justify-content: space-evenly
 		place-items: center
-		> *
-			width: 35%
 	
 	main
 		gap: 4rem
+		width: 35%
 
 		> .title
 			font-size: 9rem
 
 		> p
 			font-size: 5rem
+
+	aside
+		width: 474px
 	
 	.pyramid
 		flex-direction: column-reverse
 		position: relative
 		height: 110rem
+		width: auto
 
 		> img
 			position: absolute
@@ -153,4 +156,22 @@
 		bottom: 8rem
 		width: auto
 		opacity: 0.9
+	
+	@media (max-width: 900px)
+		section
+			flex-direction: column
+			padding: 20rem 0
+		
+		main
+			width: 580px
+			max-width: 90%
+			text-align: center
+
+	@media (max-width: 510px)
+		aside
+			transform: scale(0.8)
+
+	@media (max-width: 390px)
+		aside
+			transform: scale(0.7)
 </style>
