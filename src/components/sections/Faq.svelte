@@ -43,6 +43,7 @@
 		<div class="small-grid-only" />
 		<div class="span-2 bg-gray-3">
 			<div class="content">
+				<img src={$_("section.faq.aviation.image")} alt="plane" />
 				<div class="title">{$_("section.faq.newEnergyVehicles.title")}</div>
 				<div class="description">{$_("section.faq.newEnergyVehicles.description")}</div>
 			</div>
@@ -78,6 +79,14 @@
 		height: 100%
 		padding: 12rem
 		gap: 3rem
+
+		> img
+			position: absolute
+			width: 100%
+			height: 100%
+			opacity: 0.3
+			top: 0
+			left: 0
 
 	section
 		position: relative
