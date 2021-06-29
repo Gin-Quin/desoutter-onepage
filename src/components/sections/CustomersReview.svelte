@@ -67,6 +67,7 @@
 		position: relative
 		height: 360px
 		width: 360px
+		max-width: 100vw
 
 		> *
 			position: absolute
@@ -109,4 +110,16 @@
 		section
 			flex-direction: column
 			gap: 8rem
+
+	@media (max-width: 460px)
+		section
+			padding: 12rem 0
+			flex-direction: column
+			gap: 8rem
+		
+	@media (max-width: 360px)
+		section
+				padding-bottom: 0
+		main
+			gap: 0
 </style>
