@@ -1,8 +1,117 @@
 {
 	"Desoutter": "Desoutter",
-	"header": {
-		"ecosystem": "Écosystème",
-		"contact": "Contact",
-		"visitDesoutterTools": "Voir les outils Desoutter"
+	"subscribe": "S'abonner",
+	"ecosystem": "Écosystème",
+	"contact": "Contact",
+	"ourProducts": "Nos produits",
+	"services": "Services",
+
+	"section": {
+		"header": {
+			"visitDesoutterTools": "Voir les outils Desoutter"
+		},
+
+		"pyramid": {
+			"title": "Écosystème Desoutter",
+			"description": "Découvrez la gamme complète d'outils industriels et de solutions adaptées : outils d'assemblage de batteries, tournevis électriques, outils de fixation pneumatiques et bien d'autres."
+		},
+
+		"demonstration": {
+			"title": "Platform integration",
+			"description": "Get your tool calibration and conformity certificates, maintenance plans, manuals, spare parts and much more by typing your tool serial.",
+			"objects": {
+				"PLC": "PLC",
+				"MES": "MES",
+				"Virtual cable": "Virtual cable",
+				"Visiopositionning": "Visiopositionning",
+				"Sight remote HMI": "Sight remote HMI"
+			}
+		},
+
+		"faq": {
+			"aviation": {
+				"title": "Aviation",
+				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?",
+				"image": "https://labs.sogeti.com/wp-content/uploads/2021/01/113782207_hi023282368-1.jpg"
+			},
+			"newEnergyVehicles": {
+				"title": "New energy vehicles",
+				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
+			},
+			"automotive": {
+				"title": "Automotive",
+				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
+			},
+			"aerospace": {
+				"title": "Aerospace",
+				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
+			},
+			"finalAutomotiveAssembly": {
+				"title": "Final automotive assembly",
+				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
+			}
+		},
+
+		"customersReview": {
+			"title": "What our customers say",
+			"description": "Nullam finibus molestie felis at maximus. Aenean tincidunt nulla velit, nec fermentum sem cursus eget. Donec vestibulum diam vel magna vulputate, non molestie risus ultrices. Integer felis tortor, tempus quis magna vel, hendrerit suscipit purus.",
+			"customers": [
+				{
+					"name": "Barbara Alana",
+					"company": "Company",
+					"role": "Operator supervisor"
+				},
+				{
+					"name": "Rodrigo Calvès",
+					"company": "Company",
+					"role": "Operator supervisor"
+				}
+			]
+		},
+
+		"contact": {
+			"title": "Get in touch!",
+			"subtitle": "A question or a request? Send us a message",
+			"conditionsOfUse": "By clicking on this button, you accept the",
+			"conditionsOfUseLink": "General conditions of use",
+			"sendMessage": "Send my message",
+			"form": {
+				"name": {
+					"label": "Name",
+					"placeholder": "Scott"
+				},
+				"surname": {
+					"label": "Surname",
+					"placeholder": "Michael"
+				},
+				"email": {
+					"label": "Email address",
+					"placeholder": "michaelscott@dundermifflin.com"
+				},
+				"industry": {
+					"label": "Industry",
+					"placeholder": "Select an industry...",
+					"items": ["Aeronautics", "Spatial", "Automobile"]
+				},
+				"country": {
+					"label": "Country",
+					"placeholder": "United Kingdom",
+					"items": ["France", "Germany", "Italy", "Spain", "United Kingdom", "United States"]
+				},
+				"message": {
+					"label": "Your message",
+					"placeholder": "Send us a message"
+				}
+			}
+		},
+
+		"footer": {
+			"stayConnected": "Stay connected",
+			"signUp": "Sign up for feed to keep up with Desoutter news",
+			"moreThanProductivity": "More Than Productivity",
+			"history": "Founded in 1914 and headquartered in France, Desoutter Industrial Tools is a global leader in electric and pneumatic assembly tools serving a wide range of assembly and manufacturing operations, including Aerospace, Automotive, Light and Heavy Vehicles, Off-Road, General Industry.",
+			"discoverTheBrand": "Discover the brand",
+			"legalNotice": "Legal notice and Privacy policy"
+		}
 	}
 }

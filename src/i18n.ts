@@ -6,6 +6,7 @@ addMessages("en", en)
 addMessages("fr", fr)
 // register("fr", () => import("./fr.json"))
 
+console.log("Use langauge: en")
 init({
 	fallbackLocale: "en",
 	initialLocale: "en",

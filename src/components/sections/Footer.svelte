@@ -38,8 +38,8 @@
 		<button class="small margin-bottom-4">{$_(`section.footer.discoverTheBrand`)}</button>
 		<div class="miscellaneous row">
 			<a href="/">{$_(`section.footer.legalNotice`)}</a>
-			<a href="/">{$_(`section.footer.SDS`)}</a>
-			<a href="/">{$_(`section.footer.editSettings`)}</a>
+			<!-- <a href="/">{$_(`section.footer.SDS`)}</a> -->
+			<!-- <a href="/">{$_(`section.footer.editSettings`)}</a> -->
 		</div>
 	</main>
 
