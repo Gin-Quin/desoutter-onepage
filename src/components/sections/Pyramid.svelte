@@ -1,35 +1,32 @@
 <script lang="ts">
-	import _ from "src/i18n"
 	import { fly } from "svelte/transition"
 	import ArrowDownCircleOutline from "icons/ArrowDownCircleOutline.svelte"
 	import { onDestroy, onMount } from "svelte"
+	import { _, json } from "svelte-i18n"
 
 	const pyramidBlocks = [
-		{ width: 474, height: 211, position: [0, 0] },
-		{ width: 363, height: 169, position: [53, 89] },
-		{ width: 247, height: 128, position: [110, 176] },
-		{ width: 130, height: 100, position: [165, 260] },
+		{ width: 480, height: 213, position: [0, 0] },
+		{ width: 361, height: 181, position: [59, 105] },
+		{ width: 238, height: 144, position: [121, 216] },
+		{ width: 114, height: 101, position: [183, 325] },
 	]
 	const transitionDuration = 700
-	const throttle = 450
-	const stageCount = pyramidBlocks.length - 1
+	const throttle = 520
+	const stageCount = 5
+	const basePyramidGap = 30
+	const noGapStage = pyramidBlocks.length
+	const fusionStage = pyramidBlocks.length + 1
 
 	let touchStart = 0
 	let currentStage = 0
 	let lastScrollDown = 0
-	let lastScrollTop = 0
+	let lastScrollUp = 0
 	let section!: HTMLElement
-	let pyramidGap = 30
+	let pyramidGap = basePyramidGap
 	let animationIsDone = false
 
-	$: console.log("currentStage", currentStage)
-
-	function canScrollTop(): boolean {
-		return document.documentElement.scrollTop != 0 && lastScrollTop + throttle < Date.now()
-	}
-
 	function onWheel(event: WheelEvent) {
-		return (event.deltaY > 0 ? onScrollDown : onScrollTop)(event, event.deltaY)
+		return (event.deltaY > 0 ? onScrollDown : onScrollUp)(event, event.deltaY)
 	}
 
 	function onKeydown(event: KeyboardEvent) {
@@ -37,12 +34,16 @@
 			case "ArrowDown":
 				return onScrollDown(event)
 			case "ArrowUp":
-				return onScrollTop(event)
+				return onScrollUp(event)
 		}
 	}
 
 	function onScrollDown(event: Event, delta = 4) {
-		if (animationIsDone) return
+		if (document.documentElement.scrollTop > 0) return
+		if (animationIsDone) {
+			lastScrollUp = Date.now()
+			return
+		}
 		event.preventDefault()
 		if (currentStage == stageCount) return
 		if (delta < 4) return
@@ -51,6 +52,7 @@
 		}
 		lastScrollDown = Date.now()
 		currentStage++
+		if (currentStage >= noGapStage) pyramidGap = 0
 		if (currentStage == stageCount) {
 			setTimeout(() => {
 				if (currentStage == stageCount) animationIsDone = true
@@ -58,16 +60,21 @@
 		}
 	}
 
-	function onScrollTop(event: Event, delta = -4) {
-		if (canScrollTop()) return
+	function onScrollUp(event: Event, delta = -4) {
+		if (document.documentElement.scrollTop > 0) {
+			lastScrollUp = Date.now()
+			return
+		}
+		event.preventDefault()
 		if (currentStage == 0) return
 		if (delta > -4) return
-		if (lastScrollTop + throttle > Date.now()) {
+		if (lastScrollUp + throttle > Date.now()) {
 			return
 		}
 		animationIsDone = false
-		lastScrollTop = Date.now()
+		lastScrollUp = Date.now()
 		currentStage--
+		if (currentStage < noGapStage) pyramidGap = basePyramidGap
 	}
 
 	function onTouchStart(event: TouchEvent) {
@@ -76,7 +83,7 @@
 
 	function onTouchMove(event: TouchEvent) {
 		const delta = touchStart - event.changedTouches[0].clientY
-		return (delta > 0 ? onScrollDown : onScrollTop)(event, delta)
+		return (delta > 0 ? onScrollDown : onScrollUp)(event, delta)
 	}
 
 	onMount(() => {
@@ -90,12 +97,16 @@
 <section id="ecosystem" class="row" bind:this={section}>
 	<main>
 		<div class="title bold">{$_("section.pyramid.title")}</div>
-		<p>{$_("section.pyramid.description")}</p>
+		{#each $json("section.pyramid.description") as description, index}
+			{#if index == currentStage}
+				<p>{description}</p>
+			{/if}
+		{/each}
 	</main>
 
 	<aside>
 		<!-- <img class="pyramid" src="/images/pyramid.png" alt="pyramid" /> -->
-		<div class="pyramid">
+		<div class="pyramid" class:fusion={currentStage == fusionStage}>
 			{#each pyramidBlocks as { width, height, position: [left, bottom] }, index}
 				{#if index <= currentStage}
 					<img
@@ -128,6 +139,8 @@
 	main
 		gap: 4rem
 		width: 35%
+		height: 240px
+		overflow: visible
 
 		> .title
 			font-size: 9rem
@@ -137,14 +150,21 @@
 
 	aside
 		width: 474px
-	
+		transform: scale(0.9)
+		transition: filter 0.6s
+
 	.pyramid
 		flex-direction: column-reverse
 		position: relative
 		height: 110rem
 		width: auto
+		transition: filter 0.6s
 
+		&.fusion
+			filter: contrast(0.1) brightness(1.66) grayscale(1)
+	
 		> img
+			transition: bottom 0.6s
 			position: absolute
 			left: 0
 
@@ -153,7 +173,7 @@
 
 	.next
 		position: absolute
-		bottom: 8rem
+		bottom: 3%
 		width: auto
 		opacity: 0.9
 	
@@ -169,9 +189,9 @@
 
 	@media (max-width: 510px)
 		aside
-			transform: scale(0.8)
+			transform: scale(0.72)
 
 	@media (max-width: 390px)
 		aside
-			transform: scale(0.7)
+			transform: scale(0.58)
 </style>
