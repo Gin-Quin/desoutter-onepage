@@ -12,9 +12,8 @@
 	]
 	const transitionDuration = 700
 	const throttle = 520
-	const stageCount = 5
 	const basePyramidGap = 30
-	const noGapStage = pyramidBlocks.length
+	// const fusionStage = pyramidBlocks.length + 1
 	const fusionStage = pyramidBlocks.length + 1
 
 	let touchStart = 0
@@ -24,6 +23,8 @@
 	let section!: HTMLElement
 	let pyramidGap = basePyramidGap
 	let animationIsDone = false
+
+	$: stages = $json("section.pyramid.stages") as Array<{ title: string; description: string }>
 
 	function onWheel(event: WheelEvent) {
 		return (event.deltaY > 0 ? onScrollDown : onScrollUp)(event, event.deltaY)
@@ -45,17 +46,17 @@
 			return
 		}
 		event.preventDefault()
-		if (currentStage == stageCount) return
+		if (currentStage == fusionStage) return
 		if (delta < 4) return
 		if (lastScrollDown + throttle > Date.now()) {
 			return
 		}
 		lastScrollDown = Date.now()
 		currentStage++
-		if (currentStage >= noGapStage) pyramidGap = 0
-		if (currentStage == stageCount) {
+		if (currentStage >= fusionStage) pyramidGap = 0
+		if (currentStage == fusionStage) {
 			setTimeout(() => {
-				if (currentStage == stageCount) animationIsDone = true
+				if (currentStage == fusionStage) animationIsDone = true
 			}, transitionDuration)
 		}
 	}
@@ -74,7 +75,7 @@
 		animationIsDone = false
 		lastScrollUp = Date.now()
 		currentStage--
-		if (currentStage < noGapStage) pyramidGap = basePyramidGap
+		if (currentStage < fusionStage) pyramidGap = basePyramidGap
 	}
 
 	function onTouchStart(event: TouchEvent) {
@@ -96,21 +97,33 @@
 
 <section id="ecosystem" class="row" bind:this={section}>
 	<main>
-		<div class="title bold">{$_("section.pyramid.title")}</div>
-		<div class="description">
-			{#each $json("section.pyramid.description") as description, index}
-				{#if index == currentStage}
-					<p transition:fly={{ y: -200, duration: transitionDuration }}>{description}</p>
-				{/if}
-			{/each}
-		</div>
+		{#each stages as { description, title }, index}
+			{#if index == currentStage}
+				<div
+					class="stage"
+					in:fly={{ y: -200, duration: transitionDuration }}
+					out:fly={{ y: -400, duration: transitionDuration }}
+				>
+					<div
+						class="index"
+						class:hidden={!index || index >= fusionStage}
+						in:fly={{ y: -200, duration: transitionDuration }}
+						out:fly={{ y: -400, duration: transitionDuration }}
+					>
+						{index}
+					</div>
+					<div class="title bold">{title}</div>
+					<p>{description}</p>
+				</div>
+			{/if}
+		{/each}
 	</main>
 
 	<aside>
 		<!-- <img class="pyramid" src="/images/pyramid.png" alt="pyramid" /> -->
 		<div class="pyramid" class:fusion={currentStage == fusionStage}>
 			{#each pyramidBlocks as { width, height, position: [left, bottom] }, index}
-				{#if index <= currentStage}
+				{#if index < currentStage}
 					<div
 						class="pyramid-block"
 						style={`left: ${left}px; bottom: ${bottom + index * pyramidGap}px;`}
@@ -144,35 +157,45 @@
 		place-items: center
 	
 	main
-		gap: 4rem
 		width: 420px
-		height: 38vh
+		height: 30vh
 		overflow: visible
-
-		> .title
-			font-size: 9rem
-
-	.description
 		position: relative
-
-		> p
+	
+	.stage
+		gap: 4rem
+		position: absolute
+		width: 100%
+		height: 100%
+		
+		.index
 			position: absolute
+			font-size: 54rem
+			color: var(--gray-2)
+			z-index: -1
+			top: -44rem
+			left: 4rem
+			font-weight: bold
+		
+		p
 			font-size: 4.75rem
+
+		.title
+			font-size: 9rem
 
 	aside
 		width: 474px
 		transform: scale(0.9)
-		transition: filter 0.6s
 
 	.pyramid
 		flex-direction: column-reverse
 		position: relative
 		height: 110rem
 		width: auto
-		transition: filter 0.6s
+		transition: filter 0.55s 0.35s
 
 		&.fusion
-			filter: contrast(0.1) brightness(1.66) grayscale(1)
+			filter: contrast(0.1) brightness(1.6) grayscale(1)
 	
 	.pyramid-block
 		position: absolute
