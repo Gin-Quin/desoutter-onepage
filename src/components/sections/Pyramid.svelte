@@ -40,8 +40,8 @@
 
 	function onScrollDown(event: Event, delta = 4) {
 		if (document.documentElement.scrollTop > 0) return
-		if (animationIsDone) {
-			lastScrollUp = Date.now()
+		if (animationIsDone && delta >= 4) {
+			lastScrollDown = Date.now()
 			return
 		}
 		event.preventDefault()
@@ -56,7 +56,7 @@
 		if (currentStage == stageCount) {
 			setTimeout(() => {
 				if (currentStage == stageCount) animationIsDone = true
-			}, throttle)
+			}, transitionDuration)
 		}
 	}
 
@@ -97,11 +97,13 @@
 <section id="ecosystem" class="row" bind:this={section}>
 	<main>
 		<div class="title bold">{$_("section.pyramid.title")}</div>
-		{#each $json("section.pyramid.description") as description, index}
-			{#if index == currentStage}
-				<p>{description}</p>
-			{/if}
-		{/each}
+		<div class="description">
+			{#each $json("section.pyramid.description") as description, index}
+				{#if index == currentStage}
+					<p transition:fly={{ y: -200, duration: transitionDuration }}>{description}</p>
+				{/if}
+			{/each}
+		</div>
 	</main>
 
 	<aside>
@@ -109,15 +111,19 @@
 		<div class="pyramid" class:fusion={currentStage == fusionStage}>
 			{#each pyramidBlocks as { width, height, position: [left, bottom] }, index}
 				{#if index <= currentStage}
-					<img
-						transition:fly={{ y: -200, duration: transitionDuration }}
-						class:shadow={index == 0}
-						{width}
-						{height}
+					<div
+						class="pyramid-block"
 						style={`left: ${left}px; bottom: ${bottom + index * pyramidGap}px;`}
-						src={`/images/pyramid/pyramid-${index}.png`}
-						alt={`pyramid-${index}`}
-					/>
+					>
+						<img
+							transition:fly={{ y: -20, duration: transitionDuration }}
+							class:shadow={index == 0}
+							{width}
+							{height}
+							src={`/images/pyramid/pyramid-${index}.png`}
+							alt={`pyramid-${index}`}
+						/>
+					</div>
 				{/if}
 			{/each}
 		</div>
@@ -133,20 +139,25 @@
 <style lang="sass">
 	section
 		height: 100vh
+		padding: var(--header-height) 12rem
 		justify-content: space-evenly
 		place-items: center
 	
 	main
 		gap: 4rem
-		width: 35%
-		height: 240px
+		width: 420px
+		height: 38vh
 		overflow: visible
 
 		> .title
 			font-size: 9rem
 
+	.description
+		position: relative
+
 		> p
-			font-size: 5rem
+			position: absolute
+			font-size: 4.75rem
 
 	aside
 		width: 474px
@@ -163,10 +174,12 @@
 		&.fusion
 			filter: contrast(0.1) brightness(1.66) grayscale(1)
 	
-		> img
-			transition: bottom 0.6s
-			position: absolute
-			left: 0
+	.pyramid-block
+		position: absolute
+		transition: bottom 0.6s
+	
+		// > img
+		// 	position: absolute
 
 	.shadow
 		filter: drop-shadow(0 16rem 8rem rgba(0, 0, 0, 0.2))
@@ -180,18 +193,23 @@
 	@media (max-width: 900px)
 		section
 			flex-direction: column
-			padding: 20rem 0
-		
-		main
-			width: 580px
-			max-width: 90%
-			text-align: center
+			padding: calc(var(--header-height) + 6vh) 0 6vh
+			justify-content: space-between
+
+			main
+				width: auto
+				height: 40%
+				max-width: 90%
+				text-align: center
+
+			aside
+				height: 40%
 
 	@media (max-width: 510px)
 		aside
-			transform: scale(0.72)
+			transform: scale(0.66)
 
 	@media (max-width: 390px)
 		aside
-			transform: scale(0.58)
+			transform: scale(0.5)
 </style>

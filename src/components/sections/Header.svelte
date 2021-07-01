@@ -29,16 +29,13 @@
 		top: 0
 		width: 100%
 		justify-content: space-between
-		height: 17rem
+		height: var(--header-height)
 		padding-left: 3rem
 		place-items: center
 		gap: 7rem
 		text-transform: uppercase
 		font-weight: 400
-	
-		// > .title
-		// 	font-size: 6rem
-	
+		
 	nav
 		display: contents	
 		> a
