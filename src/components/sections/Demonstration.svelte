@@ -63,7 +63,7 @@
 	function onWheel(event: MouseWheelEvent) {
 		if (event.ctrlKey || event.metaKey) {
 			event.preventDefault()
-			zoom = clamp(getMinZoom(), zoom + event.deltaY / 100, 1)
+			zoom = clamp(getMinZoom(), zoom - event.deltaY / 100, 1)
 			updateLeft()
 			updateTop()
 			console.log(left, top)
@@ -110,7 +110,6 @@
 		justify-content: space-evenly
 		place-items: center
 		color: white
-		> *
 
 	main
 		border-radius: 100%
