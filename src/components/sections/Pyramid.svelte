@@ -6,9 +6,9 @@
 
 	const pyramidBlocks = [
 		{ width: 480, height: 213, position: [0, 0] },
-		{ width: 361, height: 181, position: [59, 105] },
-		{ width: 238, height: 144, position: [121, 216] },
-		{ width: 114, height: 101, position: [183, 325] },
+		{ width: 361, height: 181, position: [59, 88] },
+		{ width: 238, height: 144, position: [120, 176] },
+		{ width: 114, height: 101, position: [180, 266] },
 	]
 	const transitionDuration = 700
 	const throttle = 520
@@ -133,7 +133,7 @@
 							class:shadow={index == 0}
 							{width}
 							{height}
-							src={`/images/pyramid/pyramid-${index}.png`}
+							src={`/images/pyramid/${index + 1}.svg`}
 							alt={`pyramid-${index}`}
 						/>
 					</div>
@@ -144,7 +144,7 @@
 
 	{#if animationIsDone}
 		<div class="next primary" transition:fly={{ y: -20, duration: 300 }}>
-			<ArrowDownCircleOutline size="10rem" />
+			<img src="images/arrow-down.svg" alt="next" />
 		</div>
 	{/if}
 </section>
