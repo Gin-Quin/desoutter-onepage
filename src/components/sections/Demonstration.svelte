@@ -1,15 +1,13 @@
 <script lang="ts">
 	import _ from "src/i18n"
 	import { onMount } from "svelte"
-	import Item from "types/Item"
+	import type Item from "types/Item"
 
 	const objects: string[] = ["PLC", "MES", "Virtual cable", "Visiopositionning", "Sight remote HMI"]
 	const objectName = (object: string) => $_(`section.demonstration.objects.${object}`)
 	const clamp = (min: number, value: number, max: number) => Math.min(Math.max(value, min), max)
 
-	const items: Item[] = [
-		new Item({ src: "images/crosshair.svg", x: 1600, y: 1200, width: 500, height: 600 }),
-	]
+	const items: Item[] = [{ src: "images/crosshair.svg", x: 1600, y: 1200, width: 500, height: 600 }]
 
 	let imageContainer!: HTMLElement
 	let currentObject = 0
@@ -94,7 +92,7 @@
 	}
 
 	function centerItem(item: Item) {
-		setPosition(item.x, item.y)
+		setPosition(item.x + item.width / 2, item.y + item.height / 2)
 	}
 </script>
 
@@ -110,7 +108,7 @@
 				on:wheel={onWheel}
 			/>
 			{#each items as item}
-				<img class="item" {...item} alt="" style={item.stylize()} />
+				<img class="item" {...item} alt="" style={`left: ${item.x}px; top: ${item.y}px`} />
 			{/each}
 		</div>
 	</main>
