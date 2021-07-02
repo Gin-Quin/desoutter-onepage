@@ -6,16 +6,14 @@
 	import { _, json } from "svelte-i18n"
 
 	const pyramidBlocks = [
-		{ width: 480, height: 213, position: [0, 0] },
-		{ width: 361, height: 181, position: [53, 88] },
-		{ width: 238, height: 144, position: [108, 176] },
-		{ width: 114, height: 101, position: [161, 260] },
+		{ left: 0, bottom: 0 },
+		{ left: 53, bottom: 88 },
+		{ left: 108, bottom: 176 },
+		{ left: 161, bottom: 260 },
 	]
-	const finalPyramid = { width: 480, height: 213, position: [0, 0] }
 	const transitionDuration = 700
 	const throttle = 520
 	const basePyramidGap = 30
-	// const fusionStage = pyramidBlocks.length + 1
 	const fusionStage = pyramidBlocks.length + 1
 
 	let touchStart = 0
@@ -125,7 +123,7 @@
 		<!-- <img class="pyramid" src="/images/pyramid.png" alt="pyramid" /> -->
 		<div class="pyramid" class:fusion={currentStage == fusionStage}>
 			<div class="blocks">
-				{#each pyramidBlocks as { position: [left, bottom] }, index}
+				{#each pyramidBlocks as { left, bottom }, index}
 					{#if index < currentStage}
 						<div
 							class="pyramid-block"
@@ -143,10 +141,7 @@
 			</div>
 
 			{#if currentStage == fusionStage}
-				<div
-					class="pyramid-block shadow"
-					style={`left: ${finalPyramid.position[0]}px; bottom: ${finalPyramid.position[1]}px;`}
-				>
+				<div class="pyramid-block shadow" style={`left: 0; bottom: 0;`}>
 					<img
 						in:fade={{ delay: 400 }}
 						out:fade
