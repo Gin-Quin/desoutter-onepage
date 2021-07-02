@@ -1,15 +1,16 @@
 <script lang="ts">
-	import { fly } from "svelte/transition"
+	import { fly, fade } from "svelte/transition"
 	import ArrowDownCircleOutline from "icons/ArrowDownCircleOutline.svelte"
 	import { onDestroy, onMount } from "svelte"
 	import { _, json } from "svelte-i18n"
 
 	const pyramidBlocks = [
 		{ width: 480, height: 213, position: [0, 0] },
-		{ width: 361, height: 181, position: [59, 88] },
-		{ width: 238, height: 144, position: [120, 176] },
-		{ width: 114, height: 101, position: [180, 266] },
+		{ width: 361, height: 181, position: [53, 88] },
+		{ width: 238, height: 144, position: [108, 176] },
+		{ width: 114, height: 101, position: [161, 260] },
 	]
+	const finalPyramid = { width: 480, height: 213, position: [0, 0] }
 	const transitionDuration = 700
 	const throttle = 520
 	const basePyramidGap = 30
@@ -122,23 +123,37 @@
 	<aside>
 		<!-- <img class="pyramid" src="/images/pyramid.png" alt="pyramid" /> -->
 		<div class="pyramid" class:fusion={currentStage == fusionStage}>
-			{#each pyramidBlocks as { width, height, position: [left, bottom] }, index}
-				{#if index < currentStage}
-					<div
-						class="pyramid-block"
-						style={`left: ${left}px; bottom: ${bottom + index * pyramidGap}px;`}
-					>
-						<img
-							transition:fly={{ y: -20, duration: transitionDuration }}
-							class:shadow={index == 0}
-							{width}
-							{height}
-							src={`/images/pyramid/${index + 1}.svg`}
-							alt={`pyramid-${index}`}
-						/>
-					</div>
-				{/if}
-			{/each}
+			<div class="blocks">
+				{#each pyramidBlocks as { width, height, position: [left, bottom] }, index}
+					{#if index < currentStage}
+						<div
+							class="pyramid-block"
+							style={`left: ${left}px; bottom: ${bottom + index * pyramidGap}px;`}
+						>
+							<img
+								transition:fly={{ y: -20, duration: transitionDuration }}
+								class:shadow={index == 0}
+								src={`/images/pyramid/${index + 1}.svg`}
+								alt={`pyramid-${index}`}
+							/>
+						</div>
+					{/if}
+				{/each}
+			</div>
+
+			{#if currentStage == fusionStage}
+				<div
+					class="pyramid-block"
+					style={`left: ${finalPyramid.position[0]}px; bottom: ${finalPyramid.position[1]}px;`}
+				>
+					<img
+						in:fade={{ delay: 400 }}
+						out:fade
+						src={`/images/pyramid/6.svg`}
+						alt="pyramid-final"
+					/>
+				</div>
+			{/if}
 		</div>
 	</aside>
 
@@ -197,8 +212,15 @@
 		width: auto
 		transition: filter 0.55s 0.3s
 
+		> .blocks
+			transition: opacity 0.45s
+			transition-delay: 0.3s
+
 		&.fusion
-			filter: contrast(0.1) brightness(1.6) grayscale(1)
+			// filter: contrast(0.1) brightness(1.6) grayscale(1)
+			> .blocks
+				transition-delay: 0
+				opacity: 0
 	
 	.pyramid-block
 		position: absolute
