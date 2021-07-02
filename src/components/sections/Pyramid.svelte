@@ -155,6 +155,7 @@
 		padding: var(--header-height) 12rem
 		justify-content: space-evenly
 		place-items: center
+		background: white
 	
 	main
 		width: 420px
@@ -192,7 +193,7 @@
 		position: relative
 		height: 110rem
 		width: auto
-		transition: filter 0.55s 0.35s
+		transition: filter 0.55s 0.3s
 
 		&.fusion
 			filter: contrast(0.1) brightness(1.6) grayscale(1)

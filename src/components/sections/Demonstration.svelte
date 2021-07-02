@@ -114,8 +114,8 @@
 	main
 		border-radius: 100%
 		overflow: hidden
-		width: 500px
-		height: 500px
+		width: 560px
+		height: 560px
 		overflow: hidden
 		cursor: grab
 		position: relative

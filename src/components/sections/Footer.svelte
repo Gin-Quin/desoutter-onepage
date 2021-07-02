@@ -11,64 +11,72 @@
 	]
 </script>
 
-<footer class="bg-black row">
-	<aside>
-		<div class="subtitle">{$_("section.footer.stayConnected")}</div>
-		<div class="infos">
-			{$_(`section.footer.signUp`)}
-		</div>
-		<button class="small margin-bottom-4">{$_(`subscribe`)}</button>
-		<div class="socialNetworks row">
-			{#each socialNetworks as [icon, href]}
-				<a {href}>
-					<svelte:component this={icon} size="2em" />
-				</a>
-			{/each}
-		</div>
-	</aside>
+<footer class="bg-black">
+	<div class="inner-footer row">
+		<aside>
+			<div class="subtitle">{$_("section.footer.stayConnected")}</div>
+			<div class="infos">
+				{$_(`section.footer.signUp`)}
+			</div>
+			<button class="small margin-bottom-4">{$_(`subscribe`)}</button>
+			<div class="socialNetworks row">
+				{#each socialNetworks as [icon, href]}
+					<a {href}>
+						<svelte:component this={icon} size="2em" />
+					</a>
+				{/each}
+			</div>
+		</aside>
 
-	<main>
-		<div class="subtitle">
-			{$_(`Desoutter`)}
-			<span class="slogan">{$_(`section.footer.moreThanProductivity`)}</span>
-		</div>
-		<div class="infos">
-			{$_(`section.footer.history`)}
-		</div>
-		<button class="small margin-bottom-4">{$_(`section.footer.discoverTheBrand`)}</button>
-		<div class="miscellaneous row">
-			<a href="/">{$_(`section.footer.legalNotice`)}</a>
-			<!-- <a href="/">{$_(`section.footer.SDS`)}</a> -->
-			<!-- <a href="/">{$_(`section.footer.editSettings`)}</a> -->
-		</div>
-	</main>
+		<main>
+			<div class="subtitle">
+				{$_(`Desoutter`)}
+				<span class="slogan">{$_(`section.footer.moreThanProductivity`)}</span>
+			</div>
+			<div class="infos">
+				{$_(`section.footer.history`)}
+			</div>
+			<button class="small margin-bottom-4">{$_(`section.footer.discoverTheBrand`)}</button>
+			<div class="miscellaneous row">
+				<a href="/">{$_(`section.footer.legalNotice`)}</a>
+				<!-- <a href="/">{$_(`section.footer.SDS`)}</a> -->
+				<!-- <a href="/">{$_(`section.footer.editSettings`)}</a> -->
+			</div>
+		</main>
 
-	<nav>
-		<a href="/">{$_(`Desoutter`)}</a>
-		<a href="/">{$_(`ecosystem`)}</a>
-		<a href="/">{$_(`ourProducts`)}</a>
-		<a href="/">{$_(`services`)}</a>
-		<a href="/">{$_(`contact`)}</a>
-	</nav>
+		<nav>
+			<a href="/">{$_(`Desoutter`)}</a>
+			<a href="/">{$_(`ecosystem`)}</a>
+			<a href="/">{$_(`ourProducts`)}</a>
+			<a href="/">{$_(`services`)}</a>
+			<a href="/">{$_(`contact`)}</a>
+		</nav>
+	</div>
 </footer>
 
 <style lang="sass">
 	footer
 		font-size: 3.5rem
-		justify-content: space-around
 		color: var(--white)
 		padding: 12.5rem 5%
-		gap: 12rem
 
-		> *
-			gap: 4rem
-			align-items: start
 		a
 			color: var(--white)
 			&:hover
 				text-decoration: underline
+
 		button
 			border: 1px solid var(--white)
+
+		.inner-footer
+			justify-content: space-around
+			gap: 12rem
+			margin: auto
+			max-width: 880px
+			
+			> *
+				gap: 4rem
+				align-items: start
 	
 	aside
 		width: 60rem

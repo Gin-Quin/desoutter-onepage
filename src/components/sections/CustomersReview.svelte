@@ -11,38 +11,45 @@
 	const customers = $json("section.customersReview.customers") as Customer[]
 </script>
 
-<section class="row white bg-gray-3">
-	<aside>
-		<div class="title">
-			{$_("section.customersReview.title")}
-		</div>
-		<div class="description">
-			{$_("section.customersReview.description")}
-		</div>
-	</aside>
-	<main class="grow row wrap">
-		{#each customers as customer}
-			<div class="customer">
-				<img src={`/images/customers/${customer.name}.png`} alt={customer.name} />
-				<div class="layer bg-dark" />
-				<div class="infos">
-					<div class="company">{customer.company}</div>
-					<div class="name">{customer.name}</div>
-					<div class="role">{customer.role}</div>
-				</div>
-				<div class="link bg-primary center">
-					<ArrowRight size="1.5em" />
-				</div>
+<section class="white bg-gray-3">
+	<div class="inner-section row">
+		<aside>
+			<div class="title">
+				{$_("section.customersReview.title")}
 			</div>
-		{/each}
-	</main>
+			<div class="description">
+				{$_("section.customersReview.description")}
+			</div>
+		</aside>
+		<main class="grow row wrap">
+			{#each customers as customer}
+				<div class="customer">
+					<img src={`/images/customers/${customer.name}.png`} alt={customer.name} />
+					<div class="layer bg-dark" />
+					<div class="infos">
+						<div class="company">{customer.company}</div>
+						<div class="name">{customer.name}</div>
+						<div class="role">{customer.role}</div>
+					</div>
+					<div class="link bg-primary center">
+						<ArrowRight size="1.5em" />
+					</div>
+				</div>
+			{/each}
+		</main>
+	</div>
 </section>
 
 <style lang="sass">
 	section
-		min-height: 710px
+		padding: 5% 0
+
+	.inner-section
 		place-items: center
-		padding: 5% 5% 5% 10%
+		min-height: 710px
+		margin: auto
+		width: 1200px
+		max-width: 85%
 		gap: 5rem
 	
 	aside
@@ -107,13 +114,14 @@
 			opacity: 0.45
 
 	@media (max-width: 760px)
-		section
+		.inner-section
 			flex-direction: column
 			gap: 8rem
 
 	@media (max-width: 460px)
 		section
 			padding: 12rem 0
+		.inner-section
 			flex-direction: column
 			gap: 8rem
 		
