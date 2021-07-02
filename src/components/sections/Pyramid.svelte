@@ -125,7 +125,7 @@
 		<!-- <img class="pyramid" src="/images/pyramid.png" alt="pyramid" /> -->
 		<div class="pyramid" class:fusion={currentStage == fusionStage}>
 			<div class="blocks">
-				{#each pyramidBlocks as { width, height, position: [left, bottom] }, index}
+				{#each pyramidBlocks as { position: [left, bottom] }, index}
 					{#if index < currentStage}
 						<div
 							class="pyramid-block"
@@ -133,7 +133,7 @@
 						>
 							<div
 								class:shadow={index == 0}
-								transition:fly={{ y: -20, duration: transitionDuration }}
+								transition:fly={{ y: -80, duration: transitionDuration }}
 							>
 								<PyramidBlock {index} />
 							</div>
@@ -175,7 +175,7 @@
 	
 	main
 		width: 420px
-		height: 30vh
+		height: 24vh
 		overflow: visible
 		position: relative
 	
