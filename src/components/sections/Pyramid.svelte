@@ -168,12 +168,14 @@
 		position: absolute
 		width: 100%
 		height: 100%
+		> *
+			z-index: 1
 		
 		.index
+			z-index: 0
 			position: absolute
 			font-size: 54rem
 			color: var(--gray-2)
-			z-index: -1
 			top: -44rem
 			left: 4rem
 			font-weight: bold
