@@ -1,25 +1,22 @@
 <script lang="ts">
 	import _ from "src/i18n"
 	import { onMount } from "svelte"
-
-	type Item = {
-		src: string
-		x: number
-		y: number
-	}
+	import Item from "types/Item"
 
 	const objects: string[] = ["PLC", "MES", "Virtual cable", "Visiopositionning", "Sight remote HMI"]
 	const objectName = (object: string) => $_(`section.demonstration.objects.${object}`)
 	const clamp = (min: number, value: number, max: number) => Math.min(Math.max(value, min), max)
 
-	const items: Item[] = [{ src: "images/crosshair.svg", x: 60, y: 80 }]
+	const items: Item[] = [
+		new Item({ src: "images/crosshair.svg", x: 1600, y: 1200, width: 500, height: 600 }),
+	]
 
 	let imageContainer!: HTMLElement
 	let currentObject = 0
 	let grabbing = false
 	let grabX = 0,
 		grabY = 0
-	let zoom = 0.5
+	let zoom = 1
 	let width = 2800
 	let height = 1800
 	let left = (width * (zoom - 1)) / 2,
@@ -27,6 +24,10 @@
 
 	onMount(() => {
 		addEventListener("mouseup", onStopGrabbing)
+		addEventListener("mousemove", onGrabbing)
+		centerItem(items[0])
+		// @ts-ignore
+		window.setPosition = setPosition
 	})
 
 	function onStartGrabbing(event: MouseEvent) {
@@ -70,37 +71,48 @@
 
 	function onWheel(event: WheelEvent) {
 		if (event.ctrlKey || event.metaKey) {
-			console.log(event)
 			event.preventDefault()
 			zoom = clamp(getMinZoom(), zoom - event.deltaY / 100, 1)
 			updateLeft()
 			updateTop()
-			console.log(left, top)
 		}
 	}
 
 	// move image to center (x, y)
 	function setPosition(x: number, y: number) {
-		updateLeft(x)
-		updateTop(y)
+		const { clientWidth, clientHeight } = imageContainer
+		const x1 = (width * (1 - zoom)) / 2 // padding due to zoom
+		const x2 = x * zoom // distance to the value
+		const x3 = clientWidth / 2 // we subtract half the view's width to center
+
+		const y1 = (height * (1 - zoom)) / 2
+		const y2 = y * zoom
+		const y3 = clientHeight / 2
+
+		updateLeft(x3 - x2 - x1)
+		updateTop(y3 - y2 - y1)
+	}
+
+	function centerItem(item: Item) {
+		setPosition(item.x, item.y)
 	}
 </script>
 
 <section id="demonstration" class="row">
 	<main class:grabbing bind:this={imageContainer}>
-		<img
-			src="/images/warehouse.jpg"
-			alt="warehouse"
-			{width}
-			{height}
-			style={`left: ${left}px; top: ${top}px; transform: scale(${zoom}`}
-			on:mousedown={onStartGrabbing}
-			on:mousemove={onGrabbing}
-			on:wheel={onWheel}
-		/>
-		{#each items as { src, x, y }}
-			<img {src} alt="" style={``} />
-		{/each}
+		<div class="warehouse" style={`left: ${left}px; top: ${top}px; transform: scale(${zoom}`}>
+			<img
+				src="/images/warehouse.jpg"
+				alt="warehouse"
+				{width}
+				{height}
+				on:mousedown={onStartGrabbing}
+				on:wheel={onWheel}
+			/>
+			{#each items as item}
+				<img class="item" {...item} alt="" style={item.stylize()} />
+			{/each}
+		</div>
 	</main>
 	<aside>
 		<img class="stage" src="" alt="stage" />
@@ -134,15 +146,18 @@
 		overflow: hidden
 		width: 560px
 		height: 560px
-		overflow: hidden
 		cursor: grab
 		position: relative
 
 		&.grabbing
 			cursor: grabbing
 
-		> img
-			position: absolute
+	.warehouse
+		position: absolute
+
+	.item
+		pointer-events: none
+		position: absolute
 
 	aside
 		width: 35%

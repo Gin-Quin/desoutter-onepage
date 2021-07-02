@@ -29,6 +29,7 @@
 			"organisms/*": ["src/components/organisms/*"],
 			"sections/*": ["src/components/sections/*"],
 			"routes/*": ["src/routes/*"],
+			"types/*": ["src/types/*"],
 			"locales/*": ["src/locales/*"],
 			"src/*": ["src/*"],
 			"style/*": ["src/style/*"],
