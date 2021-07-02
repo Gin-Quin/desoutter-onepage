@@ -2,6 +2,7 @@
 	import { fly, fade } from "svelte/transition"
 	import ArrowDownCircleOutline from "icons/ArrowDownCircleOutline.svelte"
 	import { onDestroy, onMount } from "svelte"
+	import PyramidBlock from "atoms/PyramidBlock.svelte"
 	import { _, json } from "svelte-i18n"
 
 	const pyramidBlocks = [
@@ -130,12 +131,12 @@
 							class="pyramid-block"
 							style={`left: ${left}px; bottom: ${bottom + index * pyramidGap}px;`}
 						>
-							<img
-								transition:fly={{ y: -20, duration: transitionDuration }}
+							<div
 								class:shadow={index == 0}
-								src={`/images/pyramid/${index + 1}.svg`}
-								alt={`pyramid-${index}`}
-							/>
+								transition:fly={{ y: -20, duration: transitionDuration }}
+							>
+								<PyramidBlock {index} />
+							</div>
 						</div>
 					{/if}
 				{/each}
@@ -143,7 +144,7 @@
 
 			{#if currentStage == fusionStage}
 				<div
-					class="pyramid-block"
+					class="pyramid-block shadow"
 					style={`left: ${finalPyramid.position[0]}px; bottom: ${finalPyramid.position[1]}px;`}
 				>
 					<img
