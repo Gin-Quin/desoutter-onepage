@@ -236,17 +236,25 @@
 	@media (max-width: 900px)
 		section
 			flex-direction: column
-			padding: calc(var(--header-height) + 6vh) 0 6vh
+			padding: calc(var(--header-height) + 12vh) 0 12vh
 			justify-content: space-between
 
-			main
-				width: auto
-				height: 40%
-				max-width: 90%
-				text-align: center
+		main
+			max-width: 90%
+			text-align: center
+			// top: 10%
 
-			aside
-				height: 40%
+		aside
+			height: 40%
+			transform: scale(0.9)
+
+		.stage
+			align-items: center
+		
+		.index
+			font-size: 36rem !important
+			top: -26rem !important
+			left: unset !important
 
 	@media (max-width: 510px)
 		aside

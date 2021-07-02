@@ -2,9 +2,17 @@
 	import _ from "src/i18n"
 	import { onMount } from "svelte"
 
+	type Item = {
+		src: string
+		x: number
+		y: number
+	}
+
 	const objects: string[] = ["PLC", "MES", "Virtual cable", "Visiopositionning", "Sight remote HMI"]
 	const objectName = (object: string) => $_(`section.demonstration.objects.${object}`)
 	const clamp = (min: number, value: number, max: number) => Math.min(Math.max(value, min), max)
+
+	const items: Item[] = [{ src: "images/crosshair.svg", x: 60, y: 80 }]
 
 	let imageContainer!: HTMLElement
 	let currentObject = 0
@@ -60,14 +68,21 @@
 		event.preventDefault()
 	}
 
-	function onWheel(event: MouseWheelEvent) {
+	function onWheel(event: WheelEvent) {
 		if (event.ctrlKey || event.metaKey) {
+			console.log(event)
 			event.preventDefault()
 			zoom = clamp(getMinZoom(), zoom - event.deltaY / 100, 1)
 			updateLeft()
 			updateTop()
 			console.log(left, top)
 		}
+	}
+
+	// move image to center (x, y)
+	function setPosition(x: number, y: number) {
+		updateLeft(x)
+		updateTop(y)
 	}
 </script>
 
@@ -83,6 +98,9 @@
 			on:mousemove={onGrabbing}
 			on:wheel={onWheel}
 		/>
+		{#each items as { src, x, y }}
+			<img {src} alt="" style={``} />
+		{/each}
 	</main>
 	<aside>
 		<img class="stage" src="" alt="stage" />
