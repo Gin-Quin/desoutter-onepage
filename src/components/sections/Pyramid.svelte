@@ -203,7 +203,6 @@
 
 	aside
 		width: 474px
-		transform: scale(0.9)
 
 	.pyramid
 		flex-direction: column-reverse
@@ -255,9 +254,9 @@
 
 	@media (max-width: 510px)
 		aside
-			transform: scale(0.66)
+			transform: scale(0.7)
 
 	@media (max-width: 390px)
 		aside
-			transform: scale(0.5)
+			transform: scale(0.58)
 </style>
