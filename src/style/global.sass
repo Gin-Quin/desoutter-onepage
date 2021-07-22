@@ -4,6 +4,11 @@ html
 	font-family: Helvetica
 	color: var(--dark)
 	background-color: var(--gray)
+	scroll-snap-type: y mandatory
+	ms-scroll-snap-type: y mandatory
+
+#svelte > *
+	scroll-snap-align: start
 
 @media (max-width: 520px)
 	html
