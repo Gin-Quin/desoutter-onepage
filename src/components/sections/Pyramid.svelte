@@ -228,8 +228,9 @@
 		padding: var(--header-height) 12rem
 		justify-content: space-evenly
 		place-items: center
-		background: white
+		background: var(--black)
 		position: relative
+		color: white
 
 	.stages
 		position: absolute
@@ -309,7 +310,7 @@
 
 		&:not(.animationIsDone)
 			filter: grayscale(1)
-			opacity: 0.35
+			opacity: 0.3
 	
 	@media (max-width: 900px)
 		// section

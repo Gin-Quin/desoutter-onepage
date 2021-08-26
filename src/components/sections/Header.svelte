@@ -37,6 +37,7 @@
 		font-weight: 400
 		z-index: 1
 		position: absolute
+		color: white
 		
 	nav
 		display: contents	
