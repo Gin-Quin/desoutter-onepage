@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { fly, fade } from "svelte/transition"
+	import { backIn, backOut, cubicIn, cubicInOut, cubicOut } from "svelte/easing"
 	import ArrowDownCircleOutline from "icons/ArrowDownCircleOutline.svelte"
 	import { onDestroy, onMount } from "svelte"
 	import PyramidBlock from "atoms/PyramidBlock.svelte"
 	import { _, json } from "svelte-i18n"
+	import { tsParticles } from "tsparticles"
+	import particles from "src/config/particles.json"
 
 	const pyramidBlocks = [
 		{ left: 0, bottom: 0 },
@@ -23,6 +26,7 @@
 	let section!: HTMLElement
 	let pyramidGap = basePyramidGap
 	let animationIsDone = false
+	let mounted = false
 
 	$: stages = $json("section.pyramid.stages") as Array<{ title: string; description: string }>
 
@@ -92,66 +96,96 @@
 		addEventListener("wheel", onWheel, { passive: false })
 		addEventListener("touchstart", onTouchStart, { passive: false })
 		addEventListener("touchmove", onTouchMove, { passive: false })
+
+		// @ts-ignore
+		tsParticles.load("particles", particles)
+		mounted = true
 	})
 </script>
 
 <section id="ecosystem" class="row" bind:this={section}>
-	<main>
-		{#each stages as { description, title }, index}
-			{#if index == currentStage}
+	<div id="particles" />
+	{#if currentStage == 0}
+		{#if mounted}
+			<div class="intro">
 				<div
-					class="stage"
-					in:fly={{ y: -200, duration: transitionDuration }}
-					out:fly={{ y: -400, duration: transitionDuration }}
+					class="subtitle"
+					in:fly={{ duration: 2000, delay: 1000, y: -30 }}
+					out:fade={{ duration: 200 }}
 				>
-					<div
-						class="index"
-						class:hidden={!index || index >= fusionStage}
-						in:fly={{ y: -200, duration: transitionDuration }}
-						out:fly={{ y: -400, duration: transitionDuration }}
-					>
-						{index}
-					</div>
-					<div class="title bold">{title}</div>
-					<p>{description}</p>
+					Discover
 				</div>
-			{/if}
-		{/each}
-	</main>
-
-	<aside>
-		<!-- <img class="pyramid" src="/images/pyramid.png" alt="pyramid" /> -->
-		<div class="pyramid" class:fusion={currentStage == fusionStage}>
-			<div class="blocks">
-				{#each pyramidBlocks as { left, bottom }, index}
-					{#if index < currentStage}
+				<div class="title" in:fade={{ duration: 2000, delay: 3000 }} out:fade={{ duration: 200 }}>
+					Desoutter Ecosystem
+				</div>
+				<img
+					in:fly={{ y: 80, duration: 2000, easing: cubicOut }}
+					out:fade={{ duration: 200 }}
+					class="pyramid-intro"
+					src="/images/pyramid/pyramid-intro.svg"
+					alt="desoutter-pyramid"
+				/>
+			</div>
+		{/if}
+	{:else}
+		<div class="stages">
+			<main>
+				{#each stages as { description, title }, index}
+					{#if index == currentStage - 1}
 						<div
-							class="pyramid-block"
-							style={`left: ${left}px; bottom: ${bottom + index * pyramidGap}px;`}
+							class="stage"
+							in:fly={{ y: -200, duration: transitionDuration }}
+							out:fly={{ y: -400, duration: transitionDuration }}
 						>
 							<div
-								class:shadow={index == 0}
-								transition:fly={{ y: -80, duration: transitionDuration }}
+								class="index"
+								class:hidden={!index || index >= fusionStage}
+								in:fly={{ y: -200, duration: transitionDuration }}
+								out:fly={{ y: -400, duration: transitionDuration }}
 							>
-								<PyramidBlock {index} />
+								{index}
 							</div>
+							<div class="title bold">{title}</div>
+							<p>{description}</p>
 						</div>
 					{/if}
 				{/each}
-			</div>
+			</main>
+			<aside>
+				<!-- <img class="pyramid" src="/images/pyramid.png" alt="pyramid" /> -->
+				<div class="pyramid" class:fusion={currentStage == fusionStage}>
+					<div class="blocks">
+						{#each pyramidBlocks as { left, bottom }, index}
+							{#if index < currentStage}
+								<div
+									class="pyramid-block"
+									style={`left: ${left}px; bottom: ${bottom + index * pyramidGap}px;`}
+								>
+									<div
+										class:shadow={index == 0}
+										transition:fly={{ y: -80, duration: transitionDuration }}
+									>
+										<PyramidBlock {index} />
+									</div>
+								</div>
+							{/if}
+						{/each}
+					</div>
 
-			{#if currentStage == fusionStage}
-				<div class="pyramid-block shadow" style={`left: 0; bottom: 0;`}>
-					<img
-						in:fade={{ delay: 400 }}
-						out:fade
-						src={`/images/pyramid/6.svg`}
-						alt="pyramid-final"
-					/>
+					{#if currentStage == fusionStage}
+						<div class="pyramid-block shadow" style={`left: 0; bottom: 0;`}>
+							<img
+								in:fade={{ delay: 400 }}
+								out:fade
+								src={`/images/pyramid/6.svg`}
+								alt="pyramid-final"
+							/>
+						</div>
+					{/if}
 				</div>
-			{/if}
+			</aside>
 		</div>
-	</aside>
+	{/if}
 
 	{#if animationIsDone}
 		<div class="next primary" transition:fly={{ y: -20, duration: 300 }}>
@@ -161,18 +195,48 @@
 </section>
 
 <style lang="sass">
+	#particles 
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+
+	.intro
+		position: absolute
+		z-index: 1
+		pointer-events: none
+		text-align: center
+		display: flex
+		flex-direction: column
+		gap: 2px
+		margin-top: 4vmin
+		> .title
+			font-size: 36px
+			font-weight: bold
+		> .subtitle
+			font-size: 20px
+		> img
+			max-width: 100vw
+			max-height: 70vh
+
 	section
 		height: 100vh
 		padding: var(--header-height) 12rem
 		justify-content: space-evenly
 		place-items: center
 		background: white
+		position: relative
+
+	.stages
+		position: absolute
+		pointer-events: none
+		flex-direction: row
 	
 	main
 		width: 420px
 		height: 24vh
 		overflow: visible
-		position: relative
 	
 	.stage
 		gap: 4rem

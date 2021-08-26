@@ -140,7 +140,7 @@
 		color: white
 
 	main
-		border-radius: 100%
+		// border-radius: 100%
 		overflow: hidden
 		width: 560px
 		height: 560px

@@ -28,6 +28,7 @@ const config = {
 					'src': `${__dirname}/src`,
 					'style': `${__dirname}/src/style`,
 					'locales': `${__dirname}/src/locales`,
+					'config': `${__dirname}/src/config`,
 				}
 			}
 		}

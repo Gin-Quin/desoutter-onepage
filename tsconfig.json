@@ -33,6 +33,7 @@
 			"locales/*": ["src/locales/*"],
 			"src/*": ["src/*"],
 			"style/*": ["src/style/*"],
+			"config/*": ["src/config/*"],
 			"icons/*": ["node_modules/svelte-material-icons/*"]
 		}
 	},
