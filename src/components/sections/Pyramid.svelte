@@ -115,7 +115,7 @@
 				>
 					Discover
 				</div>
-				<div class="title" in:fade={{ duration: 2000, delay: 3000 }} out:fade={{ duration: 200 }}>
+				<div class="title" in:fade={{ duration: 2800, delay: 2200 }} out:fade={{ duration: 200 }}>
 					Desoutter Ecosystem
 				</div>
 				<img
@@ -139,11 +139,10 @@
 						>
 							<div
 								class="index"
-								class:hidden={!index || index >= fusionStage}
 								in:fly={{ y: -200, duration: transitionDuration }}
 								out:fly={{ y: -400, duration: transitionDuration }}
 							>
-								{index}
+								{index + 1}
 							</div>
 							<div class="title bold">{title}</div>
 							<p>{description}</p>
@@ -187,8 +186,12 @@
 		</div>
 	{/if}
 
-	{#if animationIsDone}
-		<div class="next primary" transition:fly={{ y: -20, duration: 300 }}>
+	{#if mounted}
+		<div
+			class="next primary"
+			class:animationIsDone
+			in:fly={{ y: -50, duration: 2800, delay: 2200 }}
+		>
 			<img src="images/arrow-down.svg" alt="next" />
 		</div>
 	{/if}
@@ -232,17 +235,23 @@
 		position: absolute
 		pointer-events: none
 		flex-direction: row
+		align-items: center
+		justify-content: center
+		flex-wrap: wrap
 	
 	main
 		width: 420px
+		max-width: 95vw
 		height: 24vh
 		overflow: visible
 	
 	.stage
 		gap: 4rem
 		position: absolute
-		width: 100%
+		width: 420px
+		max-width: 95vw
 		height: 100%
+
 		> *
 			z-index: 1
 		
@@ -296,21 +305,26 @@
 		bottom: 3%
 		width: auto
 		opacity: 0.9
+		transition: 0.3s
+
+		&:not(.animationIsDone)
+			filter: grayscale(1)
+			opacity: 0.35
 	
 	@media (max-width: 900px)
-		section
-			flex-direction: column
-			padding: calc(var(--header-height) + 12vh) 0 12vh
-			justify-content: space-between
+		// section
+		// 	flex-direction: column
+		// 	padding: calc(var(--header-height) + 12vh) 0 12vh
+		// 	justify-content: space-between
 
-		main
-			max-width: 90%
-			text-align: center
-			// top: 10%
+		// main
+		// 	max-width: 90%
+		// 	text-align: center
+		// 	// top: 10%
 
-		aside
-			height: 40%
-			transform: scale(0.9)
+		// aside
+		// 	height: 40%
+		// 	transform: scale(0.9)
 
 		.stage
 			align-items: center
