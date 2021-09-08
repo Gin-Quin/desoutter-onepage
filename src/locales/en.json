@@ -12,32 +12,69 @@
 		},
 
 		"pyramid": {
-			"stages": [
-				{
-					"title": "Tools",
-					"description": "Discover Desoutter complete range of industrial tools and customised solutions: battery assembly tools, electric screwdrivers, pneumatic fastening tools and many more."
+			"stages": {
+				"intro": {
+					"steps": [1, 2],
+					"title": "Discover",
+					"subtitle": "Desoutter Ecosystem"
 				},
-				{
-					"title": "Machines",
-					"description": "Discover Desoutter complete range of industrial tools and customised solutions: battery assembly tools, electric screwdrivers, pneumatic fastening tools and many more."
+				"content": {
+					"steps": [
+						{
+							"title": "Connected assets",
+							"description": "<p><em>Flexibility</em> and <em>traceability</em> are key factors for a successful Industry 4.0 transformation.</p><p>Connected assets ensure an <em>easy integration</em> within the assembly process and guarantee <em>traceability</em> and <em>integrity of all the data</em>.</p>",
+							"tools": [],
+							"coreBenefits": [
+								"Multi assets solution with <em>lowest footprint</em> on the line",
+								"<em>Flexible</em> and <em>scalable</em> platform",
+								"<em>Full traceability</em>",
+								"Fast and <em>easy line rebalancing</em>",
+								"<em>Easy integration</em> with industry standard and customer specific communication protocols"
+							]
+						},
+						{
+							"title": "Platform integration",
+							"description": "<p>Platorm integration is becoming critical due to <em>products variants</em> and <em>line flexibility</em> but also because of the increasing advances in automation technology, and the associated need to <em>simplify processes</em> for easier management.</p><p>A platform integration <em>streamlines</em> your processes, reduce <em>costs</em>, improves <em>quality</em> and ensures <em>efficiency</em> overall.</p>",
+							"tools": [],
+							"coreBenefits": [
+								"Enhanced <em>flexibility</em>, <em>quality</em> and <em>productivity</em>",
+								"Full <em>error proofing</em> solutions",
+								"Light and full <em>automation</em> solutions",
+								"Customization based on <em>tested</em> and <em>proven</em> designs"
+							]
+						},
+						{
+							"title": "Process control",
+							"description": "<p>Critical to guarantee the overall <em>quality</em> of the end product through the assembly journey and <em>record</em> all process information providing a complete history of <em>traceability</em>, process control also provides production process <em>optimization</em> and <em>agility</em> to make changes and adjustments deployed <em>quickly</em> and without additional <em>cost</em>.</p><p>Thanks to an integrated <em>operator guidance</em>, complex processes are broken down to individual steps which operators follow in order to reduce <em>risks of quality defects</em> and their associated <em>costs</em> which supports your overall <em>quality</em> and <em>efficiency</em> goals.</p>",
+							"tools": [],
+							"coreBenefits": [
+								"<em>Flexibility</em> over process requirements to optimize <em>productivity</em> and manage <em>line rebalancing</em>",
+								"Full <em>error proofing</em> protection of your product assembly with complete <em>traceability</em> of every element involved in the process",
+								"Out of the box integration & <em>compatibility</em> with a wide variety of industrial equipment and systems",
+								"<em>Scalability</em> from a single stand-alone station to complete assembly lines and more",
+								"Maximize your return on investment via full <em>customer ownership</em> of the solution and avoid expensive supplier system modification costs"
+							]
+						},
+						{
+							"title": "Data driven solution",
+							"description": "<p><em>Strategic</em> and high impact decisions have to be based on <em>facts</em> and <em>data</em>. The sooner the data is available, the <em>quicker</em> will you be able to <em>react</em> and make decisions.</p>Desoutter’s data driven solution provides you with <em>real-time information</em> as events are occurring on the line.</p><p>Additionally, Desoutter’s applications and process <em>expertise</em> have been integrated in the <em>data analytics</em> to support you in <em>understanding</em> the data and the <em>root causes</em> of unwanted events.</p><p>Boost your <em>productivity</em>, boost your <em>uptime</em>, reduce your <em>quality costs</em> and improve your overall process <em>efficiency</em> with Desoutter’s data driven solution.</p>",
+							"tools": [
+								"<em>Assets</em> insights updated in real-time to maximize your <em>productivity</em> and <em>uptime</em>",
+								"<em>Processes</em> insights updated in real-time to maximize your <em>productivity</em> and <em>quality</em>",
+								"<em>Live alerts</em> of production critical events to maximize your <em>productivity</em> and <em>uptime</em>",
+								"<em>Data analytics</em> for continuous process <em>efficiency</em> gains"
+							]
+						}
+					]
 				},
-				{
-					"title": "Services",
-					"description": "Discover Desoutter complete range of industrial tools and customised solutions: battery assembly tools, electric screwdrivers, pneumatic fastening tools and many more."
-				},
-				{
-					"title": "Data",
-					"description": "Discover Desoutter complete range of industrial tools and customised solutions: battery assembly tools, electric screwdrivers, pneumatic fastening tools and many more."
-				},
-				{
-					"title": "Desoutter ecosystem",
-					"description": "Discover Desoutter complete range of industrial tools and customised solutions: battery assembly tools, electric screwdrivers, pneumatic fastening tools and many more."
-				},
-				{
-					"title": "Desoutter ecosystem",
-					"description": "Discover Desoutter complete range of industrial tools and customised solutions: battery assembly tools, electric screwdrivers, pneumatic fastening tools and many more."
+				"outro": {
+					"steps": [1, 2],
+					"title": "Desoutter is a global company with",
+					"subtitle": "strong local project management and service expertise",
+					"descriptionTitle": "Desoutter Service",
+					"description": "<p>Stay <em>connected</em> with your Desoutter <em>expert</em> team to achieve the <em>full potential</em> of your equipment.</p><p>By working with Desoutter Service you will <em>secure</em> and expand the <em>value</em> of Desoutter Ecosystem in your environment.</p><p>It is the key step to implement the Desoutter Data Driven Solutions recommended actions to <em>close the loop</em> for <em>continuous efficiency</em> gains from data analytics.</p>"
 				}
-			]
+			}
 		},
 
 		"demonstration": {
