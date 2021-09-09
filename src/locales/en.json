@@ -20,6 +20,7 @@
 					"subtitle": "Desoutter Ecosystem"
 				},
 				"content": {
+					"coreBenefits": "Core benefits",
 					"steps": [
 						{
 							"title": "Connected assets",

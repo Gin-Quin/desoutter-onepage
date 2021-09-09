@@ -3,10 +3,9 @@
 	import LandingHeader from "atoms/LandingHeader.svelte"
 	import LandingMain from "atoms/LandingMain.svelte"
 	import { t } from "svelte-i18n"
-	import { cubicOut } from "svelte/easing"
 	import { fade, fly } from "svelte/transition"
 	import introTools from "config/introTools.json"
-	import IntroTool from "atoms/IntroTool.svelte"
+	import ToolCard from "atoms/ToolCard.svelte"
 
 	export let step: number
 </script>
@@ -31,7 +30,7 @@
 
 	<LandingMain>
 		{#each introTools as tool (tool.name)}
-			<IntroTool {tool} {step} />
+			<ToolCard {tool} {step} />
 		{/each}
 
 		{#if step > 0}

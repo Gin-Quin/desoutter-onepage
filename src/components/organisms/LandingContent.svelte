@@ -1,59 +1,56 @@
 <script lang="ts">
+	import Pyramid from "molecules/Pyramid.svelte"
+	import { json, t } from "svelte-i18n"
+	import { fly } from "svelte/transition"
+	import ArrowRight from "icons/ArrowRight.svelte"
+
 	export let step = 0
+
+	const transitionDuration = 520
+
+	$: content = $json(`section.landing.stages.content.steps`) as Array<{
+		title: string
+		subtitle: string
+		descriptionTitle: string
+		description: string
+		tools: Array<string>
+		coreBenefits: Array<string>
+	}>
 </script>
 
 <div class="stages">
 	<main>
-		{#each stages as { description, title }, index}
-			{#if index == currentStage - 1}
-				<div
-					class="stage"
-					in:fly={{ y: -200, duration: transitionDuration }}
-					out:fly={{ y: -400, duration: transitionDuration }}
-				>
-					<div
-						class="index"
-						in:fly={{ y: -200, duration: transitionDuration }}
-						out:fly={{ y: -400, duration: transitionDuration }}
-					>
-						{index + 1}
-					</div>
-					<div class="title bold">{title}</div>
-					<p>{description}</p>
-				</div>
-			{/if}
-		{/each}
-	</main>
-	<aside>
-		<div class="pyramid" class:fusion={currentStage == fusionStage}>
-			<div class="blocks">
-				{#each pyramidBlocks as { left, bottom }, index}
-					{#if index < currentStage}
-						<div
-							class="pyramid-block"
-							style={`left: ${left}px; bottom: ${bottom + index * pyramidGap}px;`}
-						>
-							<div
-								class:shadow={index == 0}
-								transition:fly={{ y: -80, duration: transitionDuration }}
-							>
-								<PyramidBlock {index} />
-							</div>
-						</div>
-					{/if}
-				{/each}
+		<div
+			class="stage"
+			in:fly={{ y: -200, duration: transitionDuration }}
+			out:fly={{ y: -400, duration: transitionDuration }}
+		>
+			<div
+				class="index"
+				in:fly={{ y: -200, duration: transitionDuration }}
+				out:fly={{ y: -400, duration: transitionDuration }}
+			>
+				{step + 1}
 			</div>
-
-			{#if currentStage == fusionStage}
-				<div class="pyramid-block shadow" style={`left: 0; bottom: 0;`}>
-					<img
-						in:fade={{ delay: 400 }}
-						out:fade
-						src={`/images/pyramid/6.svg`}
-						alt="pyramid-final"
-					/>
-				</div>
-			{/if}
+			<div class="title">{content[step].title}</div>
+			<div class="subtitle">{content[step].subtitle}</div>
+			<p>{@html content[step].description}</p>
 		</div>
-	</aside>
+
+		<aside>
+			<Pyramid />
+		</aside>
+	</main>
+
+	<footer>
+		<div class="benefits-title">{$t("section.landing.stages.content.coreBenefits")}</div>
+		<div class="benefits">
+			{#each content[step].coreBenefits as benefit}
+				<div class="benefit">
+					<ArrowRight />
+					<p>{@html benefit}</p>
+				</div>
+			{/each}
+		</div>
+	</footer>
 </div>
