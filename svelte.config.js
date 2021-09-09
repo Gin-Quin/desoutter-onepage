@@ -24,6 +24,7 @@ const config = {
 					'organisms': `${__dirname}/src/components/organisms`,
 					'sections': `${__dirname}/src/components/sections`,
 					'routes': `${__dirname}/src/routes`,
+					'utilities': `${__dirname}/src/utilities`,
 					'types': `${__dirname}/src/types`,
 					'src': `${__dirname}/src`,
 					'style': `${__dirname}/src/style`,

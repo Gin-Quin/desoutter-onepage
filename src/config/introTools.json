@@ -1,0 +1,82 @@
+[
+	{
+		"name": "trackingBase",
+		"style": "small",
+		"position": [
+			{ "left": 1, "top": 20 },
+			{ "left": -35, "top": 5 }
+		]
+	},
+	{
+		"name": "EABS",
+		"style": "large",
+		"position": [
+			{ "left": 17.5, "top": 10 },
+			{ "left": -33, "top": 24 }
+		]
+	},
+	{
+		"name": "multiWheel2",
+		"style": "large",
+		"position": [
+			{ "left": 42, "top": 3 },
+			{ "left": 123, "top": -10 }
+		]
+	},
+	{
+		"name": "PivotwareLogo",
+		"style": "logo",
+		"position": [
+			{ "left": 64, "top": 18 },
+			{ "left": 120, "top": 19 }
+		]
+	},
+	{
+		"name": "BoostLabLogo",
+		"style": "logo",
+		"position": [
+			{ "left": 6, "top": 40 },
+			{ "left": -60, "top": 5 }
+		]
+	},
+	{
+		"name": "M-EDU",
+		"style": "large",
+		"position": [
+			{ "left": 37, "top": 30 },
+			{ "left": -20, "top": 0 }
+		]
+	},
+	{
+		"name": "connector",
+		"style": "large",
+		"position": [
+			{ "left": 61, "top": 38 },
+			{ "left": 100, "top": 0 }
+		]
+	},
+	{
+		"name": "ELC",
+		"style": "small",
+		"position": [
+			{ "left": 86, "top": 35 },
+			{ "left": 147, "top": 5 }
+		]
+	},
+	{
+		"name": "DeMeterLogo",
+		"style": "logo",
+		"position": [
+			{ "left": 38, "top": 58 },
+			{ "left": 136, "top": 40 }
+		]
+	},
+	{
+		"name": "Q-SHIELD",
+		"style": "large",
+		"position": [
+			{ "left": 13, "top": 60 },
+			{ "left": -60, "top": 25 }
+		]
+	}
+]

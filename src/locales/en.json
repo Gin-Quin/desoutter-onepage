@@ -11,7 +11,8 @@
 			"visitDesoutterTools": "Visit Desoutter tools"
 		},
 
-		"pyramid": {
+		"landing": {
+			"scroll": "Scroll",
 			"stages": {
 				"intro": {
 					"steps": [1, 2],

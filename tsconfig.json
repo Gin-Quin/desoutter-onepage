@@ -31,6 +31,7 @@
 			"routes/*": ["src/routes/*"],
 			"types/*": ["src/types/*"],
 			"locales/*": ["src/locales/*"],
+			"utilities/*": ["src/utilities/*"],
 			"src/*": ["src/*"],
 			"style/*": ["src/style/*"],
 			"config/*": ["src/config/*"],
