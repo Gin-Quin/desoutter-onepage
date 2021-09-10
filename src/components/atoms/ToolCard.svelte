@@ -16,7 +16,7 @@
 		position: {position ? 'absolute' : 'relative'};
 		top: {position ? position.top + '%' : 'unset'};
 		left: {position ? position.left + '%' : 'unset'};
-		transition-duration: {Math.random() * 300 + 100}ms;
+		transition-duration: {Math.random() * 350 + 150}ms;
 		transition-delay: {Math.random() * 100}
 	"
 	in:fly={{

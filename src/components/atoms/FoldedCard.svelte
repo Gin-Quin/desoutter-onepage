@@ -17,6 +17,7 @@
 		filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.05))
 		font-weight: 700
 		position: relative
+		text-align: center
 
 		background-image: linear-gradient($color, $color), linear-gradient(to top right, $fold-color 50%, $folded-color 50%), linear-gradient($color, $color), linear-gradient($color, $color), linear-gradient(to top right, $folded-color 50%, $fold-color 50%)
 		background-position-x: 0, 0, $fold-width, right, right

@@ -8,7 +8,8 @@
 
 	export let step = 0
 
-	const transitionDuration = 520
+	const inDuration = 650
+	const outDuration = 550
 
 	$: content = $json(`section.landing.stages.content.steps`) as Array<{
 		title: string
@@ -26,13 +27,13 @@
 			{#if index == step}
 				<div
 					class="content-step"
-					in:fly={{ y: -200, duration: transitionDuration }}
-					out:fly={{ y: -400, duration: transitionDuration }}
+					in:fly={{ y: -200, duration: inDuration }}
+					out:fly={{ y: -300, duration: outDuration }}
 				>
 					<div
 						class="index"
-						in:fly={{ y: -200, duration: transitionDuration }}
-						out:fly={{ y: -400, duration: transitionDuration }}
+						in:fly={{ y: -200, duration: inDuration }}
+						out:fly={{ y: -300, duration: outDuration }}
 					>
 						{step + 1}
 					</div>
@@ -57,8 +58,8 @@
 			{/if}
 		{/each}
 
-		<aside>
-			<Pyramid gap={25} focus={step} />
+		<aside in:fly={{ y: -400, duration: inDuration }} out:fly={{ y: -500, duration: outDuration }}>
+			<Pyramid gap={25} focus={step} scale={0.9} />
 		</aside>
 	</main>
 

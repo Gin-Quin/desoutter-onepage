@@ -15,7 +15,7 @@
 		opacity: {transparent ? 0.3 : 1}
 	"
 >
-	<div class:shadow={index == 0} transition:fly={{ y: -80, duration: 200 }}>
+	<div class:shadow={index == 0}>
 		{#if index == 0}
 			<svg
 				width="477"
@@ -111,7 +111,7 @@
 <style lang="sass">
 	.pyramid-block
 		position: absolute
-		transition: 0.6s
+		transition: 0.5s
 
 	.shadow
 		filter: drop-shadow(0 16rem 8rem rgba(0, 0, 0, 0.2))

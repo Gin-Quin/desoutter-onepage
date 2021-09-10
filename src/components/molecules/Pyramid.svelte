@@ -4,9 +4,10 @@
 
 	export let gap = 0
 	export let focus: null | number = null
+	export let scale = 1
 </script>
 
-<div class="pyramid" style="top: {gap * 2}px;">
+<div class="pyramid" style="top: {gap * 2}px; transform: scale({scale});">
 	<div class="blocks">
 		{#each pyramidBlocks as _, index}
 			<PyramidBlock {index} {gap} transparent={focus != null && index != focus} />
@@ -29,6 +30,7 @@
 		transition: filter 0.55s 0.3s
 		justify-content: center
 		align-items: center
+		transition: top 250ms
 
 		> .blocks
 			transition: opacity 0.45s
