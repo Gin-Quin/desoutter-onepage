@@ -7,7 +7,6 @@
 	import introTools from "config/introTools.json"
 	import ToolCard from "atoms/ToolCard.svelte"
 	import LandingFooter from "atoms/LandingFooter.svelte"
-	import ArrowDown from "svelte-material-icons/ArrowDown.svelte"
 
 	export let step: number
 </script>
@@ -28,7 +27,7 @@
 
 	<LandingMain>
 		{#each introTools as { name, style, position } (name)}
-			<ToolCard {name} {style} position={position[step]} />
+			<ToolCard {name} {style} position={position[step]} delay={1200} duration={1200} />
 		{/each}
 
 		{#if step > 0}

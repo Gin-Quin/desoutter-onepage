@@ -3,6 +3,8 @@
 	export let name: string
 	export let style: string
 	export let position: undefined | { left: number; top: number } = undefined
+	export let delay = 0
+	export let duration = 300
 </script>
 
 <div
@@ -19,13 +21,13 @@
 	"
 	in:fly={{
 		x: Math.random() * 100 - 50,
-		y: Math.random() * 100,
-		delay: 1200,
-		duration: 1200,
+		y: Math.random() * 100 - 50,
+		delay,
+		duration,
 	}}
 	out:fly={{
-		x: Math.random() * 200 - 100,
-		y: Math.random() * 200 - 100,
+		x: Math.random() * 100 - 50,
+		y: Math.random() * 100 - 50,
 		duration: 200,
 	}}
 >

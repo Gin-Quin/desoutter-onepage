@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Pyramid from "molecules/Pyramid.svelte"
 	import { json, t } from "svelte-i18n"
-	import { fly } from "svelte/transition"
+	import { fly, slide } from "svelte/transition"
 	import ArrowRight from "icons/ArrowRight.svelte"
 	import FoldedCard from "atoms/FoldedCard.svelte"
 	import ToolCard from "atoms/ToolCard.svelte"
@@ -20,7 +20,7 @@
 	}>
 </script>
 
-<div id="landing-content" class="content" style="--tool-size: 100px;">
+<div id="landing-content" style="--tool-size: 100px;">
 	<main>
 		{#each content as stepContent, index}
 			{#if index == step}
@@ -62,17 +62,21 @@
 		</aside>
 	</main>
 
-	<footer>
-		<div class="benefits-title">{$t("section.landing.stages.content.coreBenefits")}</div>
-		<div class="benefits">
-			{#each content[step].coreBenefits as benefit}
-				<div class="benefit">
-					<ArrowRight />
-					<p>{@html benefit}</p>
+	{#each content as stepContent, index}
+		{#if index == step}
+			<footer in:slide={{ delay: 150, duration: 300 }} out:slide={{ duration: 200 }}>
+				<div class="benefits-title">{$t("section.landing.stages.content.coreBenefits")}</div>
+				<div class="benefits">
+					{#each stepContent.coreBenefits as benefit}
+						<div class="benefit">
+							<ArrowRight />
+							<p>{@html benefit}</p>
+						</div>
+					{/each}
 				</div>
-			{/each}
-		</div>
-	</footer>
+			</footer>
+		{/if}
+	{/each}
 </div>
 
 <style lang="sass">
@@ -86,22 +90,27 @@
 	:root
 		--content-footer-height: 220px
 	
-	.content
+	#landing-content
 		position: absolute
 		top: 0
 		left: 0
 		width: 100%
+		height: 100%
 		pointer-events: none
 		flex-wrap: wrap
 	
 	main
-		height: calc(100vh - var(--content-footer-height) - var(--header-height))
+		height: 100%
 		width: 100%
 		display: flex
 		flex-direction: row
 		position: relative
 
 	footer
+		position: absolute
+		bottom: 0
+		left: 0
+		width: 100%
 		height: var(--content-footer-height)
 		background: white
 	
