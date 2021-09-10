@@ -3,6 +3,8 @@
 	import { json, t } from "svelte-i18n"
 	import { fly } from "svelte/transition"
 	import ArrowRight from "icons/ArrowRight.svelte"
+	import FoldedCard from "atoms/FoldedCard.svelte"
+	import ToolCard from "atoms/ToolCard.svelte"
 
 	export let step = 0
 
@@ -18,24 +20,42 @@
 	}>
 </script>
 
-<div class="stages">
+<div id="landing-content" class="content" style="--tool-size: 100px;">
 	<main>
-		<div
-			class="stage"
-			in:fly={{ y: -200, duration: transitionDuration }}
-			out:fly={{ y: -400, duration: transitionDuration }}
-		>
-			<div
-				class="index"
-				in:fly={{ y: -200, duration: transitionDuration }}
-				out:fly={{ y: -400, duration: transitionDuration }}
-			>
-				{step + 1}
-			</div>
-			<div class="title">{content[step].title}</div>
-			<div class="subtitle">{content[step].subtitle}</div>
-			<p>{@html content[step].description}</p>
-		</div>
+		{#each content as stepContent, index}
+			{#if index == step}
+				<div
+					class="content-step"
+					in:fly={{ y: -200, duration: transitionDuration }}
+					out:fly={{ y: -400, duration: transitionDuration }}
+				>
+					<div
+						class="index"
+						in:fly={{ y: -200, duration: transitionDuration }}
+						out:fly={{ y: -400, duration: transitionDuration }}
+					>
+						{step + 1}
+					</div>
+
+					<div class="infos">
+						<FoldedCard>
+							<div class="title">{stepContent.title}</div>
+						</FoldedCard>
+
+						<div class="description">{@html stepContent.description}</div>
+
+						<div class="tools">
+							{#each stepContent.tools as tool}
+								<ToolCard
+									name={tool}
+									style={tool.toLowerCase().includes("logo") ? "logo" : "small"}
+								/>
+							{/each}
+						</div>
+					</div>
+				</div>
+			{/if}
+		{/each}
 
 		<aside>
 			<Pyramid />
@@ -54,3 +74,98 @@
 		</div>
 	</footer>
 </div>
+
+<style lang="sass">
+	:global(#landing-content .infos .description em)
+		font-weight: bold
+		font-style: normal
+
+	:global(#landing-content .infos .description p)
+		line-height: 7rem
+
+	:root
+		--content-footer-height: 220px
+	
+	.content
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		pointer-events: none
+		flex-wrap: wrap
+	
+	main
+		height: calc(100vh - var(--content-footer-height) - var(--header-height))
+		width: 100%
+		display: flex
+		flex-direction: row
+		position: relative
+
+	footer
+		height: var(--content-footer-height)
+		background: white
+	
+	.content-step
+		gap: 4rem
+		position: absolute
+		width: 60%
+		height: 100%
+		flex-direction: row
+		padding-left: 7%
+
+		> *
+			z-index: 1
+		
+		.index
+			z-index: 0
+			font-size: 36rem
+			color: var(--primary)
+			opacity: 0.12
+			left: 4rem
+			font-weight: bold
+		
+		p
+			font-size: 4.75rem
+
+	.infos
+		padding-top: 10rem
+		padding-left: 2rem
+		align-items: flex-start
+
+		.title
+			font-size: 6rem
+
+		.description
+			padding: 8rem 0
+			// line-height: 10rem !important
+			gap: 2rem
+
+		.tools
+			flex-direction: row
+			gap: 4rem
+
+	aside
+		position: absolute
+		right: 0
+		top: 0
+		width: 40%
+		height: 100%
+		align-items: center
+
+	@media (max-width: 900px)
+		.stage
+			align-items: center
+		
+		.index
+			font-size: 36rem !important
+			top: -26rem !important
+			left: unset !important
+
+	@media (max-width: 510px)
+		aside
+			transform: scale(0.7)
+
+	@media (max-width: 390px)
+		aside
+			transform: scale(0.58)
+</style>

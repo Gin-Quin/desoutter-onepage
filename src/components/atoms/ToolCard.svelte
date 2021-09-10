@@ -1,25 +1,19 @@
-<script context="module" lang="ts">
-	export interface Tool {
-		name: string
-		style: string
-		position: Array<{ left: number; top: number }>
-	}
-</script>
-
 <script lang="ts">
 	import { fly } from "svelte/transition"
-	export let tool: Tool
-	export let step = 0
+	export let name: string
+	export let style: string
+	export let position: undefined | { left: number; top: number } = undefined
 </script>
 
 <div
 	class="tool"
-	class:logo={tool.style == "logo"}
-	class:small={tool.style == "small"}
-	class:large={tool.style == "large"}
+	class:logo={style == "logo"}
+	class:small={style == "small"}
+	class:large={style == "large"}
 	style="
-		top: {tool.position[step].top}%;
-		left: {tool.position[step].left}%;
+		position: {position ? 'absolute' : 'relative'};
+		top: {position ? position.top + '%' : 'unset'};
+		left: {position ? position.left + '%' : 'unset'};
 		transition-duration: {Math.random() * 300 + 100}ms;
 		transition-delay: {Math.random() * 100}
 	"
@@ -29,8 +23,13 @@
 		delay: 1200,
 		duration: 1200,
 	}}
+	out:fly={{
+		x: Math.random() * 200 - 100,
+		y: Math.random() * 200 - 100,
+		duration: 200,
+	}}
 >
-	<img src="/images/tools/{tool.name}.png" alt={tool.name} />
+	<img src="/images/tools/{name}.png" alt={name} />
 </div>
 
 <style lang="sass">
@@ -44,7 +43,6 @@
 		box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15)
 		justify-content: center
 		align-items: center
-		position: absolute
 
 		&.small
 			border-radius: 100%

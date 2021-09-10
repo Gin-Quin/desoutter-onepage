@@ -103,3 +103,12 @@
 		{/if}
 	</div>
 </div>
+
+<style lang="sass">
+	.pyramid-block
+		position: absolute
+		transition: bottom 0.6s
+
+	.shadow
+		filter: drop-shadow(0 16rem 8rem rgba(0, 0, 0, 0.2))
+</style>

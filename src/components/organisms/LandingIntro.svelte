@@ -6,6 +6,8 @@
 	import { fade, fly } from "svelte/transition"
 	import introTools from "config/introTools.json"
 	import ToolCard from "atoms/ToolCard.svelte"
+	import LandingFooter from "atoms/LandingFooter.svelte"
+	import ArrowDown from "svelte-material-icons/ArrowDown.svelte"
 
 	export let step: number
 </script>
@@ -16,11 +18,7 @@
 			<div class="title" in:fly={{ duration: 2000, y: -30 }} out:fade={{ duration: 200 }}>
 				{$t("section.landing.stages.intro.title")}
 			</div>
-			<div
-				class="subtitle"
-				in:fly={{ duration: 1800, y: -10, delay: 1200 }}
-				out:fade={{ duration: 200 }}
-			>
+			<div class="subtitle" in:fade={{ duration: 1800, delay: 1200 }} out:fade={{ duration: 200 }}>
 				<FoldedCard>
 					{$t("section.landing.stages.intro.subtitle")}
 				</FoldedCard>
@@ -29,15 +27,15 @@
 	</LandingHeader>
 
 	<LandingMain>
-		{#each introTools as tool (tool.name)}
-			<ToolCard {tool} {step} />
+		{#each introTools as { name, style, position } (name)}
+			<ToolCard {name} {style} position={position[step]} />
 		{/each}
 
 		{#if step > 0}
 			<div class="image-container">
 				<img
 					in:fly={{ y: 50, duration: 800 }}
-					out:fly={{ y: 50, duration: 300 }}
+					out:fly={{ y: 50, duration: 150 }}
 					class="pyramid-intro"
 					src="/images/pyramid/pyramid-intro.svg"
 					alt="desoutter-pyramid"
@@ -45,6 +43,8 @@
 			</div>
 		{/if}
 	</LandingMain>
+
+	<LandingFooter />
 </div>
 
 <style lang="sass">

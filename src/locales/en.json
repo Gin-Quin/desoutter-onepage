@@ -25,7 +25,7 @@
 						{
 							"title": "Connected assets",
 							"description": "<p><em>Flexibility</em> and <em>traceability</em> are key factors for a successful Industry 4.0 transformation.</p><p>Connected assets ensure an <em>easy integration</em> within the assembly process and guarantee <em>traceability</em> and <em>integrity of all the data</em>.</p>",
-							"tools": [],
+							"tools": ["EABS", "ELC", "Q-SHIELD"],
 							"coreBenefits": [
 								"Multi assets solution with <em>lowest footprint</em> on the line",
 								"<em>Flexible</em> and <em>scalable</em> platform",

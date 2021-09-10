@@ -15,7 +15,7 @@
 		left: var(--landing-aside-width)
 		height: var(--landing-main-height)
 		width: var(--landing-main-width)
-		background: rgba(255, 0, 255, 0.5)
+		// background: rgba(255, 0, 255, 0.5)
 		align-items: center
 		justify-content: center
 </style>
