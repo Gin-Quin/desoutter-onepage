@@ -43,7 +43,7 @@
 		{/if}
 	</LandingMain>
 
-	<LandingFooter />
+	<LandingFooter delay={1800} />
 </div>
 
 <style lang="sass">

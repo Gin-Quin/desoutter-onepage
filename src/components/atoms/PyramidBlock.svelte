@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { fly } from "svelte/transition"
 	import pyramidBlocks from "config/pyramidBlocks.json"
 
 	export let index: number
 	export let gap = 0
 	export let transparent = false
+	export let gray = false
 </script>
 
 <div
@@ -25,6 +25,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<path
+					class:gray-right={gray}
 					d="M422.636 51.7478L476.8 113.541L206.741 211.953L212.081 123.459L422.636 51.7478Z"
 					fill="white"
 				/>
@@ -33,6 +34,7 @@
 					fill="#F1F1F1"
 				/>
 				<path
+					class:gray-left={gray}
 					d="M212.081 123.458L52.6387 40.3045L237.256 0.634766L422.635 51.7477L212.081 123.458Z"
 					fill="#939393"
 				/>
@@ -46,10 +48,12 @@
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<path
+					class:gray-right={gray}
 					d="M311.14 36.3723L369.839 99.1407L159.327 170.639L166.193 82.908L311.14 36.3723Z"
 					fill="#EAEAEA"
 				/>
 				<path
+					class:gray-left={gray}
 					d="M159.328 170.639L166.194 82.908L54.8133 29.5063L0 87.4617L159.328 170.639Z"
 					fill="#BDBDBD"
 				/>
@@ -67,10 +71,12 @@
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<path
+					class:gray-left={gray}
 					d="M115.502 45.8103L52.9454 17.5837L0 76.7148L110.924 129.727L115.502 45.8103Z"
 					fill="#A7A7A7"
 				/>
 				<path
+					class:gray-right={gray}
 					d="M196.366 21.3982L255.643 83.8522L110.924 129.727L115.501 45.8104L196.366 21.3982Z"
 					fill="#CBCBCB"
 				/>
@@ -87,8 +93,16 @@
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
 			>
-				<path d="M0 72.6702L68.4311 0L62.3281 100.7L0 72.6702Z" fill="#B71726" />
-				<path d="M142.745 76.5633L68.4312 0L62.3281 100.7L142.745 76.5633Z" fill="#E0091D" />
+				<path
+					class:gray-left={gray}
+					d="M0 72.6702L68.4311 0L62.3281 100.7L0 72.6702Z"
+					fill="#B71726"
+				/>
+				<path
+					class:gray-right={gray}
+					d="M142.745 76.5633L68.4312 0L62.3281 100.7L142.745 76.5633Z"
+					fill="#E0091D"
+				/>
 			</svg>
 		{:else if index == 4}
 			<svg
@@ -98,8 +112,13 @@
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
 			>
-				<path d="M205.92 360.523L228.656 0L0 249.443L205.92 360.523Z" fill="#EAEAEA" />
 				<path
+					class:gray-right={gray}
+					d="M205.92 360.523L228.656 0L0 249.443L205.92 360.523Z"
+					fill="#EAEAEA"
+				/>
+				<path
+					class:gray-left={gray}
 					d="M228.657 0L476.8 262.435L205.921 360.523L222.818 100.277L228.657 0Z"
 					fill="#F1F1F1"
 				/>
@@ -113,6 +132,15 @@
 		position: absolute
 		transition: 0.5s
 
+	path
+		transition: 500ms
+
 	.shadow
 		filter: drop-shadow(0 16rem 8rem rgba(0, 0, 0, 0.2))
+
+	.gray-right
+		fill: white !important
+
+	.gray-left
+		fill: #F1F1F1 !important
 </style>

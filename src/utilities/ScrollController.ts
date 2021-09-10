@@ -53,44 +53,26 @@ export default class ScrollListener {
 	protected triggerScrollDown = (event: UIEvent, delta = 4): void => {
 		if (document.documentElement.scrollTop > 0) return
 		if (!this.active) return
-		// if (this.active && delta >= 4) {
-		// 	this.lastScrollDown = Date.now()
-		// 	return
-		// }
 		event.preventDefault()
-		// if (currentStage == fusionStage) return
 		if (delta < 4) return
 		if (this.lastScrollDown + this.throttle > Date.now()) {
 			return
 		}
 		this.lastScrollDown = Date.now()
 		this.onScrollDown?.(event)
-		// currentStage++
-		// if (currentStage >= fusionStage) pyramidGap = 0
-		// if (currentStage == fusionStage) {
-		// 	setTimeout(() => {
-		// 		if (currentStage == fusionStage) animationIsDone = true
-		// 	}, transitionDuration)
-		// }
 	}
 
 	protected triggerScrollUp = (event: UIEvent, delta = -4): void => {
-		console.log("triggerScrollUp")
 		if (document.documentElement.scrollTop > 0) {
 			this.lastScrollUp = Date.now()
 			return
 		}
 		event.preventDefault()
-		// if (currentStage == 0) return
 		if (delta > -4) return
 		if (this.lastScrollUp + this.throttle > Date.now()) {
 			return
 		}
 		this.lastScrollUp = Date.now()
 		this.onScrollUp?.(event)
-
-		// animationIsDone = false
-		// currentStage--
-		// if (currentStage < fusionStage) pyramidGap = basePyramidGap
 	}
 }

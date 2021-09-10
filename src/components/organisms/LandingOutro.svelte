@@ -3,9 +3,9 @@
 	import LandingHeader from "atoms/LandingHeader.svelte"
 	import LandingMain from "atoms/LandingMain.svelte"
 	import Pyramid from "molecules/Pyramid.svelte"
-	import { onDestroy, onMount } from "svelte"
+	import { onDestroy } from "svelte"
 	import { t } from "svelte-i18n"
-	import { fade, fly } from "svelte/transition"
+	import { fade } from "svelte/transition"
 
 	export let step = 0
 
@@ -16,7 +16,6 @@
 	let focusTimeout = setInterval(() => step == 0 && (focus = (focus + 1) % 4), 500)
 
 	onDestroy(() => {
-		console.log("Destroy outro")
 		clearInterval(focusTimeout)
 	})
 </script>
@@ -59,7 +58,7 @@
 			</div>
 
 			<aside>
-				<Pyramid gap={step ? 0 : 25} focus={step ? null : focus} scale={0.8} />
+				<Pyramid gap={step ? 0 : 25} focus={step ? null : focus} scale={0.8} gray={!!step} />
 			</aside>
 		</main>
 	</LandingMain>
@@ -118,4 +117,7 @@
 
 	aside
 		width: 40%
+		height: 100%
+		justify-content: center
+		align-items: center
 </style>

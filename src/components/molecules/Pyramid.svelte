@@ -5,12 +5,13 @@
 	export let gap = 0
 	export let focus: null | number = null
 	export let scale = 1
+	export let gray = false
 </script>
 
-<div class="pyramid" style="top: {gap * 2}px; transform: scale({scale});">
+<div class="pyramid" style="transform: scale({scale}) translateY({2 * gap}px);">
 	<div class="blocks">
 		{#each pyramidBlocks as _, index}
-			<PyramidBlock {index} {gap} transparent={focus != null && index != focus} />
+			<PyramidBlock {index} {gap} transparent={focus != null && index != focus} {gray} />
 		{/each}
 	</div>
 
@@ -24,13 +25,13 @@
 <style lang="sass">
 	.pyramid
 		flex-direction: column-reverse
-		position: relative
+		position: absolute
 		width: 476px
 		height: 362px
 		transition: filter 0.55s 0.3s
 		justify-content: center
 		align-items: center
-		transition: top 250ms
+		transition: 250ms
 
 		> .blocks
 			transition: opacity 0.45s

@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { fly } from "svelte/transition"
-	import { onDestroy, onMount } from "svelte"
+	import { onMount } from "svelte"
 	import { _, json, t } from "svelte-i18n"
 	import { tsParticles } from "tsparticles"
 	import particles from "src/config/particles.json"
@@ -10,49 +9,51 @@
 	import LandingOutro from "organisms/LandingOutro.svelte"
 	import ArrowDown from "icons/ArrowDown.svelte"
 	import LandingFooter from "atoms/LandingFooter.svelte"
-
-	// const pyramidBlocks = [
-	// 	{ left: 0, bottom: 0 },
-	// 	{ left: 53, bottom: 88 },
-	// 	{ left: 108, bottom: 176 },
-	// 	{ left: 161, bottom: 260 },
-	// ]
-	// const transitionDuration = 700
-	// const basePyramidGap = 30
-	// let pyramidGap = basePyramidGap
-	// const fusionStage = pyramidBlocks.length + 1
+	import { fly } from "svelte/transition"
 
 	const stages = $json("section.landing.stages") as Record<string, { steps: Array<unknown> }>
 	const stageKeys = Object.keys(stages)
+	const lastAnimationDuration = 500
 
 	let currentStage = 0
 	let step = 0
 	let mounted = false
 	let done = false // last stage done AND last animation finished
+	let scrollController: null | ScrollController = null
 
 	$: stage = stages[stageKeys[currentStage]]
-	$: lastStageDone = currentStage == stageKeys.length
-	$: console.log(`currentStage`, currentStage)
-	$: console.log(`step`, step)
+	$: updateScreenControllerStatus(done)
+
+	function isLastStageDone() {
+		return (
+			currentStage == stageKeys.length - 1 &&
+			step == stages[stageKeys[currentStage]].steps.length - 1
+		)
+	}
+
+	function updateScreenControllerStatus(done: boolean) {
+		if (scrollController) scrollController.active = !done
+	}
 
 	function onScrollDown() {
-		console.log("onScrollDown!")
-		if (lastStageDone) return
+		if (isLastStageDone()) return
+
 		step++
 		if (step == stage.steps.length) {
 			currentStage++
 			step = 0
-			// if (lastStageDone) {
-			// 	setTimeout(() => {
-			// 	if (lastStageDone) done = true
-			// }, transitionDuration)
-			// }
+		}
+
+		if (isLastStageDone()) {
+			setTimeout(() => {
+				if (isLastStageDone()) done = true
+			}, lastAnimationDuration)
 		}
 	}
 
 	function onScrollUp() {
-		console.log("onScrollUp!")
 		if (step == 0 && currentStage == 0) return
+		done = false
 		step--
 		if (step < 0) {
 			currentStage--
@@ -61,8 +62,7 @@
 	}
 
 	onMount(() => {
-		console.log("Mount!")
-		new ScrollController({ onScrollUp, onScrollDown })
+		scrollController = new ScrollController({ onScrollUp, onScrollDown })
 		// @ts-ignore
 		tsParticles.load("particles", particles)
 		mounted = true
@@ -81,6 +81,10 @@
 			{:else if currentStage == 2}
 				<LandingOutro {step} />
 			{/if}
+		{/if}
+
+		{#if done}
+			<LandingFooter done />
 		{/if}
 	</div>
 </section>

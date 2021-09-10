@@ -1,10 +1,14 @@
 <script lang="ts">
 	import { t } from "svelte-i18n"
 	import ArrowDown from "svelte-material-icons/ArrowDown.svelte"
+	import { fly, fade } from "svelte/transition"
+
+	export let done = false
+	export let delay = 0
 </script>
 
-<footer>
-	<div class="next">
+<footer in:fly={{ y: -30, duration: 750, delay }} out:fly={{ y: -30, duration: 450, delay }}>
+	<div class="next" class:done>
 		<ArrowDown />
 		{$t("section.landing.scroll")}
 	</div>
@@ -29,6 +33,6 @@
 		flex-direction: row
 		align-items: center
 
-		// &.done
-		// 	color: var(--primary)
+		&.done
+			color: var(--primary)
 </style>
