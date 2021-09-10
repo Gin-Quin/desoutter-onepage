@@ -58,18 +58,22 @@
 		{/each}
 
 		<aside>
-			<Pyramid />
+			<Pyramid gap={25} focus={step} />
 		</aside>
 	</main>
 
 	{#each content as stepContent, index}
 		{#if index == step}
 			<footer in:slide={{ delay: 150, duration: 300 }} out:slide={{ duration: 200 }}>
-				<div class="benefits-title">{$t("section.landing.stages.content.coreBenefits")}</div>
+				<div class="benefits-title">
+					<div class="transformer">
+						{$t("section.landing.stages.content.coreBenefits")}
+					</div>
+				</div>
 				<div class="benefits">
 					{#each stepContent.coreBenefits as benefit}
 						<div class="benefit">
-							<ArrowRight />
+							<ArrowRight size="20" />
 							<p>{@html benefit}</p>
 						</div>
 					{/each}
@@ -87,6 +91,11 @@
 	:global(#landing-content .infos .description p)
 		line-height: 7rem
 
+	:global(#landing-content .benefits em)
+		font-weight: bold
+		font-style: normal
+		color: var(--primary)
+
 	:root
 		--content-footer-height: 220px
 	
@@ -100,7 +109,7 @@
 		flex-wrap: wrap
 	
 	main
-		height: 100%
+		height: calc(100% - var(--content-footer-height))
 		width: 100%
 		display: flex
 		flex-direction: row
@@ -113,6 +122,27 @@
 		width: 100%
 		height: var(--content-footer-height)
 		background: white
+
+	.benefits-title
+		width: 160px
+		font-weight: bold
+		color: var(--gray-2)
+		font-size: 5rem
+
+		> .transformer
+			transform-origin: right top
+			transform: rotate(-90deg) translateY(-7rem) translateX(-4px)
+
+	.benefits
+		padding: 8rem 4rem
+		gap: 2rem
+
+	.benefit
+		flex-direction: row
+		align-items: center
+		gap: 2rem
+		font-size: 14px
+
 	
 	.content-step
 		gap: 4rem
@@ -121,6 +151,7 @@
 		height: 100%
 		flex-direction: row
 		padding-left: 7%
+		padding-top: 2%
 
 		> *
 			z-index: 1
@@ -132,9 +163,6 @@
 			opacity: 0.12
 			left: 4rem
 			font-weight: bold
-		
-		p
-			font-size: 4.75rem
 
 	.infos
 		padding-top: 10rem
@@ -160,15 +188,7 @@
 		width: 40%
 		height: 100%
 		align-items: center
-
-	@media (max-width: 900px)
-		.stage
-			align-items: center
-		
-		.index
-			font-size: 36rem !important
-			top: -26rem !important
-			left: unset !important
+		justify-content: center
 
 	@media (max-width: 510px)
 		aside

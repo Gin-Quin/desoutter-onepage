@@ -37,7 +37,7 @@
 						{
 							"title": "Platform integration",
 							"description": "<p>Platorm integration is becoming critical due to <em>products variants</em> and <em>line flexibility</em> but also because of the increasing advances in automation technology, and the associated need to <em>simplify processes</em> for easier management.</p><p>A platform integration <em>streamlines</em> your processes, reduce <em>costs</em>, improves <em>quality</em> and ensures <em>efficiency</em> overall.</p>",
-							"tools": [],
+							"tools": ["multiWheel2", "trackingBase", "rapidTool"],
 							"coreBenefits": [
 								"Enhanced <em>flexibility</em>, <em>quality</em> and <em>productivity</em>",
 								"Full <em>error proofing</em> solutions",
@@ -48,7 +48,7 @@
 						{
 							"title": "Process control",
 							"description": "<p>Critical to guarantee the overall <em>quality</em> of the end product through the assembly journey and <em>record</em> all process information providing a complete history of <em>traceability</em>, process control also provides production process <em>optimization</em> and <em>agility</em> to make changes and adjustments deployed <em>quickly</em> and without additional <em>cost</em>.</p><p>Thanks to an integrated <em>operator guidance</em>, complex processes are broken down to individual steps which operators follow in order to reduce <em>risks of quality defects</em> and their associated <em>costs</em> which supports your overall <em>quality</em> and <em>efficiency</em> goals.</p>",
-							"tools": [],
+							"tools": ["PivotWareLogo"],
 							"coreBenefits": [
 								"<em>Flexibility</em> over process requirements to optimize <em>productivity</em> and manage <em>line rebalancing</em>",
 								"Full <em>error proofing</em> protection of your product assembly with complete <em>traceability</em> of every element involved in the process",
@@ -60,7 +60,8 @@
 						{
 							"title": "Data driven solution",
 							"description": "<p><em>Strategic</em> and high impact decisions have to be based on <em>facts</em> and <em>data</em>. The sooner the data is available, the <em>quicker</em> will you be able to <em>react</em> and make decisions.</p>Desoutter’s data driven solution provides you with <em>real-time information</em> as events are occurring on the line.</p><p>Additionally, Desoutter’s applications and process <em>expertise</em> have been integrated in the <em>data analytics</em> to support you in <em>understanding</em> the data and the <em>root causes</em> of unwanted events.</p><p>Boost your <em>productivity</em>, boost your <em>uptime</em>, reduce your <em>quality costs</em> and improve your overall process <em>efficiency</em> with Desoutter’s data driven solution.</p>",
-							"tools": [
+							"tools": ["DeMeterLogo", "BoostLabLogo"],
+							"coreBenefits": [
 								"<em>Assets</em> insights updated in real-time to maximize your <em>productivity</em> and <em>uptime</em>",
 								"<em>Processes</em> insights updated in real-time to maximize your <em>productivity</em> and <em>quality</em>",
 								"<em>Live alerts</em> of production critical events to maximize your <em>productivity</em> and <em>uptime</em>",

@@ -1,15 +1,19 @@
 <script lang="ts">
 	import { fly } from "svelte/transition"
+	import pyramidBlocks from "config/pyramidBlocks.json"
+
 	export let index: number
 	export let gap = 0
-	import pyramidBlocks from "config/pyramidBlocks.json"
+	export let transparent = false
 </script>
 
 <div
 	class="pyramid-block"
-	style={`left: ${pyramidBlocks[index].left}px; bottom: ${
-		pyramidBlocks[index].bottom + index * gap
-	}px;`}
+	style="
+		left: {pyramidBlocks[index].left}px;
+		bottom: {pyramidBlocks[index].bottom + index * gap}px;
+		opacity: {transparent ? 0.3 : 1}
+	"
 >
 	<div class:shadow={index == 0} transition:fly={{ y: -80, duration: 200 }}>
 		{#if index == 0}
@@ -107,7 +111,7 @@
 <style lang="sass">
 	.pyramid-block
 		position: absolute
-		transition: bottom 0.6s
+		transition: 0.6s
 
 	.shadow
 		filter: drop-shadow(0 16rem 8rem rgba(0, 0, 0, 0.2))
