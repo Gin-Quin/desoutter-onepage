@@ -63,25 +63,21 @@
 		</aside>
 	</main>
 
-	{#each content as stepContent, index}
-		{#if index == step}
-			<footer in:slide={{ delay: 150, duration: 300 }} out:slide={{ duration: 200 }}>
-				<div class="benefits-title">
-					<div class="transformer">
-						{$t("section.landing.stages.content.coreBenefits")}
-					</div>
+	<footer in:slide={{ delay: 150, duration: 300 }} out:slide={{ duration: 200 }}>
+		<div class="benefits-title">
+			<div class="transformer">
+				{$t("section.landing.stages.content.coreBenefits")}
+			</div>
+		</div>
+		<div class="benefits">
+			{#each content[step].coreBenefits as benefit}
+				<div class="benefit">
+					<ArrowRight size="20" />
+					<p>{@html benefit}</p>
 				</div>
-				<div class="benefits">
-					{#each stepContent.coreBenefits as benefit}
-						<div class="benefit">
-							<ArrowRight size="20" />
-							<p>{@html benefit}</p>
-						</div>
-					{/each}
-				</div>
-			</footer>
-		{/if}
-	{/each}
+			{/each}
+		</div>
+	</footer>
 </div>
 
 <style lang="sass">
