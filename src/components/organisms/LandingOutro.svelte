@@ -58,7 +58,14 @@
 			</div>
 
 			<aside>
-				<Pyramid gap={step ? 0 : 25} focus={step ? null : focus} scale={0.8} gray={!!step} />
+				<Pyramid
+					gap={step ? 0 : 25}
+					focus={step ? null : focus}
+					scale={0.8}
+					gray={!!step}
+					neon={!!step}
+					arrow={step == 0}
+				/>
 			</aside>
 		</main>
 	</LandingMain>

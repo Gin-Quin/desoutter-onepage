@@ -1,25 +1,42 @@
 <script lang="ts">
 	import PyramidBlock from "atoms/PyramidBlock.svelte"
 	import pyramidBlocks from "config/pyramidBlocks.json"
+	import { fade } from "svelte/transition"
 
 	export let gap = 0
 	export let focus: null | number = null
 	export let scale = 1
 	export let gray = false
+	export let neon = false
+	export let arrow = false
 </script>
 
 <div class="pyramid" style="transform: scale({scale}) translateY({2 * gap}px);">
+	{#if arrow}
+		<img
+			in:fade={{ delay: 300, duration: 1000 }}
+			out:fade={{ duration: 400 }}
+			class="circular-arrow"
+			src="/images/pyramid/circular-arrow.png"
+			alt="circular-arrow"
+		/>
+	{/if}
+
 	<div class="blocks">
 		{#each pyramidBlocks as _, index}
 			<PyramidBlock {index} {gap} transparent={focus != null && index != focus} {gray} />
 		{/each}
 	</div>
 
-	<!-- {#if currentStage == fusionStage}
-		<div class="pyramid-block shadow" style={`left: 0; bottom: 0;`}>
-			<img in:fade={{ delay: 400 }} out:fade src={`/images/pyramid/6.svg`} alt="pyramid-final" />
-		</div>
-	{/if} -->
+	{#if neon}
+		<img
+			in:fade={{ delay: 350, duration: 900 }}
+			out:fade={{ duration: 400 }}
+			class="neon"
+			src="/images/pyramid/neon.svg"
+			alt="neon"
+		/>
+	{/if}
 </div>
 
 <style lang="sass">
@@ -37,9 +54,12 @@
 			transition: opacity 0.45s
 			transition-delay: 0.3s
 			position: relative
+	
+	.circular-arrow
+		position: absolute
+		transform: translate(-8px, -10px) scale(1.3)
 
-		// &.fusion
-		// 	> .blocks
-		// 		transition-delay: 0
-		// 		opacity: 0
+	.neon
+		position: absolute
+		transform: translate(0px, -14px)
 </style>
