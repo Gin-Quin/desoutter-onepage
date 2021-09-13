@@ -6,10 +6,12 @@
 	import type { TranslationObject } from "locales/TranslationObject"
 	import type { FactoryItem } from "types/FactoryItem"
 	import MiniPyramid from "atoms/MiniPyramid.svelte"
-	import { onMount } from "svelte"
+	import { onMount, tick } from "svelte"
 	import FactoryController from "utilities/FactoryController"
 	import Header from "./Header.svelte"
 	import ToolCard from "atoms/ToolCard.svelte"
+	import tippy from "tippy.js"
+	import type { Instance as TippyInstance } from "tippy.js"
 
 	type Group = {
 		title?: string
@@ -17,6 +19,8 @@
 	}
 
 	let imageContainer!: HTMLElement
+	let activeItem: Element | undefined = undefined
+	let tippyInstance: TippyInstance | null = null
 	let factoryController!: FactoryController
 	let currentItem = -1
 	let currentChapter = 0
@@ -35,6 +39,8 @@
 			zoom = update.zoom
 		})
 	})
+
+	const sleep = (duration: number) => new Promise((resolve) => setTimeout(resolve, duration))
 
 	function getChapterGroups(chapter: number): Array<Group> {
 		const groups = chapters[chapter].groups as Array<Group>
@@ -67,16 +73,48 @@
 		return chapter < currentChapter || (chapter == currentChapter && item <= currentItem)
 	}
 
-	function selectItem(item: FactoryItem) {
+	async function selectItem(item: FactoryItem) {
 		currentItem = item.index || 0
 		factoryController.centerItem(item, 180)
+		tippyInstance?.hide()
+		await tick()
+		await sleep(250)
+		if (!activeItem) return
+
+		tippyInstance = tippy(activeItem, {
+			content: getTippyContent(item),
+			duration: 0,
+			arrow: false,
+			allowHTML: true,
+			theme: "desoutter",
+			hideOnClick: false,
+		})
+		tippyInstance.show()
+	}
+
+	function getTippyContent(item: FactoryItem): string {
+		return `<div class="tippy-desoutter-title">${item.label}</div><div class="tippy-desoutter-description">${item.description}</div>`
+	}
+
+	function previousChapter() {
+		currentChapter--
+		tippyInstance?.hide()
+		tippyInstance = null
+		currentItem = getChapterItems(currentChapter).length
+	}
+
+	function nextChapter() {
+		currentChapter++
+		tippyInstance?.hide()
+		tippyInstance = null
+		currentItem = -1
 	}
 </script>
 
 <section id="demonstration">
 	<aside>
 		{#if currentChapter > 0}
-			<button class="previous-chapter" on:click={() => currentChapter--}>
+			<button class="previous-chapter" on:click={previousChapter}>
 				<ArrowLeft size="24" />
 				{chapters[currentChapter - 1].title}
 				<div />
@@ -125,7 +163,7 @@
 		</div>
 
 		{#if currentChapter < chapters.length - 1}
-			<button class="next-chapter" on:click={() => currentChapter++}>
+			<button class="next-chapter" on:click={nextChapter}>
 				<div />
 				{chapters[currentChapter + 1].title}
 				<ArrowRight size="24" />
@@ -150,9 +188,22 @@
 					height={factoryController.height}
 				/>
 
-				{#each chapters as _, chapter}
-					{#each getChapterItems(chapter) as item, itemIndex}
-						{#if isItemVisible(currentChapter, currentItem, chapter, itemIndex)}
+				{#each chapters as _, chapter (chapter)}
+					{#each getChapterItems(chapter) as item, itemIndex (1000 * chapter + itemIndex)}
+						{#if isItemActive(currentChapter, currentItem, chapter, itemIndex)}
+							<div
+								bind:this={activeItem}
+								class="factory-item active"
+								style="
+									left: {item.position.left}%;
+									top: {item.position.top}%;
+								"
+							>
+								{#if item.tool}
+									<ToolCard name={item.tool} style="small" transparent active />
+								{/if}
+							</div>
+						{:else if isItemVisible(currentChapter, currentItem, chapter, itemIndex)}
 							<div
 								class="factory-item"
 								style="
@@ -160,14 +211,8 @@
 									top: {item.position.top}%;
 								"
 							>
-								<!-- {#if isItemActive(currentChapter, currentItem, chapter, itemIndex)}{/if} -->
 								{#if item.tool}
-									<ToolCard
-										name={item.tool}
-										style="small"
-										transparent
-										active={isItemActive(currentChapter, currentItem, chapter, itemIndex)}
-									/>
+									<ToolCard name={item.tool} style="small" transparent />
 								{/if}
 							</div>
 						{/if}

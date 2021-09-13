@@ -13,3 +13,24 @@
 	--radius: 5px
 	--header-height: 17rem
 	
+.tippy-box[data-theme~="desoutter"]
+	background-color: white
+	color: vard(--dark)
+	padding: 7.5rem
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15)
+
+	> .tippy-content
+		display: flex
+		flex-direction: column
+		gap: 2.5rem
+
+		> .tippy-desoutter-title
+			font-weight: bold
+
+		> .tippy-desoutter-description
+			display: block
+			
+			em
+				color: var(--primary)
+				font-weight: bold
+				font-style: normal

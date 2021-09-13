@@ -16,13 +16,12 @@ export default class FactoryController {
 		public imageContainer: HTMLElement,
 		public update: ({ left, top, zoom }: { left: number; top: number; zoom: number }) => void
 	) {
-		imageContainer.addEventListener("mousedown", this.onStartGrabbing)
-		imageContainer.addEventListener("wheel", this.onWheel)
-		addEventListener("mouseup", this.onStopGrabbing)
-		addEventListener("mousemove", this.onGrabbing)
+		// imageContainer.addEventListener("mousedown", this.onStartGrabbing)
+		// imageContainer.addEventListener("wheel", this.onWheel)
+		// addEventListener("mouseup", this.onStopGrabbing)
+		// addEventListener("mousemove", this.onGrabbing)
 		addEventListener("resize", this.computeZoom, { passive: true })
 		this.computeZoom()
-		// this.centerImage()
 	}
 
 	clamp = (min: number, value: number, max: number): number => Math.min(Math.max(value, min), max)
