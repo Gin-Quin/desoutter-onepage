@@ -5,6 +5,8 @@
 	export let position: undefined | { left: number; top: number } = undefined
 	export let delay = 0
 	export let duration = 300
+	export let active = false
+	export let transparent = false
 </script>
 
 <div
@@ -17,7 +19,9 @@
 		top: {position ? position.top + '%' : 'unset'};
 		left: {position ? position.left + '%' : 'unset'};
 		transition-duration: {Math.random() * 350 + 150}ms;
-		transition-delay: {Math.random() * 100}
+		transition-delay: {Math.random() * 100};
+		background: {active ? 'var(--primary)' : transparent ? 'none' : 'white'};
+		box-shadow: {transparent ? 'none' : 'box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15)'}
 	"
 	in:fly={{
 		x: Math.random() * 100 - 50,
@@ -36,13 +40,11 @@
 
 <style lang="sass">
 	.tool
-		--small-size: var(--tool-size)
+		--small-size: var(--tool-size, 100px)
 		--medium-size: calc(var(--tool-size) * 1.5)
 		--logo-width: calc(var(--tool-size) * 1.7)
 		--logo-height: var(--tool-size)
-
-		background: white
-		box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15)
+		
 		justify-content: center
 		align-items: center
 

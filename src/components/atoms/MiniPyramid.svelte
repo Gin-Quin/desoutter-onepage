@@ -5,8 +5,6 @@
 	const rightColor = (floor: number, step: number) => (floor == step ? "#E0091D" : "white")
 	const leftColor = (floor: number, step: number) => (floor == step ? "#B71726" : "#F1F1F1")
 	const lidColor = (floor: number, step: number) => (floor == step ? "#8A0E19" : "#939393")
-
-	$: console.log(`step`, step)
 </script>
 
 <svg width={size} height={size} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">

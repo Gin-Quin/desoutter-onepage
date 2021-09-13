@@ -4,29 +4,37 @@
 	import Information from "svelte-material-icons/Information.svelte"
 	import { json, t } from "svelte-i18n"
 	import type { TranslationObject } from "locales/TranslationObject"
+	import type { FactoryItem } from "types/FactoryItem"
 	import MiniPyramid from "atoms/MiniPyramid.svelte"
+	import { onMount } from "svelte"
+	import FactoryController from "utilities/FactoryController"
+	import Header from "./Header.svelte"
+	import ToolCard from "atoms/ToolCard.svelte"
 
 	type Group = {
 		title?: string
-		items: Array<Item>
-	}
-
-	type Item = {
-		label: string
-		description: string
-		tool?: string
-		image?: string
-		index?: number
+		items: Array<FactoryItem>
 	}
 
 	let imageContainer!: HTMLElement
-	let currentItem = 0
+	let factoryController!: FactoryController
+	let currentItem = -1
 	let currentChapter = 0
+	let left = 0
+	let top = 0
+	let zoom = 1
 
 	$: chapters = $json(
 		"section.demonstration.chapters"
 	) as TranslationObject["section"]["demonstration"]["chapters"]
-	$: console.log("chapters[currentChapter]", chapters[currentChapter])
+
+	onMount(() => {
+		factoryController = new FactoryController(imageContainer, (update) => {
+			left = update.left
+			top = update.top
+			zoom = update.zoom
+		})
+	})
 
 	function getChapterGroups(chapter: number): Array<Group> {
 		const groups = chapters[chapter].groups as Array<Group>
@@ -35,18 +43,33 @@
 		return groups
 	}
 
-	function getChapterItems(chapter: number): Array<Item> {
+	function getChapterItems(chapter: number): Array<FactoryItem> {
 		return getChapterGroups(chapter)
 			.map((group) => group.items)
 			.flat()
 	}
 
-	function isItemActive(chapter: number, item: number): boolean {
+	function isItemActive(
+		currentChapter: number,
+		currentItem: number,
+		chapter: number,
+		item: number
+	): boolean {
 		return chapter == currentChapter && item == currentItem
 	}
 
-	function isItemVisible(chapter: number, item: number): boolean {
+	function isItemVisible(
+		currentChapter: number,
+		currentItem: number,
+		chapter: number,
+		item: number
+	): boolean {
 		return chapter < currentChapter || (chapter == currentChapter && item <= currentItem)
+	}
+
+	function selectItem(item: FactoryItem) {
+		currentItem = item.index || 0
+		factoryController.centerItem(item, 180)
 	}
 </script>
 
@@ -82,7 +105,7 @@
 							<button
 								class="group-item"
 								class:active={item.index == currentItem}
-								on:click={() => (currentItem = item.index || 0)}
+								on:click={() => selectItem(item)}
 							>
 								{item.label}
 							</button>
@@ -111,36 +134,54 @@
 	</aside>
 
 	<main bind:this={imageContainer}>
-		<div class="factory">
-			<img src="/images/factory-cropped.jpg" alt="factory" />
+		{#if factoryController}
+			<div
+				class="factory"
+				style="
+					left: {left}px;
+					top: {top}px;
+					transform: scale({zoom});
+				"
+			>
+				<img
+					src="/images/factory-large-cropped.jpg"
+					alt="factory"
+					width={factoryController.width}
+					height={factoryController.height}
+				/>
 
-			{#each chapters as _, chapter}
-				{#each getChapterItems(chapter) as item, itemIndex}
-					{#if isItemVisible(chapter, itemIndex)}
-						<div class="factory-item">
-							{#if isItemActive(chapter, itemIndex)}
-								ACTIVE
-							{/if}
-							<img
-								class="item"
-								{...item}
-								alt=""
+				{#each chapters as _, chapter}
+					{#each getChapterItems(chapter) as item, itemIndex}
+						{#if isItemVisible(currentChapter, currentItem, chapter, itemIndex)}
+							<div
+								class="factory-item"
 								style="
-								left: {0}px;
-								top: {0}px;
-							"
-							/>
-						</div>
-					{/if}
+									left: {item.position.left}%;
+									top: {item.position.top}%;
+								"
+							>
+								<!-- {#if isItemActive(currentChapter, currentItem, chapter, itemIndex)}{/if} -->
+								{#if item.tool}
+									<ToolCard
+										name={item.tool}
+										style="small"
+										transparent
+										active={isItemActive(currentChapter, currentItem, chapter, itemIndex)}
+									/>
+								{/if}
+							</div>
+						{/if}
+					{/each}
 				{/each}
-			{/each}
-		</div>
+			</div>
+		{/if}
 	</main>
 </section>
 
 <style lang="sass">
 	#demonstration
 		--chapter-navigation-height: 12rem
+		--tool-size: 180px
 		height: 100vh
 		width: 100%
 		flex-direction: row
@@ -222,12 +263,14 @@
 	// -- Factory image and floating items --
 	main
 		flex: 1 0 0
+		height: 100%
+		alig-self: stretch
 		position: relative
+		overflow: hidden
 
 	.factory
 		position: absolute
-		width: 100%
-		height: 100%
+		transition: 200ms
 
 	.factory-item
 		pointer-events: none

@@ -1,91 +1,130 @@
-/**
- * Old xode loosely put here.
- * This functions aim to control the position of the factory image, which is unnecessary now for desktops.
- */
+import type { FactoryItem } from "types/FactoryItem"
+
 export default class FactoryController {
 	grabbing = false
 	grabX = 0
 	grabY = 0
 	zoom = 1
-	width = 2800
-	height = 1800
-	left = (this.width * (this.zoom - 1)) / 2
-	top = (this.height * (this.zoom - 1)) / 2
+	width = 2277
+	height = 1962
+	imageWidth = 0
+	imageHeight = 0
+	left = 0
+	top = 0
 
-	constructor() {
+	constructor(
+		public imageContainer: HTMLElement,
+		public update: ({ left, top, zoom }: { left: number; top: number; zoom: number }) => void
+	) {
+		imageContainer.addEventListener("mousedown", this.onStartGrabbing)
+		imageContainer.addEventListener("wheel", this.onWheel)
 		addEventListener("mouseup", this.onStopGrabbing)
 		addEventListener("mousemove", this.onGrabbing)
-		this.centerItem(this.items[0])
-		// @ts-ignore
-		window.setPosition = setPosition
+		addEventListener("resize", this.computeZoom, { passive: true })
+		this.computeZoom()
+		// this.centerImage()
 	}
 
-	clamp = (min: number, value: number, max: number) => Math.min(Math.max(value, min), max)
+	clamp = (min: number, value: number, max: number): number => Math.min(Math.max(value, min), max)
 
-	onStartGrabbing(event: MouseEvent) {
+	private _update(): void {
+		this.update({ top: this.top, left: this.left, zoom: this.zoom })
+	}
+
+	computeZoom = (): void => {
+		// this.zoom = Math.min(this.getMinZoom(), 0.3)
+		this.zoom = this.getMinZoom()
+		this.updateLeft()
+		this.updateTop()
+		this._update()
+	}
+
+	centerImage(): void {
+		const { clientWidth, clientHeight } = this.imageContainer
+		this.left = (clientWidth - this.imageWidth) / 2
+		this.top = (clientHeight - this.imageHeight) / 2
+	}
+
+	onStartGrabbing = (event: MouseEvent): void => {
 		this.grabbing = true
 		this.grabX = event.screenX
 		this.grabY = event.screenY
 		event.preventDefault()
 	}
 
-	onStopGrabbing(event: MouseEvent) {
+	onStopGrabbing = (event: MouseEvent): void => {
 		if (this.grabbing) {
 			this.grabbing = false
 			event.preventDefault()
 		}
 	}
 
-	updateLeft(newLeftValue = left) {
-		const { clientWidth } = imageContainer
-		left = clamp(clientWidth - (width * (zoom + 1)) / 2, newLeftValue, (width * (zoom - 1)) / 2)
-	}
-
-	updateTop(newTopValue = top) {
-		const { clientHeight } = imageContainer
-		top = clamp(clientHeight - (height * (zoom + 1)) / 2, newTopValue, (height * (zoom - 1)) / 2)
-	}
-
-	getMinZoom() {
-		const { clientWidth, clientHeight } = imageContainer
-		return Math.max(clientWidth / width, clientHeight / height)
-	}
-
-	onGrabbing(event: MouseEvent) {
+	onGrabbing = (event: MouseEvent): void => {
 		if (!this.grabbing) return
-		// console.log(left + event.screenX - this.grabX, clamp(-width, left + event.screenX - this.grabX, 0))
-		updateLeft(left + event.screenX - this.grabX)
-		updateTop(top + event.screenY - this.grabY)
+		this.updateLeft(this.left + event.screenX - this.grabX)
+		this.updateTop(this.top + event.screenY - this.grabY)
 		this.grabX = event.screenX
 		this.grabY = event.screenY
+		this._update()
 		event.preventDefault()
 	}
 
-	onWheel(event: WheelEvent) {
+	onWheel = (event: WheelEvent): void => {
 		if (event.ctrlKey || event.metaKey) {
 			event.preventDefault()
-			zoom = clamp(getMinZoom(), zoom - event.deltaY / 100, 1)
-			updateLeft()
-			updateTop()
+			this.zoom = this.clamp(this.getMinZoom(), this.zoom - event.deltaY / 100, 1)
+			this.updateLeft()
+			this.updateTop()
+			this._update()
 		}
 	}
 
-	// move image to center (x, y)
-	setPosition(x: number, y: number) {
-		const { clientWidth, clientHeight } = imageContainer
-		const x1 = (width * (1 - zoom)) / 2 // padding due to zoom
-		const x2 = x * zoom // distance to the value
-		const x3 = clientWidth / 2 // we subtract half the view's width to center
-
-		const y1 = (height * (1 - zoom)) / 2
-		const y2 = y * zoom
-		const y3 = clientHeight / 2
-
-		updateLeft(x3 - x2 - x1)
-		updateTop(y3 - y2 - y1)
+	updateLeft(newLeftValue = this.left): void {
+		const { clientWidth } = this.imageContainer
+		this.left = this.clamp(
+			clientWidth - (this.width * (this.zoom + 1)) / 2,
+			newLeftValue,
+			(this.width * (this.zoom - 1)) / 2
+		)
 	}
 
-	centerItem(item: Item) {
-		setPosition(item.x + item.width / 2, item.y + item.height / 2)
+	updateTop(newTopValue = this.top): void {
+		const { clientHeight } = this.imageContainer
+		this.top = this.clamp(
+			clientHeight - (this.height * (this.zoom + 1)) / 2,
+			newTopValue,
+			(this.height * (this.zoom - 1)) / 2
+		)
+	}
+
+	getMinZoom(): number {
+		const { clientWidth, clientHeight } = this.imageContainer
+		return Math.max(clientWidth / this.width, clientHeight / this.height)
+	}
+
+	// move image to center (x, y)
+	setPosition(x: number, y: number): void {
+		const { clientWidth, clientHeight } = this.imageContainer
+		const x1 = (this.width * (1 - this.zoom)) / 2 // padding due to zoom
+		const x2 = x * this.zoom // distance to the value
+		const x3 = clientWidth / 2 // we subtract half the view's width to center
+
+		const y1 = (this.height * (1 - this.zoom)) / 2
+		const y2 = y * this.zoom
+		const y3 = clientHeight / 2
+
+		console.log("Ideal new left value", x3 - x2 - x1)
+		this.updateLeft(x3 - x2 - x1)
+		this.updateTop(y3 - y2 - y1)
+	}
+
+	centerItem(item: FactoryItem, width: number, height = width): void {
+		console.log("before center item", this.left, this.top)
+		this.setPosition(
+			(item.position.left * this.width) / 100 + width / 2,
+			(item.position.top * this.height) / 100 + height / 2
+		)
+		console.log("after center item", this.left, this.top)
+		this._update()
 	}
 }
