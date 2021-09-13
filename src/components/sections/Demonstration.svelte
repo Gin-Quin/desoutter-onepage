@@ -1,186 +1,235 @@
 <script lang="ts">
-	import _ from "src/i18n"
-	import { onMount } from "svelte"
-	import type Item from "types/Item"
+	import ArrowLeft from "svelte-material-icons/ArrowLeft.svelte"
+	import ArrowRight from "svelte-material-icons/ArrowRight.svelte"
+	import Information from "svelte-material-icons/Information.svelte"
+	import { json, t } from "svelte-i18n"
+	import type { TranslationObject } from "locales/TranslationObject"
+	import MiniPyramid from "atoms/MiniPyramid.svelte"
 
-	const objects: string[] = ["PLC", "MES", "Virtual cable", "Visiopositionning", "Sight remote HMI"]
-	const objectName = (object: string) => $_(`section.demonstration.objects.${object}`)
-	const clamp = (min: number, value: number, max: number) => Math.min(Math.max(value, min), max)
+	type Group = {
+		title?: string
+		items: Array<Item>
+	}
 
-	const items: Item[] = [{ src: "images/crosshair.svg", x: 1600, y: 1200, width: 500, height: 600 }]
+	type Item = {
+		label: string
+		description: string
+		tool?: string
+		image?: string
+		index?: number
+	}
 
 	let imageContainer!: HTMLElement
-	let currentObject = 0
-	let grabbing = false
-	let grabX = 0,
-		grabY = 0
-	let zoom = 1
-	let width = 2800
-	let height = 1800
-	let left = (width * (zoom - 1)) / 2,
-		top = (height * (zoom - 1)) / 2
+	let currentItem = 0
+	let currentChapter = 0
 
-	onMount(() => {
-		addEventListener("mouseup", onStopGrabbing)
-		addEventListener("mousemove", onGrabbing)
-		centerItem(items[0])
-		// @ts-ignore
-		window.setPosition = setPosition
-	})
+	$: chapters = $json(
+		"section.demonstration.chapters"
+	) as TranslationObject["section"]["demonstration"]["chapters"]
+	$: console.log("chapters[currentChapter]", chapters[currentChapter])
 
-	function onStartGrabbing(event: MouseEvent) {
-		grabbing = true
-		grabX = event.screenX
-		grabY = event.screenY
-		event.preventDefault()
+	function getChapterGroups(chapter: number): Array<Group> {
+		const groups = chapters[chapter].groups as Array<Group>
+		let itemIndex = 0
+		groups.forEach((group) => group.items.forEach((item) => (item.index = itemIndex++)))
+		return groups
 	}
 
-	function onStopGrabbing(event: MouseEvent) {
-		if (grabbing) {
-			grabbing = false
-			event.preventDefault()
-		}
+	function getChapterItems(chapter: number): Array<Item> {
+		return getChapterGroups(chapter)
+			.map((group) => group.items)
+			.flat()
 	}
 
-	function updateLeft(newLeftValue = left) {
-		const { clientWidth } = imageContainer
-		left = clamp(clientWidth - (width * (zoom + 1)) / 2, newLeftValue, (width * (zoom - 1)) / 2)
+	function isItemActive(chapter: number, item: number): boolean {
+		return chapter == currentChapter && item == currentItem
 	}
 
-	function updateTop(newTopValue = top) {
-		const { clientHeight } = imageContainer
-		top = clamp(clientHeight - (height * (zoom + 1)) / 2, newTopValue, (height * (zoom - 1)) / 2)
-	}
-
-	function getMinZoom() {
-		const { clientWidth, clientHeight } = imageContainer
-		return Math.max(clientWidth / width, clientHeight / height)
-	}
-
-	function onGrabbing(event: MouseEvent) {
-		if (!grabbing) return
-		// console.log(left + event.screenX - grabX, clamp(-width, left + event.screenX - grabX, 0))
-		updateLeft(left + event.screenX - grabX)
-		updateTop(top + event.screenY - grabY)
-		grabX = event.screenX
-		grabY = event.screenY
-		event.preventDefault()
-	}
-
-	function onWheel(event: WheelEvent) {
-		if (event.ctrlKey || event.metaKey) {
-			event.preventDefault()
-			zoom = clamp(getMinZoom(), zoom - event.deltaY / 100, 1)
-			updateLeft()
-			updateTop()
-		}
-	}
-
-	// move image to center (x, y)
-	function setPosition(x: number, y: number) {
-		const { clientWidth, clientHeight } = imageContainer
-		const x1 = (width * (1 - zoom)) / 2 // padding due to zoom
-		const x2 = x * zoom // distance to the value
-		const x3 = clientWidth / 2 // we subtract half the view's width to center
-
-		const y1 = (height * (1 - zoom)) / 2
-		const y2 = y * zoom
-		const y3 = clientHeight / 2
-
-		updateLeft(x3 - x2 - x1)
-		updateTop(y3 - y2 - y1)
-	}
-
-	function centerItem(item: Item) {
-		setPosition(item.x + item.width / 2, item.y + item.height / 2)
+	function isItemVisible(chapter: number, item: number): boolean {
+		return chapter < currentChapter || (chapter == currentChapter && item <= currentItem)
 	}
 </script>
 
-<section id="demonstration" class="row">
-	<main class:grabbing bind:this={imageContainer}>
-		<div class="warehouse" style={`left: ${left}px; top: ${top}px; transform: scale(${zoom}`}>
-			<img
-				src="/images/warehouse.jpg"
-				alt="warehouse"
-				{width}
-				{height}
-				on:mousedown={onStartGrabbing}
-				on:wheel={onWheel}
-			/>
-			{#each items as item}
-				<img class="item" {...item} alt="" style={`left: ${item.x}px; top: ${item.y}px`} />
+<section id="demonstration">
+	<aside>
+		{#if currentChapter > 0}
+			<button class="previous-chapter" on:click={() => currentChapter--}>
+				<ArrowLeft size="24" />
+				{chapters[currentChapter - 1].title}
+				<div />
+			</button>
+		{/if}
+
+		<header>
+			<MiniPyramid step={currentChapter} />
+			<div class="title">
+				{chapters[currentChapter].title}
+			</div>
+		</header>
+
+		<div class="description">
+			{@html chapters[currentChapter].description}
+		</div>
+
+		<div class="groups">
+			{#each getChapterGroups(currentChapter) as group}
+				<div class="group">
+					{#if group.title}
+						<div class="group-title">{group.title}</div>
+					{/if}
+					<div class="group-items">
+						{#each group.items as item}
+							<button
+								class="group-item"
+								class:active={item.index == currentItem}
+								on:click={() => (currentItem = item.index || 0)}
+							>
+								{item.label}
+							</button>
+						{/each}
+					</div>
+				</div>
+			{/each}
+		</div>
+
+		<div style="flex: 1;" />
+
+		<div class="infotip">
+			<Information size="36" />
+			<div class="description">
+				{$t("section.demonstration.infotip")}
+			</div>
+		</div>
+
+		{#if currentChapter < chapters.length - 1}
+			<button class="next-chapter" on:click={() => currentChapter++}>
+				<div />
+				{chapters[currentChapter + 1].title}
+				<ArrowRight size="24" />
+			</button>
+		{/if}
+	</aside>
+
+	<main bind:this={imageContainer}>
+		<div class="factory">
+			<img src="/images/factory-cropped.jpg" alt="factory" />
+
+			{#each chapters as _, chapter}
+				{#each getChapterItems(chapter) as item, itemIndex}
+					{#if isItemVisible(chapter, itemIndex)}
+						<div class="factory-item">
+							{#if isItemActive(chapter, itemIndex)}
+								ACTIVE
+							{/if}
+							<img
+								class="item"
+								{...item}
+								alt=""
+								style="
+								left: {0}px;
+								top: {0}px;
+							"
+							/>
+						</div>
+					{/if}
+				{/each}
 			{/each}
 		</div>
 	</main>
-	<aside>
-		<img class="stage" src="" alt="stage" />
-		<div class="title">{$_("section.demonstration.title")}</div>
-		<div class="subtitle">{objectName(objects[currentObject])}</div>
-		<div class="description">{$_("section.demonstration.description")}</div>
-		<div class="objects row wrap">
-			{#each objects as object}
-				<button
-					class="tag object"
-					class:active={objects.indexOf(object) == currentObject}
-					on:click={() => (currentObject = objects.indexOf(object))}
-				>
-					{objectName(object)}
-				</button>
-			{/each}
-		</div>
-	</aside>
 </section>
 
 <style lang="sass">
-	section
+	#demonstration
+		--chapter-navigation-height: 12rem
 		height: 100vh
+		width: 100%
+		flex-direction: row
+
+	// -- Left panel --
+	aside
+		width: min(35%, 440px)
+		gap: 6rem
+		padding: calc(var(--chapter-navigation-height) + 9rem) 6rem
 		background: var(--dark)
-		justify-content: space-evenly
-		place-items: center
+		position: relative
 		color: white
 
+		> header
+			gap: 3rem
+
+			> .title
+				font-size: 6rem
+				font-weight: bold
+
+		> .description
+			font-size: 3.5rem
+
+	.previous-chapter, .next-chapter
+		position: absolute
+		left: 0
+		width: 100%
+		height: var(--chapter-navigation-height)
+		background: var(--gray-6)
+		color: white
+		flex-direction: row
+		padding: 0 6rem
+		justify-content: space-between
+		align-items: center
+		font-size: 4.5rem
+		font-weight: bold
+		cursor: pointer
+		border-radius: 0
+
+		&.previous-chapter
+			top: 0
+		&.next-chapter
+			bottom: 0
+			&:active
+				bottom: -1px
+				top: unset
+
+	.groups
+		gap: 6rem
+
+		.group-title
+			font-weight: bold
+
+		.group
+			gap: 2.5rem
+
+		.group-items
+			flex-direction: row
+			flex-wrap: wrap
+			gap: 2.5rem
+		
+		.group-item
+			border: 1px solid
+			border-radius: 12rem
+			height: 10rem
+			padding: 0 5rem
+			&.active
+				background: var(--white)
+				color: var(--dark)
+
+	.infotip
+		flex-direction: row
+		gap: 3rem
+		font-style: italic
+		font-size: 3.5rem
+		align-items: flex-start
+
+
+	// -- Factory image and floating items --
 	main
-		// border-radius: 100%
-		overflow: hidden
-		width: 560px
-		height: 560px
-		cursor: grab
+		flex: 1 0 0
 		position: relative
 
-		&.grabbing
-			cursor: grabbing
-
-	.warehouse
+	.factory
 		position: absolute
+		width: 100%
+		height: 100%
 
-	.item
+	.factory-item
 		pointer-events: none
 		position: absolute
-
-	aside
-		width: 35%
-		gap: 6rem
-	
-	.stage
-		margin-bottom: -4rem
-
-	.title
-		font-weight: bold
-		font-size: 9rem
-		margin-bottom: -4rem
-		// line-height: 1.4rem
-	
-	.subtitle
-		font-size: 8rem
-		margin-bottom: -2rem
-	
-	.objects
-		gap: 2.5rem
-
-	.object
-		border: 1px solid
-		border-radius: 12rem
-		&.active
-			background: var(--white)
-			color: var(--dark)
 </style>
