@@ -37,7 +37,7 @@
 						{
 							"title": "Platform integration",
 							"description": "<p>Platorm integration is becoming critical due to <em>products variants</em> and <em>line flexibility</em> but also because of the increasing advances in automation technology, and the associated need to <em>simplify processes</em> for easier management.</p><p>A platform integration <em>streamlines</em> your processes, reduce <em>costs</em>, improves <em>quality</em> and ensures <em>efficiency</em> overall.</p>",
-							"tools": ["multiWheel2", "trackingBase", "rapid"],
+							"tools": ["multiWheel2", "trackingBase", "bowl+rapidTool"],
 							"coreBenefits": [
 								"Enhanced <em>flexibility</em>, <em>quality</em> and <em>productivity</em>",
 								"Full <em>error proofing</em> solutions",
