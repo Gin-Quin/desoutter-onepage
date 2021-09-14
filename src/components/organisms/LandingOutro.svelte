@@ -4,7 +4,7 @@
 	import LandingMain from "atoms/LandingMain.svelte"
 	import Pyramid from "molecules/Pyramid.svelte"
 	import { onDestroy } from "svelte"
-	import { t } from "svelte-i18n"
+	import { json, t } from "svelte-i18n"
 	import { fade } from "svelte/transition"
 
 	export let step = 0
@@ -14,6 +14,11 @@
 
 	let focus = 0
 	let focusTimeout = setInterval(() => step == 0 && (focus = (focus + 1) % 4), 500)
+
+	$: content = $json(`section.landing.stages.outro.steps`) as Array<{
+		title: string
+		description: string
+	}>
 
 	onDestroy(() => {
 		clearInterval(focusTimeout)
@@ -49,11 +54,11 @@
 			<div class="content">
 				<FoldedCard>
 					<div class="description-title">
-						{$t("section.landing.stages.outro.descriptionTitle")}
+						{content[step].title}
 					</div>
 				</FoldedCard>
 				<div class="description">
-					{@html $t("section.landing.stages.outro.description")}
+					{@html content[step].description}
 				</div>
 			</div>
 

@@ -71,11 +71,18 @@
 					]
 				},
 				"outro": {
-					"steps": [1, 2],
 					"title": "Desoutter is a global company with",
 					"subtitle": "strong local project management and service expertise",
-					"descriptionTitle": "Desoutter Service",
-					"description": "<p>Stay <em>connected</em> with your Desoutter <em>expert</em> team to achieve the <em>full potential</em> of your equipment.</p><p>By working with Desoutter Service you will <em>secure</em> and expand the <em>value</em> of Desoutter Ecosystem in your environment.</p><p>It is the key step to implement the Desoutter Data Driven Solutions recommended actions to <em>close the loop</em> for <em>continuous efficiency</em> gains from data analytics.</p>"
+					"steps": [
+						{
+							"title": "Desoutter Service",
+							"description": "<p>Stay <em>connected</em> with your Desoutter <em>expert</em> team to achieve the <em>full potential</em> of your equipment.</p><p>By working with Desoutter Service you will <em>secure</em> and expand the <em>value</em> of Desoutter Ecosystem in your environment.</p><p>It is the key step to implement the Desoutter Data Driven Solutions recommended actions to <em>close the loop</em> for <em>continuous efficiency</em> gains from data analytics.</p>"
+						},
+						{
+							"title": "Project management",
+							"description": "<p>One of your keys to <em>success</em> is the support Desoutter’s project managers bring thanks to their <em>expertise</em> on <em>assembly solutions</em> and to excellence in <em>project management</em>.</p><p>Desoutter <em>customizes</em> tools and solutions according to your exact application and <em>integrates</em> them <em>efficiently</em> in your production environment, based on <em>tested</em> and <em>proven</em> designs in order to secure <em>quality</em> and <em>leadtime</em>.</p>"
+						}
+					]
 				}
 			}
 		},
