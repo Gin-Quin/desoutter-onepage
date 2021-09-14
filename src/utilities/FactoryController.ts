@@ -79,22 +79,30 @@ export default class FactoryController {
 		}
 	}
 
-	updateLeft(newLeftValue = this.left): void {
+	getLeft(newLeftValue = this.left): number {
 		const { clientWidth } = this.imageContainer
-		this.left = this.clamp(
+		return this.clamp(
 			clientWidth - (this.width * (this.zoom + 1)) / 2,
 			newLeftValue,
 			(this.width * (this.zoom - 1)) / 2
 		)
 	}
 
-	updateTop(newTopValue = this.top): void {
+	updateLeft(newLeftValue = this.left): void {
+		this.left = this.getLeft(newLeftValue)
+	}
+
+	getTop(newTopValue = this.top): number {
 		const { clientHeight } = this.imageContainer
-		this.top = this.clamp(
+		return this.clamp(
 			clientHeight - (this.height * (this.zoom + 1)) / 2,
 			newTopValue,
 			(this.height * (this.zoom - 1)) / 2
 		)
+	}
+
+	updateTop(newTopValue = this.top): void {
+		this.top = this.getTop(newTopValue)
 	}
 
 	getMinZoom(): number {
@@ -104,6 +112,12 @@ export default class FactoryController {
 
 	// move image to center (x, y)
 	setPosition(x: number, y: number): void {
+		const { left, top } = this.getPosition(x, y)
+		this.updateLeft(left)
+		this.updateTop(top)
+	}
+
+	getPosition(x: number, y: number): { top: number; left: number } {
 		const { clientWidth, clientHeight } = this.imageContainer
 		const x1 = (this.width * (1 - this.zoom)) / 2 // padding due to zoom
 		const x2 = x * this.zoom // distance to the value
@@ -113,25 +127,51 @@ export default class FactoryController {
 		const y2 = y * this.zoom
 		const y3 = clientHeight / 2
 
-		this.updateLeft(x3 - x2 - x1)
-		this.updateTop(y3 - y2 - y1)
+		return {
+			left: x3 - x2 - x1,
+			top: y3 - y2 - y1,
+		}
 	}
 
 	centerItem(item: FactoryItem, width: number, height = width): void {
-		this.setPosition(
-			(item.position.left * this.width) / 100 + width / 2,
-			(item.position.top * this.height) / 100 + height / 2
-		)
+		const { left, top } = this.getCenterItemPosition(item, width, height)
+		this.left = left
+		this.top = top
 		this._update()
 	}
 
-	getPreferredPlacement(item: FactoryItem, width: number, height = width): Placement {
-		const distances: Record<Placement, number> = {
-			left: item.position.left * this.width,
-			right: this.width - (item.position.left * this.width + width),
-			top: item.position.top * this.width,
-			bottom: this.height - (item.position.top * this.height + height),
+	getCenterItemPosition(
+		item: FactoryItem,
+		width: number,
+		height = width
+	): { top: number; left: number } {
+		const { left, top } = this.getPosition(
+			(item.position.left * this.width) / 100 + width / 2,
+			(item.position.top * this.height) / 100 + height / 2
+		)
+		return {
+			left: this.getLeft(left),
+			top: this.getTop(top),
 		}
+	}
+
+	getPreferredPlacement(item: FactoryItem, width: number, height = width): Placement {
+		const { clientWidth, clientHeight } = this.imageContainer
+		const position = this.getCenterItemPosition(item, width, height)
+
+		const leftPadding = -position.left - (this.width * (1 - this.zoom)) / 2
+		const topPadding = -position.top - (this.height * (1 - this.zoom)) / 2
+		const left = ((item.position.left * this.width) / 100) * this.zoom - leftPadding
+		const top = ((item.position.top * this.height) / 100) * this.zoom - topPadding
+		const right = clientWidth - left - width * this.zoom
+		const bottom = clientHeight - top - height * this.zoom
+
+		const distances: Record<Placement, number> = { left, top, right, bottom }
+		console.log(`clientWidth`, clientWidth)
+		console.log(`clientHeight`, clientHeight)
+		console.log(`position`, position)
+		console.log(`item size`, width)
+		console.log(`distances`, distances)
 
 		let placement!: Placement
 		let key: Placement

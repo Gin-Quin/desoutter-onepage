@@ -94,37 +94,37 @@
 									"label": "EABC & EPBC",
 									"tool": "EABC",
 									"description": "Pistol and angle head <em>transducerized</em> ranges.<br>Highly ergonomic and <em>accurate</em> battery tool for <em>quality critical</em> and <em>safety critical</em> applications.",
-									"position": { "left": 57, "top": 22 }
+									"position": { "left": 54, "top": 25 }
 								},
 								{
 									"label": "EABS",
 									"tool": "EABS",
 									"description": "The <em>ONE hand</em> nutrunners.<br><em>Ergonomically</em> designed for one-hand operations, this 30 cm long tool with an extremely <em>compact</em> angle head eliminates space constraints.",
-									"position": { "left": 40, "top": 60 }
+									"position": { "left": 37, "top": 62 }
 								},
 								{
 									"label": "BLRTC",
 									"tool": "BLRTC",
 									"description": "Battery <em>electric pulse</em> tool.<br>With his <em>unique technology</em> BLRTC enables <em>reaction free</em> tightening. This means that the worker no longer feels any reaction force when the final torque is reached, and no torque support is required.",
-									"position": { "left": 20, "top": 46 }
+									"position": { "left": 19, "top": 49 }
 								},
 								{
 									"label": "ELC-W",
 									"tool": "ELC",
 									"description": "Clutch tool range.<br>ELC-W tools offer an entry-level solution for Industry 4.0 compatible assembly.<br>This <em>connected</em> clutch tool range is a <em>simple</em> and <em>efficient</em> solution for secondary screw joints in your process.",
-									"position": { "left": 54, "top": 69 }
+									"position": { "left": 47, "top": 71 }
 								},
 								{
 									"label": "QSHIELD",
 									"tool": "Q-SHIELD",
 									"description": "<em>Digital Wrench</em> for torque & angle measurement.<br>The digital wrench is a unique, <em>flexible</em> device for <em>production</em> and <em>rework stations</em> which provides a <em>high accuracy</em> solution for both torque and angle-controlled joints tightening as well as <em>residual torque checks</em>.",
-									"position": { "left": 77, "top": 37 }
+									"position": { "left": 70, "top": 37 }
 								},
 								{
 									"label": "EDU",
 									"tool": "EDU",
 									"description": "Electric Drilling Unit.<br>The <em>smart ready</em> EDU can cover a <em>variety of applications</em> using the same tool thanks to its <em>modular</em> design. Electrification offers unique benefits in terms of process and maintenance optimization compared to the traditional air powered solutions.",
-									"position": { "left": 88, "top": 34 }
+									"position": { "left": 79, "top": 34 }
 								}
 							]
 						}
@@ -139,9 +139,9 @@
 							"items": [
 								{
 									"label": "Connect",
-									"image": "connector",
+									"tool": "connector",
 									"description": "Smart hub <em>concentrates</em> assets data and <em>guarantees data integrity</em>.<br>The CONNECT is a pioneer taking <em>assets management</em> on your production line to a new level.<br>Whether it’s physically integrated close to the maintenance department for instance or in your server room the CONNECT will deploy our <em>feature management</em> over multiple Tightening Units, through <em>one single point of contact to your network</em>. Tightening Units are defined to fulfill most standard requirements and for more value adding stations you have the flexibility to activate additional features.",
-									"position": { "left": 20, "top": 30 }
+									"position": { "left": 10, "top": 74 }
 								}
 							]
 						},
@@ -150,15 +150,15 @@
 							"items": [
 								{
 									"label": "Virtual cable",
-									"image": "trackingBase",
+									"tool": "trackingBase",
 									"description": "<em>Station level</em> tracking solution.<br>Virtual Cable is a solution that enables total <em>traceability</em> and <em>control</em> over tools locations and applications. Virtual Cable ensures that the <em>correct wireless tool</em> can only be used for its pre-determined tasks in the <em>correct working area</em>. ",
-									"position": { "left": 0, "top": 0 }
+									"position": { "left": 36, "top": 54 }
 								},
 								{
 									"label": "Desoutter visio",
-									"image": "camera",
+									"tool": "camera",
 									"description": "Bolt level tracking solution.<br>With this solution, operators will perform fastening operations in the right sequence, at the right torque, with the right tool and in the right position.",
-									"position": { "left": 0, "top": 0 }
+									"position": { "left": 57, "top": 17 }
 								}
 							]
 						},
@@ -167,27 +167,29 @@
 							"items": [
 								{
 									"label": "Multi",
-									"image": "multiConnector+multiWheel2",
+									"tool": "multiConnector",
 									"description": "Mutli-spindle solution.<br>MULTI is the most <em>innovative</em>, <em>compact</em> and <em>flexible</em> multi-spindle system, with an <em>optimized</em> design for an easy <em>integration</em> physically and digitally.",
-									"position": { "left": 0, "top": 0 }
+									"position": { "left": 54, "top": 75 }
 								},
 								{
 									"label": "Rapid",
-									"image": "bowl+rapidTool",
+									"tool": "bowl+rapidTool",
+									"largeTool": true,
 									"description": "Screw feeding system.<br>Rapid is our standard, complete product offering for <em>automatic screw feeding</em> and <em>tightening</em> solutions to drive productivity and <em>reduce cycle time</em>. ",
-									"position": { "left": 0, "top": 0 }
+									"position": { "left": 83, "top": 39 }
 								},
 								{
 									"label": "EFBC",
-									"image": "EFBC",
+									"tool": "EFBC",
 									"description": "<em>Light automation</em> tightening solution.<br>Wireless spindle with <em>optimized</em> design for <em>automation</em>, including compliance with the highest <em>safety standards</em> for <em>collaborative</em> installations.",
-									"position": { "left": 0, "top": 0 }
+									"position": { "left": 22, "top": 39 }
 								},
 								{
 									"label": "Customized solutions",
-									"image": "multiWheel2",
+									"tool": "multiWheel2",
+									"largeTool": true,
 									"description": "<em>Tailor made</em> for your application. They are based on <em>tested</em> and <em>proven</em> design to eliminate technical <em>risk</em> and secure delivery <em>lead time</em>.",
-									"position": { "left": 0, "top": 0 }
+									"position": { "left": 57, "top": 64 }
 								}
 							]
 						}
@@ -202,27 +204,43 @@
 							"items": [
 								{
 									"label": "Station management",
-									"image": "/images/screenshots/stationManager.jpg",
+									"image": {
+										"src": "/images/screenshots/stationManager.jpg",
+										"width": 460,
+										"height": 269
+									},
 									"description": "Thanks to the premium <em>configuration</em> software (Fusion), creating new stations (Infinity) and processes is made <em>easy</em>. Each station can be used on your own pc equipment or on Desoutter’s dedicated hardware.",
-									"position": { "left": 20, "top": 30 }
+									"position": { "left": 14.1, "top": 68 }
 								},
 								{
 									"label": "Asset management",
-									"image": "/images/screenshots/assetManager.jpg",
+									"image": {
+										"src": "/images/screenshots/assetManager.jpg",
+										"width": 460,
+										"height": 269
+									},
 									"description": "PIVOTWARE will <em>record the data</em> generated as part of the process for all your production assets and enable you to allocate assets to specific stations. <em>Traceability</em> of which asset has been used for each process step is therefore guaranteed.",
-									"position": { "left": 60, "top": 80 }
+									"position": { "left": 14.1, "top": 68 }
 								},
 								{
 									"label": "Variant management",
-									"image": "/images/screenshots/variantManager.jpg",
+									"image": {
+										"src": "/images/screenshots/variantManager.jpg",
+										"width": 460,
+										"height": 269
+									},
 									"description": "With <em>variant management</em>, the right process elements are selected according to the product variant as it arrives at the station. <em>Equipment interlocking</em> ensures that each device is enabled only at the <em>appropriate time</em> and with the <em>correct settings</em>.",
-									"position": { "left": 0, "top": 0 }
+									"position": { "left": 14.1, "top": 68 }
 								},
 								{
 									"label": "Operator guidance",
-									"image": "/images/screenshots/operatorGuidance.jpg",
+									"image": {
+										"src": "/images/screenshots/operatorGuidance.jpg",
+										"width": 460,
+										"height": 269
+									},
 									"description": "A <em>complex</em> process is broken down into <em>individual steps</em> for the operator to follow and guide him through the process. Each step can display <em>images</em> and <em>videos</em> as well as <em>instructions</em> to follow which can drastically <em>reduce training operators</em> and the associated <em>costs</em>.",
-									"position": { "left": 0, "top": 0 }
+									"position": { "left": 13.1, "top": 38.9 }
 								}
 							]
 						}
@@ -237,21 +255,33 @@
 							"items": [
 								{
 									"label": "Dashboard",
-									"image": "/images/screenshots/dashboard.jpg",
+									"image": {
+										"src": "/images/screenshots/dashboard.jpg",
+										"width": 460,
+										"height": 223
+									},
 									"description": "With <em>Live interactive dashboards</em> you can get relevant <em>insights</em> from the data provided by your connected assets. You can choose your prefered dashboard from a list of templates. Customization can also be done to fulfill your specific needs.",
-									"position": { "left": 0, "top": 0 }
+									"position": { "left": 23.4, "top": 8 }
 								},
 								{
 									"label": "Notifications",
-									"image": "/images/screenshots/notification.jpg",
+									"image": {
+										"src": "/images/screenshots/notification.jpg",
+										"width": 152,
+										"height": 269
+									},
 									"description": "Use the Desoutter DeMeter mobile application to provide the <em>real-time notifications</em> to <em>different user profiles</em>: operator, quality, production, engineering will only receive information that requires their attention and <em>competence</em>. You can select which events are relevant for each user profile to align their <em>priorities</em> with your <em>efficiency goals</em>.",
-									"position": { "left": 0, "top": 0 }
+									"position": { "left": 15.8, "top": 71 }
 								},
 								{
 									"label": "Boostlab",
-									"image": "/images/screenshots/boostlab.jpg",
+									"image": {
+										"src": "/images/screenshots/boostlab.jpg",
+										"width": 460,
+										"height": 269
+									},
 									"description": "It is already an improvement to have live insights on <em>what is happening</em> on the production line, enabling you to react in the most <em>efficient way</em> but it’s even better to understand <em>why events are happening</em> and how to <em>avoid</em> them from happening again. With Boostlab, get advanced insights from <em>data analysts</em> and <em>technical prescriptions</em> to identify what are the key areas of improvement, focusing on your prefered KPI: <em>Uptime, Quality, Takt time</em> which will lead to improving your overall <em>process efficiency</em>.",
-									"position": { "left": 0, "top": 0 }
+									"position": { "left": 0.7, "top": 65.6 }
 								}
 							]
 						}

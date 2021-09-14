@@ -19,18 +19,30 @@
 	padding: 7.5rem
 	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15)
 
-	> .tippy-content
+	.tippy-content
+		display: flex
+		flex-direction: column
+
+	.tippy-wrapper
+		display: flex
+		flex-direction: column
+		gap: 3.5rem
+		
+		&.row
+			flex-direction: row
+
+	.tippy-inner-content
 		display: flex
 		flex-direction: column
 		gap: 2.5rem
 
-		> .tippy-desoutter-title
-			font-weight: bold
+	.tippy-desoutter-title
+		font-weight: bold
 
-		> .tippy-desoutter-description
-			display: block
-			
-			em
-				color: var(--primary)
-				font-weight: bold
-				font-style: normal
+	.tippy-desoutter-description
+		display: block
+		
+		em
+			color: var(--primary)
+			font-weight: bold
+			font-style: normal

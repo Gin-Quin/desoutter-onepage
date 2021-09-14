@@ -6,6 +6,11 @@ export type FactoryItem = {
 		top: number
 	}
 	tool?: string
-	image?: string
+	largeTool?: boolean
+	image?: {
+		src: string
+		width: number
+		height: number
+	}
 	index?: number
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { fly, slide } from "svelte/transition"
+	import { fly } from "svelte/transition"
 	import ArrowLeft from "svelte-material-icons/ArrowLeft.svelte"
 	import ArrowRight from "svelte-material-icons/ArrowRight.svelte"
 	import Information from "svelte-material-icons/Information.svelte"
@@ -7,10 +7,9 @@
 	import type { TranslationObject } from "locales/TranslationObject"
 	import type { FactoryItem } from "types/FactoryItem"
 	import MiniPyramid from "atoms/MiniPyramid.svelte"
+	import FactoryItemCard from "atoms/FactoryItemCard.svelte"
 	import { onMount, tick } from "svelte"
 	import FactoryController from "utilities/FactoryController"
-	import Header from "./Header.svelte"
-	import ToolCard from "atoms/ToolCard.svelte"
 	import tippy from "tippy.js"
 	import type { Instance as TippyInstance } from "tippy.js"
 
@@ -18,8 +17,6 @@
 		title?: string
 		items: Array<FactoryItem>
 	}
-
-	const itemSize = 180
 
 	let imageContainer!: HTMLElement
 	let activeItem: Element | undefined = undefined
@@ -78,7 +75,7 @@
 
 	async function selectItem(item: FactoryItem) {
 		currentItem = item.index || 0
-		factoryController.centerItem(item, itemSize)
+		factoryController.centerItem(item, getFactoryItemSize(item))
 		tippyInstance?.hide()
 		await tick()
 		await sleep(250)
@@ -86,15 +83,18 @@
 
 		tippyInstance = tippy(activeItem, {
 			content: getTippyContent(item),
+			appendTo: imageContainer,
 			duration: 0,
 			arrow: false,
 			allowHTML: true,
 			theme: "desoutter",
 			hideOnClick: false,
-			placement: factoryController.getPreferredPlacement(item, itemSize),
+			sticky: false,
+			placement: factoryController.getPreferredPlacement(item, getFactoryItemSize(item)),
+			maxWidth: item.image ? 530 : 350,
 			onShow({ popper }) {
 				popper.animate([{ opacity: 0 }, { opacity: 1 }], {
-					duration: 100,
+					duration: 150,
 				})
 			},
 		})
@@ -102,7 +102,17 @@
 	}
 
 	function getTippyContent(item: FactoryItem): string {
-		return `<div class="tippy-desoutter-title">${item.label}</div><div class="tippy-desoutter-description">${item.description}</div>`
+		const rowMode = item.image && item.image.height > item.image.width
+		const wrapper = (content: string, row = false) =>
+			`<div class="tippy-wrapper ${row ? "row" : "column"}">${content}</div>`
+		const image = item.image
+			? `<img src="${item.image.src}" width="${item.image.width}" height="${item.image.height}">`
+			: ""
+		return wrapper(
+			image +
+				`<div class="tippy-inner-content"><div class="tippy-desoutter-title">${item.label}</div><div class="tippy-desoutter-description">${item.description}</div></div>`,
+			rowMode
+		)
 	}
 
 	function previousChapter() {
@@ -118,9 +128,13 @@
 		tippyInstance = null
 		currentItem = -1
 	}
+
+	function getFactoryItemSize(item: FactoryItem): number {
+		return item.tool ? (item.largeTool ? 324 : 180) : 130
+	}
 </script>
 
-<section id="demonstration" style="--tool-size: {itemSize}px">
+<section id="demonstration">
 	<aside>
 		{#if currentChapter > 0}
 			<button
@@ -208,30 +222,14 @@
 				{#each chapters as _, chapter (chapter)}
 					{#each getChapterItems(chapter) as item, itemIndex (1000 * chapter + itemIndex)}
 						{#if isItemActive(currentChapter, currentItem, chapter, itemIndex)}
-							<div
-								bind:this={activeItem}
-								class="factory-item active"
-								style="
-									left: {item.position.left}%;
-									top: {item.position.top}%;
-								"
-							>
-								{#if item.tool}
-									<ToolCard name={item.tool} style="small" transparent active />
-								{/if}
-							</div>
+							<FactoryItemCard
+								bind:element={activeItem}
+								active
+								{item}
+								size={getFactoryItemSize(item)}
+							/>
 						{:else if isItemVisible(currentChapter, currentItem, chapter, itemIndex)}
-							<div
-								class="factory-item"
-								style="
-									left: {item.position.left}%;
-									top: {item.position.top}%;
-								"
-							>
-								{#if item.tool}
-									<ToolCard name={item.tool} style="small" transparent />
-								{/if}
-							</div>
+							<FactoryItemCard {item} size={getFactoryItemSize(item)} />
 						{/if}
 					{/each}
 				{/each}
@@ -282,13 +280,13 @@
 		cursor: pointer
 		border-radius: 0
 
-		&.previous-chapter
-			top: 0
-		&.next-chapter
-			bottom: 0
-			&:active
-				bottom: -1px
-				top: unset
+	.previous-chapter
+		top: 0
+	.next-chapter
+		bottom: 0
+		&:active
+			bottom: -1px
+			top: unset
 
 	.groups
 		gap: 6rem
@@ -332,8 +330,4 @@
 	.factory
 		position: absolute
 		transition: 200ms
-
-	.factory-item
-		pointer-events: none
-		position: absolute
 </style>
