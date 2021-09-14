@@ -23,6 +23,16 @@
 					"coreBenefits": "Core benefits",
 					"steps": [
 						{
+							"title": "Desoutter Ecosystem Overview",
+							"description": "<p>Desoutter ecosystem provides, thanks to <em>interconnected</em> software platforms, an <em>integrated product</em>, <em>digital and human solution</em> to boost your <em>productivity</em>, boost your <em>uptime</em> and boost your <em>flexibility</em> while reducing <em>quality costs</em>.</p><p>The ecosystem <em>value</em> proposition covers an array of key processes in your manufacturing environment, from <em>tightening</em> and <em>drilling</em> applications to station level <em>process control</em> and line management to <em>data analytics</em> to challenge further your <em>production efficiency</em>.</p><p>Desoutter ecosystem is <em>scalable</em>, <em>customizable</em>, designed for <em>intuitive asset integration</em>. This <em>future proof</em> software and hardware ecosystem is open to be <em>integrated</em> within your production environment through industry standards as well as customer specific communication protocols</p>",
+							"tools": [],
+							"coreBenefits": [
+								"Global offer with <em>interconnected</em> platforms from applications up to <em>data analytics with prescriptions</em>",
+								"Fully <em>scalable</em> and <em>flexible</em>: select the platforms or individual solutions whenever required by the evolution of your production environment",
+								"<em>Easy integration</em> : intuitive asset management with industry standard and customer specific communication protocols"
+							]
+						},
+						{
 							"title": "Connected assets",
 							"description": "<p><em>Flexibility</em> and <em>traceability</em> are key factors for a successful Industry 4.0 transformation.</p><p>Connected assets ensure an <em>easy integration</em> within the assembly process and guarantee <em>traceability</em> and <em>integrity of all the data</em>.</p>",
 							"tools": ["EABS", "ELC", "Q-SHIELD"],

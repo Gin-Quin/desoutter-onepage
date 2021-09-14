@@ -35,7 +35,7 @@
 						in:fly={{ y: -200, duration: inDuration }}
 						out:fly={{ y: -300, duration: outDuration }}
 					>
-						{step + 1}
+						{step || ""}
 					</div>
 
 					<div class="infos">
@@ -59,7 +59,7 @@
 		{/each}
 
 		<aside in:fly={{ y: -400, duration: inDuration }} out:fly={{ y: -500, duration: outDuration }}>
-			<Pyramid gap={25} focus={step} scale={0.9} />
+			<Pyramid gap={25} focus={step ? step - 1 : null} scale={0.9} />
 		</aside>
 	</main>
 
@@ -154,6 +154,7 @@
 			z-index: 1
 		
 		.index
+			flex: 0 0 80px
 			z-index: 0
 			font-size: 36rem
 			color: var(--primary)
