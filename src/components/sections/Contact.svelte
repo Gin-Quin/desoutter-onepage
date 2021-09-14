@@ -61,7 +61,7 @@
 		</form>
 	</main>
 
-	<img src="/images/ecosystem.png" alt="ecosystem" />
+	<img src="/images/ecosystem.jpg" alt="ecosystem" />
 </section>
 
 <style lang="sass">
