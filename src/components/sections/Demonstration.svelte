@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fly, slide } from "svelte/transition"
 	import ArrowLeft from "svelte-material-icons/ArrowLeft.svelte"
 	import ArrowRight from "svelte-material-icons/ArrowRight.svelte"
 	import Information from "svelte-material-icons/Information.svelte"
@@ -17,6 +18,8 @@
 		title?: string
 		items: Array<FactoryItem>
 	}
+
+	const itemSize = 180
 
 	let imageContainer!: HTMLElement
 	let activeItem: Element | undefined = undefined
@@ -75,7 +78,7 @@
 
 	async function selectItem(item: FactoryItem) {
 		currentItem = item.index || 0
-		factoryController.centerItem(item, 180)
+		factoryController.centerItem(item, itemSize)
 		tippyInstance?.hide()
 		await tick()
 		await sleep(250)
@@ -88,6 +91,12 @@
 			allowHTML: true,
 			theme: "desoutter",
 			hideOnClick: false,
+			placement: factoryController.getPreferredPlacement(item, itemSize),
+			onShow({ popper }) {
+				popper.animate([{ opacity: 0 }, { opacity: 1 }], {
+					duration: 100,
+				})
+			},
 		})
 		tippyInstance.show()
 	}
@@ -111,10 +120,14 @@
 	}
 </script>
 
-<section id="demonstration">
+<section id="demonstration" style="--tool-size: {itemSize}px">
 	<aside>
 		{#if currentChapter > 0}
-			<button class="previous-chapter" on:click={previousChapter}>
+			<button
+				class="previous-chapter"
+				on:click={previousChapter}
+				transition:fly={{ opacity: 1, y: -200, duration: 200 }}
+			>
 				<ArrowLeft size="24" />
 				{chapters[currentChapter - 1].title}
 				<div />
@@ -163,7 +176,11 @@
 		</div>
 
 		{#if currentChapter < chapters.length - 1}
-			<button class="next-chapter" on:click={nextChapter}>
+			<button
+				class="next-chapter"
+				on:click={nextChapter}
+				transition:fly={{ opacity: 1, y: 200, duration: 200 }}
+			>
 				<div />
 				{chapters[currentChapter + 1].title}
 				<ArrowRight size="24" />
@@ -226,7 +243,6 @@
 <style lang="sass">
 	#demonstration
 		--chapter-navigation-height: 12rem
-		--tool-size: 180px
 		height: 100vh
 		width: 100%
 		flex-direction: row

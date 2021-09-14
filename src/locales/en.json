@@ -167,13 +167,13 @@
 							"items": [
 								{
 									"label": "Multi",
-									"image": "multiConnector,multiWheel2",
+									"image": "multiConnector+multiWheel2",
 									"description": "Mutli-spindle solution.<br>MULTI is the most <em>innovative</em>, <em>compact</em> and <em>flexible</em> multi-spindle system, with an <em>optimized</em> design for an easy <em>integration</em> physically and digitally.",
 									"position": { "left": 0, "top": 0 }
 								},
 								{
 									"label": "Rapid",
-									"image": "bowl,rapidTool",
+									"image": "bowl+rapidTool",
 									"description": "Screw feeding system.<br>Rapid is our standard, complete product offering for <em>automatic screw feeding</em> and <em>tightening</em> solutions to drive productivity and <em>reduce cycle time</em>. ",
 									"position": { "left": 0, "top": 0 }
 								},

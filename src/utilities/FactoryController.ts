@@ -1,4 +1,5 @@
 import type { FactoryItem } from "types/FactoryItem"
+import type { Placement } from "types/Placement"
 
 export default class FactoryController {
 	grabbing = false
@@ -112,18 +113,37 @@ export default class FactoryController {
 		const y2 = y * this.zoom
 		const y3 = clientHeight / 2
 
-		console.log("Ideal new left value", x3 - x2 - x1)
 		this.updateLeft(x3 - x2 - x1)
 		this.updateTop(y3 - y2 - y1)
 	}
 
 	centerItem(item: FactoryItem, width: number, height = width): void {
-		console.log("before center item", this.left, this.top)
 		this.setPosition(
 			(item.position.left * this.width) / 100 + width / 2,
 			(item.position.top * this.height) / 100 + height / 2
 		)
-		console.log("after center item", this.left, this.top)
 		this._update()
+	}
+
+	getPreferredPlacement(item: FactoryItem, width: number, height = width): Placement {
+		const distances: Record<Placement, number> = {
+			left: item.position.left * this.width,
+			right: this.width - (item.position.left * this.width + width),
+			top: item.position.top * this.width,
+			bottom: this.height - (item.position.top * this.height + height),
+		}
+
+		let placement!: Placement
+		let key: Placement
+		let maxDistance = -Infinity
+
+		for (key in distances) {
+			if (distances[key] > maxDistance) {
+				maxDistance = distances[key]
+				placement = key
+			}
+		}
+
+		return placement
 	}
 }
