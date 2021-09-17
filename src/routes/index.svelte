@@ -8,7 +8,6 @@
 	import Footer from "sections/Footer.svelte"
 </script>
 
-<Header />
 <Landing />
 <Demonstration />
 <Faq />

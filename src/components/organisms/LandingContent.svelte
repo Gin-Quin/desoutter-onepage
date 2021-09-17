@@ -11,6 +11,7 @@
 	const inDuration = 650
 	const outDuration = 550
 
+	$: preSteps = Number($t("section.landing.stages.content.preSteps"))
 	$: content = $json(`section.landing.stages.content.steps`) as Array<{
 		title: string
 		subtitle: string
@@ -35,7 +36,7 @@
 						in:fly={{ y: -200, duration: inDuration }}
 						out:fly={{ y: -300, duration: outDuration }}
 					>
-						{step || ""}
+						{step >= preSteps ? step - preSteps + 1 : ""}
 					</div>
 
 					<div class="infos">
@@ -59,7 +60,7 @@
 		{/each}
 
 		<aside in:fly={{ y: -400, duration: inDuration }} out:fly={{ y: -500, duration: outDuration }}>
-			<Pyramid gap={25} focus={step ? step - 1 : null} scale={0.9} />
+			<Pyramid gap={25} focus={step >= preSteps ? step - preSteps : null} scale={0.9} />
 		</aside>
 	</main>
 

@@ -21,6 +21,7 @@
 				},
 				"content": {
 					"coreBenefits": "Core benefits",
+					"preSteps": 2,
 					"steps": [
 						{
 							"title": "Desoutter Ecosystem Overview",
@@ -30,6 +31,16 @@
 								"Global offer with <em>interconnected</em> platforms from applications up to <em>data analytics with prescriptions</em>",
 								"Fully <em>scalable</em> and <em>flexible</em>: select the platforms or individual solutions whenever required by the evolution of your production environment",
 								"<em>Easy integration</em> : intuitive asset management with industry standard and customer specific communication protocols"
+							]
+						},
+						{
+							"title": "Feature management",
+							"description": "<p>Desoutter ecosystem delivers unrivalled <em>flexibility</em> thanks to a unique <em>Feature Management</em> solution.</p><p>Feature Management powers the full <em>scalability</em> of the Desoutter ecosystem by activating only the features required for every workstation. The activation of new features, or reallocation of an existing station from one to another, is made in a <em>very easy way</em> in order to <em>adapt quickly</em> workstations to changing production requirements.<br><em>Line rebalancing</em> has never been made so <em>quickly</em> and in such an <em>easy</em> way!</p><p>Thanks to Desoutter’s Feature Management you will have:</p><ul><li><em>Budget control</em> by buying only what you need,</li><li><em>Flexibility</em> to adjust your usage of features in the future to match the evolution of your needs,</li><li><em>Ease</em> of usage, testing and implementation.</li></ul>",
+							"tools": [],
+							"coreBenefits": [
+								"Only use the features you need",
+								"Fully <em>scalable</em> solution: adjust your features activations and allocations to meet your production requirements as they evolve over time",
+								"Unrivalled <em>flexibility</em> thanks to the easiness and speed of line <em>rebalancing</em>"
 							]
 						},
 						{

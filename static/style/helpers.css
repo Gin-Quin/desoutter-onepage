@@ -3,13 +3,17 @@ article,
 aside,
 div,
 form,
-li,
 main,
 nav,
+ul,
 section,
 .column {
 	display: flex;
 	flex-direction: column;
+}
+ul {
+	gap: 2rem;
+	margin: 0;
 }
 header, footer, .row {
 	display: flex;

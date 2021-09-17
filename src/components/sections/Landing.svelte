@@ -10,6 +10,7 @@
 	import ArrowDown from "icons/ArrowDown.svelte"
 	import LandingFooter from "atoms/LandingFooter.svelte"
 	import { fly } from "svelte/transition"
+	import Header from "./Header.svelte"
 
 	const stages = $json("section.landing.stages") as Record<string, { steps: Array<unknown> }>
 	const stageKeys = Object.keys(stages)
@@ -68,6 +69,8 @@
 		mounted = true
 	})
 </script>
+
+<Header />
 
 <section id="ecosystem" class="row">
 	<div class="inner-section">
