@@ -8,7 +8,7 @@
 	const customers = $json("section.customersReview.customers") as Customers
 </script>
 
-{#if customers.length}
+{#if customers?.length}
 	<section class="white bg-gray-3">
 		<div class="inner-section row">
 			<aside>

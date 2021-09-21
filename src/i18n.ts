@@ -4,9 +4,8 @@ import fr from "locales/fr.json"
 
 addMessages("en", en)
 addMessages("fr", fr)
-// register("fr", () => import("./fr.json"))
+// register("fr", () => import("locales/fr.json"))
 
-console.log("Use langauge: en")
 init({
 	fallbackLocale: "en",
 	initialLocale: "en",

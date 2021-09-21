@@ -319,26 +319,50 @@
 		},
 
 		"faq": {
-			"aviation": {
-				"title": "Aviation",
-				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
-			},
-			"newEnergyVehicles": {
-				"title": "New energy vehicles",
-				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
-			},
-			"automotive": {
-				"title": "Automotive",
-				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
-			},
-			"aerospace": {
-				"title": "Aerospace",
-				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
-			},
-			"finalAutomotiveAssembly": {
-				"title": "Final automotive assembly",
-				"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?"
-			}
+			"tiles": [
+				{
+					"title": "Aviation",
+					"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?",
+					"color": "gray-4",
+					"size": 1,
+					"link": "",
+					"image": "https://unccelearn.org/pluginfile.php/74314/format_unccelearn/background/0/big1.jpg"
+				},
+				null,
+				{
+					"title": "New energy vehicles",
+					"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?",
+					"color": "dark",
+					"size": 1,
+					"link": "",
+					"image": ""
+				},
+				{
+					"title": "Automotive",
+					"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?",
+					"color": "primary",
+					"size": 1,
+					"link": "",
+					"image": ""
+				},
+				null,
+				{
+					"title": "Aerospace",
+					"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?",
+					"color": "primary",
+					"size": 1,
+					"link": "",
+					"image": ""
+				},
+				{
+					"title": "Final automotive assembly",
+					"description": "How Virtual Cable save 20 hours / week in Aston Martin’s factory?",
+					"color": "dark",
+					"size": 2,
+					"link": "",
+					"image": "https://www.electricmotorengineering.com/files/2017/11/Components.jpg"
+				}
+			]
 		},
 
 		"customersReview": {

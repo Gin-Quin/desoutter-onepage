@@ -82,6 +82,9 @@
 		text-align: center
 		width: 100% !important
 	
+	:global(.marketoForm a)
+		font-size: inherit !important
+	
 	:global(.marketoForm .mktoButtonWrap)
 		display: flex
 		flex-direction: column
@@ -100,7 +103,6 @@
 
 	:global(.marketoForm button:focus-visible)
 		border-color: currentColor !important
-
 
 	:global(.marketoForm button:after)
 		content: "\e163"
