@@ -348,12 +348,20 @@
 				{
 					"name": "Barbara Alana",
 					"company": "Company",
-					"role": "Operator supervisor"
+					"role": "Operator supervisor",
+					"link": "/"
+				},
+				{
+					"name": "Barbara Alana",
+					"company": "Company",
+					"role": "Operator supervisor",
+					"link": "/"
 				},
 				{
 					"name": "Rodrigo Calvès",
 					"company": "Company",
-					"role": "Operator supervisor"
+					"role": "Operator supervisor",
+					"link": "/"
 				}
 			]
 		},

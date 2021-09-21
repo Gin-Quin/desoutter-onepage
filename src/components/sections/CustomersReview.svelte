@@ -1,51 +1,50 @@
 <script lang="ts">
 	import { json, _ } from "svelte-i18n"
 	import ArrowRight from "icons/ArrowRight.svelte"
+	import type { TranslationObject } from "locales/TranslationObject"
 
-	type Customer = {
-		name: string
-		company: string
-		role: string
-	}
+	type Customers = TranslationObject["section"]["customersReview"]["customers"]
 
-	const customers = $json("section.customersReview.customers") as Customer[]
+	const customers = $json("section.customersReview.customers") as Customers
 </script>
 
-<section class="white bg-gray-3">
-	<div class="inner-section row">
-		<aside>
-			<div class="title">
-				{$_("section.customersReview.title")}
-			</div>
-			<div class="description">
-				{$_("section.customersReview.description")}
-			</div>
-		</aside>
-		<main class="grow row wrap">
-			{#each customers as customer}
-				<div class="customer">
-					<img src={`/images/customers/${customer.name}.png`} alt={customer.name} />
-					<div class="layer bg-dark" />
-					<div class="infos">
-						<div class="company">{customer.company}</div>
-						<div class="name">{customer.name}</div>
-						<div class="role">{customer.role}</div>
-					</div>
-					<div class="link bg-primary center">
-						<ArrowRight size="1.5em" />
-					</div>
+{#if customers.length}
+	<section class="white bg-gray-3">
+		<div class="inner-section row">
+			<aside>
+				<div class="title">
+					{$_("section.customersReview.title")}
 				</div>
-			{/each}
-		</main>
-	</div>
-</section>
+				<div class="description">
+					{$_("section.customersReview.description")}
+				</div>
+			</aside>
+			<main class="grow row wrap">
+				{#each customers as customer}
+					<a class="customer" target="_blank" href={customer.link}>
+						<img src={`/images/customers/${customer.name}.png`} alt={customer.name} />
+						<div class="layer bg-dark" />
+						<div class="infos">
+							<div class="company">{customer.company}</div>
+							<div class="name">{customer.name}</div>
+							<div class="role">{customer.role}</div>
+						</div>
+						<div class="link bg-primary center">
+							<ArrowRight size="1.5em" />
+						</div>
+					</a>
+				{/each}
+			</main>
+		</div>
+	</section>
+{/if}
 
 <style lang="sass">
 	section
 		padding: 5% 0
 
 	.inner-section
-		place-items: center
+		align-items: flex-start
 		min-height: 710px
 		margin: auto
 		width: 1200px
@@ -56,6 +55,7 @@
 		width: 260px
 		gap: 6rem
 		flex-shrink: 0
+		padding: 10vh 0
 	
 	.title
 		font-size: 9rem
@@ -75,6 +75,8 @@
 		height: 360px
 		width: 360px
 		max-width: 100vw
+		cursor: pointer
+		color: white
 
 		> *
 			position: absolute
