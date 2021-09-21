@@ -59,6 +59,7 @@
 		font-size: 3.5rem
 		color: var(--white)
 		padding: 12.5rem 5%
+		z-index: 100
 
 		a
 			color: var(--white)

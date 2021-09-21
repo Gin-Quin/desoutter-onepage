@@ -42,6 +42,7 @@
 <style lang="sass">
 	section
 		padding: 7% 0 10%
+		z-index: 100
 
 	.inner-section
 		align-items: flex-start

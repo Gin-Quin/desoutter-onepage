@@ -35,7 +35,7 @@
 		gap: 7rem
 		text-transform: uppercase
 		font-weight: 400
-		z-index: 1
+		z-index: 200
 		position: absolute
 		
 	nav

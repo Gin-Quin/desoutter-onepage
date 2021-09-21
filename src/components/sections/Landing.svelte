@@ -122,6 +122,7 @@
 			opacity: 1
 
 	section
+		z-index: 100
 		height: 100vh
 		padding: var(--header-height) 0 0
 		justify-content: space-evenly

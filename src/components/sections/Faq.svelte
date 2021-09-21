@@ -23,8 +23,10 @@
 {/if}
 
 <style lang="sass">
-	section
+	#faq
 		width: 100%
+		z-index: 100
+		background: var(--gray)
 		
 	.grid
 		width: 100%

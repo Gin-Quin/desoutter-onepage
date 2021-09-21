@@ -77,19 +77,20 @@
 		currentItem = item.index || 0
 		factoryController.centerItem(item, getFactoryItemSize(item))
 		tippyInstance?.hide()
+		tippyInstance = null
 		await tick()
 		await sleep(250)
 		if (!activeItem) return
 
 		tippyInstance = tippy(activeItem, {
 			content: getTippyContent(item),
-			appendTo: imageContainer,
+			zIndex: 99,
 			duration: 0,
 			arrow: false,
 			allowHTML: true,
 			theme: "desoutter",
 			hideOnClick: false,
-			sticky: false,
+			// sticky: false,
 			placement: factoryController.getPreferredPlacement(item, getFactoryItemSize(item)),
 			maxWidth: item.image ? 530 : 350,
 			onShow({ popper }) {
@@ -244,6 +245,7 @@
 		height: 100vh
 		width: 100%
 		flex-direction: row
+		overflow: hidden
 
 	// -- Left panel --
 	aside

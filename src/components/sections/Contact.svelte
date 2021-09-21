@@ -22,6 +22,7 @@
 		background: var(--dark)
 		color: var(--gray)
 		justify-content: center
+		z-index: 100
 		> *
 			width: 50%
 	
