@@ -22,7 +22,6 @@
 		background: var(--dark)
 		color: var(--gray)
 		justify-content: center
-		align-items: center
 		> *
 			width: 50%
 	
@@ -91,13 +90,17 @@
 
 	:global(.marketoForm button)
 		background: var(--gray-3) !important
-		border: none !important
+		border-color: transparent !important
 		padding: 4rem 5rem !important
 		color: white !important
 		font-size: 4rem !important
 		display: flex !important
 		flex-direction: row
 		gap: 3rem
+
+	:global(.marketoForm button:focus-visible)
+		border-color: currentColor !important
+
 
 	:global(.marketoForm button:after)
 		content: "\e163"

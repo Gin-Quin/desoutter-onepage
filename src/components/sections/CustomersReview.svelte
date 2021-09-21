@@ -41,11 +41,10 @@
 
 <style lang="sass">
 	section
-		padding: 5% 0
+		padding: 7% 0 10%
 
 	.inner-section
 		align-items: flex-start
-		min-height: 710px
 		margin: auto
 		width: 1200px
 		max-width: 85%
@@ -55,7 +54,6 @@
 		width: 260px
 		gap: 6rem
 		flex-shrink: 0
-		padding: 10vh 0
 	
 	.title
 		font-size: 9rem
