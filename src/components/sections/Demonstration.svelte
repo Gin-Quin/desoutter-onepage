@@ -80,6 +80,7 @@
 		tippyInstance = null
 		await tick()
 		await sleep(250)
+		tippyInstance!?.hide()
 		if (!activeItem) return
 
 		tippyInstance = tippy(activeItem, {
