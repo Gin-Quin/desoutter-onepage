@@ -363,35 +363,7 @@
 			"subtitle": "A question or a request? Send us a message",
 			"conditionsOfUse": "By clicking on this button, you accept the",
 			"conditionsOfUseLink": "General conditions of use",
-			"sendMessage": "Send my message",
-			"form": {
-				"name": {
-					"label": "Name",
-					"placeholder": "Scott"
-				},
-				"surname": {
-					"label": "Surname",
-					"placeholder": "Michael"
-				},
-				"email": {
-					"label": "Email address",
-					"placeholder": "michaelscott@dundermifflin.com"
-				},
-				"industry": {
-					"label": "Industry",
-					"placeholder": "Select an industry...",
-					"items": ["Aeronautics", "Spatial", "Automobile"]
-				},
-				"country": {
-					"label": "Country",
-					"placeholder": "United Kingdom",
-					"items": ["France", "Germany", "Italy", "Spain", "United Kingdom", "United States"]
-				},
-				"message": {
-					"label": "Your message",
-					"placeholder": "Send us a message"
-				}
-			}
+			"sendMessage": "Send my message"
 		},
 
 		"footer": {

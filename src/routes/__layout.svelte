@@ -1,4 +1,5 @@
 <script lang="ts">
+	import "material-design-icons-iconfont"
 </script>
 
 <slot />

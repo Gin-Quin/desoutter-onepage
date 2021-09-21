@@ -1,20 +1,5 @@
 <script lang="ts">
-	import { json, _ } from "svelte-i18n"
-	import Send from "icons/Send.svelte"
-	import FormInput from "molecules/FormInput.svelte"
-	import FormSelect from "molecules/FormSelect.svelte"
-	import FormTextArea from "molecules/FormTextArea.svelte"
-
-	const label = (field: string) => $_(`section.contact.form.${field}.label`)
-	const placeholder = (field: string) => $_(`section.contact.form.${field}.placeholder`)
-
-	const industries = ($json(
-		"section.contact.form.industry.items"
-	) as string[]).map((value: string) => ({ value }))
-
-	const countries = ($json(
-		"section.contact.form.country.items"
-	) as string[]).map((value: string) => ({ value }))
+	import { _ } from "svelte-i18n"
 </script>
 
 <section id="contact" class="row">
@@ -22,97 +7,104 @@
 		<div class="title">{$_("section.contact.title")}</div>
 		<div class="subtitle">{$_("section.contact.subtitle")}</div>
 
-		<form>
-			<div class="grid">
-				<FormInput name="name" label={label("name")} placeholder={placeholder("name")} />
-				<FormInput name="surname" label={label("surname")} placeholder={placeholder("surname")} />
-
-				<div class="span-2">
-					<FormInput name="email" label={label("email")} placeholder={placeholder("email")} />
-				</div>
-
-				<FormSelect
-					name="industry"
-					label={label("industry")}
-					placeholder={placeholder("industry")}
-					items={industries}
-				/>
-				<FormInput name="country" label={label("country")} placeholder={placeholder("country")} />
-
-				<div class="span-2">
-					<FormTextArea
-						name="message"
-						label={label("message")}
-						placeholder={placeholder("message")}
-					/>
-				</div>
-			</div>
-
-			<div class="validation row">
-				<p class="conditions">
-					{$_("section.contact.conditionsOfUse")}
-					<a href="/">{$_("section.contact.conditionsOfUseLink")}</a>
-				</p>
-				<button type="submit" class="bg-primary">
-					{$_("section.contact.sendMessage")}
-					<Send size="1.5em" />
-				</button>
-			</div>
-		</form>
+		<form id="mktoForm_6513" class="marketoForm" />
+		<script>
+			MktoForms2.loadForm("//app-lon03.marketo.com", "744-YWX-674", 6513)
+		</script>
 	</main>
 
 	<img src="/images/ecosystem.jpg" alt="ecosystem" />
 </section>
 
 <style lang="sass">
-	section
+	#contact
 		min-height: 830px
+		background: var(--dark)
+		color: var(--gray)
+		justify-content: center
+		align-items: center
 		> *
 			width: 50%
 	
 	main
-		padding: 14vh 8vw
+		padding: 12vh 8vw
 
 	.title
 		font-size: 9rem
 		font-weight: bold
-		color: var(--black)
 		margin-bottom: 2rem
 	
 	.subtitle
 		font-size: 5rem
-		color: var(--black)
 		margin-bottom: 7rem
 
-	form
-		gap: 6rem
+	.marketoForm
+		width: 100% !important
+		gap: 4rem
 
-		> .grid
-			grid-template-columns: repeat(2, 1fr)
-			gap: inherit
-			align-items: center
+	:global(.marketoForm .mktoFormRow)
+		color: var(--gray) !important
 
-	.span-2
-		grid-column: span 2
-	
-	.conditions
-		font-size: 3.5rem
-	
-	button[type="submit"]
-		justify-self: end
+	:global(.marketoForm .mktoFormCol)
+		margin: 0 !important
 
-	.validation
-		align-items: center
+	:global(.marketoForm input), :global(.marketoForm select), :global(.marketoForm textarea)
+		background: var(--dark)
+		color: var(--gray)
+		// height: 40px
+		padding: 6px 10px !important
+		width: 100% !important
+
+	:global(.marketoForm textarea)
+		height: 25rem !important
+
+	:global(.marketoForm .mktoGutter), :global(.marketoForm .mktoOffset)
+		display: none
+
+	:global(.marketoForm .mktoFieldWrap)
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+
+	:global(.marketoForm label)
+		padding: 0 !important
+		margin-bottom: 3px !important
+		font-weight: normal !important
+		width: auto !important
+		position: relative
+		line-height: 1.4 !important
+
+	:global(.marketoForm .mktoAsterix)
+		position: absolute
+		right: -8px
 	
-	@media (max-width: 1200px)
-		.validation
-			flex-direction: column
-		.conditions
-			text-align: center
-		
-	@media (max-width: 480px)
-		form
-			grid-template-columns: 1fr
-		.span-2
-			grid-column: unset
+	:global(.marketoForm .mktoHtmlText)
+		display: block
+		text-align: center
+		width: 100% !important
+	
+	:global(.marketoForm .mktoButtonWrap)
+		display: flex
+		flex-direction: column
+		align-items: flex-end
+		margin: 0 !important
+
+	:global(.marketoForm button)
+		background: var(--gray-3) !important
+		border: none !important
+		padding: 4rem 5rem !important
+		color: white !important
+		font-size: 4rem !important
+		display: flex !important
+		flex-direction: row
+		gap: 3rem
+
+	:global(.marketoForm button:after)
+		content: "\e163"
+		font-family: "Material Icons"
+		font-size: 5rem
+
+	@media (max-width: 1100px)
+		#contact > img
+			display: none
 </style>
