@@ -101,7 +101,7 @@
 	:root
 		--landing-footer-height: 80px
 		--landing-footer-width: var(--landing-main-width)
-		--landing-header-height: 160px
+		--landing-header-height: 190px
 		--landing-header-width: var(--landing-main-width)
 		--landing-main-height: calc(100% - var(--landing-header-height) - var(--landing-footer-height))
 		--landing-main-width: calc(100% - 2 * var(--landing-aside-width))

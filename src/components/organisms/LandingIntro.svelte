@@ -18,9 +18,9 @@
 				{$t("section.landing.stages.intro.title")}
 			</div>
 			<div class="subtitle" in:fade={{ duration: 1800, delay: 1200 }} out:fade={{ duration: 200 }}>
-				<FoldedCard>
-					{$t("section.landing.stages.intro.subtitle")}
-				</FoldedCard>
+				<!-- <FoldedCard> -->
+				{$t("section.landing.stages.intro.subtitle")}
+				<!-- </FoldedCard> -->
 			</div>
 		</div>
 	</LandingHeader>
@@ -54,14 +54,17 @@
 		pointer-events: none
 
 	.title-container
-		gap: 10px
+		gap: 2rem
 		align-items: center
+		font-family: 'Montserrat', Helvetica
 
 	.title
 		font-size: 20px
+		font-weight: 300
 
 	.subtitle
-		font-size: 36px
+		font-size: 54px
+		font-weight: 600
 
 	.image-container
 		flex: 1 0 0
