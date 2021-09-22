@@ -15,8 +15,8 @@
 			"particles": {
 				"density": 100,
 				"color": {
-					"line": "#000000",
-					"circle": "#000000"
+					"line": "#ff0000",
+					"dot": "#550000"
 				}
 			},
 			"scroll": "Scroll",

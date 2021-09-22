@@ -51,6 +51,7 @@
 		width: 100%
 		height: 100%
 		align-items: center
+		pointer-events: none
 
 	.title-container
 		gap: 10px
