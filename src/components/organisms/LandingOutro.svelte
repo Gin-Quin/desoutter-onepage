@@ -66,7 +66,6 @@
 				<Pyramid
 					gap={step ? 0 : 25}
 					focus={step ? null : focus}
-					scale={0.8}
 					gray={!!step}
 					neon={!!step}
 					arrow={step == 0}
@@ -91,7 +90,7 @@
 		left: 0
 		width: 100%
 		height: 100%
-		pointer-events: none
+		// pointer-events: none
 
 	header
 		height: 100%

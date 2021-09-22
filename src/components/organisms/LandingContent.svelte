@@ -60,7 +60,7 @@
 		{/each}
 
 		<aside in:fly={{ y: -400, duration: inDuration }} out:fly={{ y: -500, duration: outDuration }}>
-			<Pyramid gap={25} focus={step >= preSteps ? step - preSteps : null} scale={0.9} />
+			<Pyramid gap={25} focus={step >= preSteps ? step - preSteps : null} />
 		</aside>
 	</main>
 
@@ -87,7 +87,7 @@
 		font-style: normal
 
 	:global(#landing-content .infos .description p)
-		line-height: 7rem
+		line-height: 2
 
 	:global(#landing-content .benefits em)
 		font-weight: bold
@@ -103,7 +103,7 @@
 		left: 0
 		width: 100%
 		height: 100%
-		pointer-events: none
+		// pointer-events: none
 		flex-wrap: wrap
 	
 	main
@@ -173,8 +173,8 @@
 
 		.description
 			padding: 8rem 0
-			// line-height: 10rem !important
 			gap: 2rem
+			font-size: 3.75rem
 
 		.tools
 			flex-direction: row
@@ -188,6 +188,14 @@
 		height: 100%
 		align-items: center
 		justify-content: center
+
+	@media (max-width: 1000px), (max-height: 900px)
+		.tools
+			display: none
+
+	@media (max-width: 1000px), (max-height: 800px)
+		footer
+			display: none
 
 	@media (max-width: 510px)
 		aside

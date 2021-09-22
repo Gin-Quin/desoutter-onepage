@@ -6,12 +6,26 @@
 	export let gap = 0
 	export let focus: null | number = null
 	export let scale = 1
+	export let baseScale = 1
 	export let gray = false
 	export let neon = false
 	export let arrow = false
+
+	let innerWidth: number
+	let innerHeight: number
+
+	$: baseScale = getResponsiveScale(innerWidth, innerHeight)
+
+	function getResponsiveScale(width: number, height: number) {
+		if (width < 800 || height < 700) return 0.6
+		if (width < 1000) return 0.75
+		return 0.8
+	}
 </script>
 
-<div class="pyramid" style="transform: scale({scale}) translateY({2 * gap}px);">
+<svelte:window bind:innerHeight bind:innerWidth />
+
+<div class="pyramid" style="transform: scale({scale * baseScale}) translateY({2 * gap}px);">
 	{#if arrow}
 		<img
 			in:fade={{ delay: 300, duration: 1000 }}
