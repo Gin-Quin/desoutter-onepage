@@ -250,7 +250,7 @@
 
 	// -- Left panel --
 	aside
-		width: min(35%, 440px)
+		width: min(35%, 460px)
 		gap: 6rem
 		padding: calc(var(--chapter-navigation-height) + 9rem) 6rem
 		background: var(--dark)

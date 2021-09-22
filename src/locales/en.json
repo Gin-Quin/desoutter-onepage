@@ -119,7 +119,7 @@
 			"infotip": "Use our proactive maintenance solutions to avoid breakdowns and keep high quality in your assembly.",
 			"chapters": [
 				{
-					"title": "Connected assets",
+					"title": "1. Connected assets",
 					"description": "Description Connected assets.",
 					"groups": [
 						{
@@ -166,7 +166,7 @@
 					]
 				},
 				{
-					"title": "Platform integration",
+					"title": "2. Platform integration",
 					"description": "Description Platform integration.",
 					"groups": [
 						{
@@ -231,7 +231,7 @@
 					]
 				},
 				{
-					"title": "Process control - Pivotware",
+					"title": "3. Process control - Pivotware",
 					"description": "PIVOTWARE, a process control platform, is a key driver to improve your process quality and overall production efficiency. Design your process, manage it and optimise it over time with this scalable solution which can be deployed on a single station or your complete production line.",
 					"groups": [
 						{
@@ -282,7 +282,7 @@
 					]
 				},
 				{
-					"title": "Data driven solution DeMeter",
+					"title": "4. Data driven solution DeMeter",
 					"description": "DeMeter is the Desoutter Data Driven Solution that makes data become smart. While collecting the data is getting relatively common nowadays, getting the value from that data to improve your production efficiency is the disruptive purpose of DeMeter as Desoutter has integrated its applications and process expertise in this Data Driven Solution.",
 					"groups": [
 						{
