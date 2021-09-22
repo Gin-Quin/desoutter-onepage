@@ -12,6 +12,13 @@
 		},
 
 		"landing": {
+			"particles": {
+				"density": 100,
+				"color": {
+					"line": "#000000",
+					"circle": "#000000"
+				}
+			},
 			"scroll": "Scroll",
 			"stages": {
 				"intro": {

@@ -64,6 +64,9 @@
 
 	onMount(() => {
 		scrollController = new ScrollController({ onScrollUp, onScrollDown })
+		particles.particles.number.value =
+			(Number($t("section.landing.particles.density")) * innerWidth * innerHeight) / 10 ** 6
+		console.log(`particles.particles.number.value`, particles.particles.number.value)
 		// @ts-ignore
 		tsParticles.load("particles", particles)
 		mounted = true

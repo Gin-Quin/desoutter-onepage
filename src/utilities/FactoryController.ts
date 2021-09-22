@@ -167,11 +167,6 @@ export default class FactoryController {
 		const bottom = clientHeight - top - height * this.zoom
 
 		const distances: Record<Placement, number> = { left, top, right, bottom }
-		console.log(`clientWidth`, clientWidth)
-		console.log(`clientHeight`, clientHeight)
-		console.log(`position`, position)
-		console.log(`item size`, width)
-		console.log(`distances`, distances)
 
 		let placement!: Placement
 		let key: Placement
