@@ -19,15 +19,15 @@
 <style lang="sass">
 	#contact
 		min-height: 830px
-		background: var(--dark)
-		color: var(--gray)
+		background: var(--gray)
 		justify-content: center
 		z-index: 100
-		> *
-			width: 50%
+		> .image
+			width: 800px
 	
 	main
 		padding: 12vh 8vw
+		flex: 1 0 640px
 
 	.title
 		font-size: 9rem
@@ -43,14 +43,14 @@
 		gap: 4rem
 
 	:global(.marketoForm .mktoFormRow)
-		color: var(--gray) !important
+		// color: var(--gray) !important
 
 	:global(.marketoForm .mktoFormCol)
 		margin: 0 !important
 
 	:global(.marketoForm input), :global(.marketoForm select), :global(.marketoForm textarea)
-		background: var(--dark)
-		color: var(--gray)
+		// background: var(--dark)
+		// color: var(--gray)
 		// height: 40px
 		padding: 6px 10px !important
 		width: 100% !important
@@ -89,11 +89,11 @@
 	:global(.marketoForm .mktoButtonWrap)
 		display: flex
 		flex-direction: column
-		align-items: flex-end
+		align-items: center
 		margin: 0 !important
 
 	:global(.marketoForm button)
-		background: var(--gray-3) !important
+		background: var(--primary) !important
 		border-color: transparent !important
 		padding: 4rem 5rem !important
 		color: white !important
@@ -103,14 +103,18 @@
 		gap: 3rem
 
 	:global(.marketoForm button:focus-visible)
-		border-color: currentColor !important
+		border-color: var(--black) !important
 
 	:global(.marketoForm button:after)
 		content: "\e163"
 		font-family: "Material Icons"
 		font-size: 5rem
 
-	@media (max-width: 1100px)
-		#contact > img
-			display: none
+	@media (max-width: 1280px)
+		#contact
+			> img
+				display: none
+			> main
+				width: min(640px, 100%)
+				flex-grow: 0
 </style>

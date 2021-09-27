@@ -185,9 +185,11 @@
 		<div style="flex: 1;" />
 
 		<div class="infotip">
-			<Information size="36" />
+			<div class="icon">
+				<Information size="22" />
+			</div>
 			<div class="description">
-				{$t("section.demonstration.infotip")}
+				{@html chapters[currentChapter].infotip}
 			</div>
 		</div>
 
@@ -261,11 +263,14 @@
 			gap: 3rem
 
 			> .title
-				font-size: 6rem
+				font-size: 6.5rem
+				letter-spacing: 0.3rem
 				font-weight: bold
+				font-family: Montserrat
 
 		> .description
 			font-size: 3.5rem
+			display: block
 
 	.previous-chapter, .next-chapter
 		position: absolute
@@ -287,6 +292,7 @@
 		top: 0
 	.next-chapter
 		bottom: 0
+		background: var(--primary)
 		&:active
 			bottom: -1px
 			top: unset
@@ -316,10 +322,12 @@
 
 	.infotip
 		flex-direction: row
-		gap: 3rem
+		gap: 2rem
 		font-style: italic
 		font-size: 3.5rem
 		align-items: flex-start
+		> .icon
+			flex-shrink: 0
 
 
 	// -- Factory image and floating items --

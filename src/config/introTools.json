@@ -12,7 +12,7 @@
 		"style": "large",
 		"position": [
 			{ "left": 17.5, "top": 10 },
-			{ "left": -33, "top": 24 }
+			{ "left": -55, "top": 18 }
 		]
 	},
 	{
@@ -29,14 +29,6 @@
 		"position": [
 			{ "left": 64, "top": 18 },
 			{ "left": 120, "top": 19 }
-		]
-	},
-	{
-		"name": "BoostLabLogo",
-		"style": "logo",
-		"position": [
-			{ "left": 6, "top": 40 },
-			{ "left": -60, "top": 5 }
 		]
 	},
 	{
@@ -75,8 +67,8 @@
 		"name": "Q-SHIELD",
 		"style": "large",
 		"position": [
-			{ "left": 13, "top": 60 },
-			{ "left": -60, "top": 25 }
+			{ "left": 13, "top": 40 },
+			{ "left": -34, "top": 25 }
 		]
 	}
 ]

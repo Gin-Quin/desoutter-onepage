@@ -11,7 +11,7 @@
 	const inDuration = 650
 	const outDuration = 550
 
-	$: preSteps = $json("section.landing.stages.content.preSteps")
+	$: preSteps = $json("section.landing.stages.content.preSteps") as number
 	$: content = $json(`section.landing.stages.content.steps`) as Array<{
 		title: string
 		subtitle: string
@@ -82,16 +82,10 @@
 </div>
 
 <style lang="sass">
-	:global(#landing-content .infos .description em)
-		font-weight: bold
-		font-style: normal
-
 	:global(#landing-content .infos .description p)
 		line-height: 2
 
 	:global(#landing-content .benefits em)
-		font-weight: bold
-		font-style: normal
 		color: var(--primary)
 
 	:root
@@ -139,7 +133,7 @@
 		flex-direction: row
 		align-items: center
 		gap: 2rem
-		font-size: 14px
+		font-size: 3.75rem
 
 	
 	.content-step

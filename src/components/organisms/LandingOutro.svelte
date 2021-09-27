@@ -80,8 +80,6 @@
 		line-height: 6.5rem
 
 	:global(#landing-outro .content .description em)
-		font-weight: bold
-		font-style: normal
 		color: var(--primary)
 
 	#landing-outro

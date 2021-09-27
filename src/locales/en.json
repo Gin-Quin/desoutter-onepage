@@ -2,13 +2,13 @@
 	"Desoutter": "Desoutter",
 	"subscribe": "Subscribe",
 	"ecosystem": "Ecosystem",
-	"contact": "Contact",
-	"ourProducts": "Our products",
-	"services": "Services",
+	"contact": "Contact us",
+	"ourProducts": "Solutions",
+	"services": "Stories",
 
 	"section": {
 		"header": {
-			"visitDesoutterTools": "Visit Desoutter tools"
+			"visitDesoutterTools": "Visit Desoutter Tools"
 		},
 
 		"landing": {
@@ -88,7 +88,7 @@
 						{
 							"title": "Data driven solution",
 							"description": "<p><em>Strategic</em> and high impact decisions have to be based on <em>facts</em> and <em>data</em>. The sooner the data is available, the <em>quicker</em> will you be able to <em>react</em> and make decisions.</p>Desoutter’s data driven solution provides you with <em>real-time information</em> as events are occurring on the line.</p><p>Additionally, Desoutter’s applications and process <em>expertise</em> have been integrated in the <em>data analytics</em> to support you in <em>understanding</em> the data and the <em>root causes</em> of unwanted events.</p><p>Boost your <em>productivity</em>, boost your <em>uptime</em>, reduce your <em>quality costs</em> and improve your overall process <em>efficiency</em> with Desoutter’s data driven solution.</p>",
-							"tools": ["DeMeterLogo", "BoostLabLogo"],
+							"tools": ["DeMeterLogo"],
 							"coreBenefits": [
 								"<em>Assets</em> insights updated in real-time to maximize your <em>productivity</em> and <em>uptime</em>",
 								"<em>Processes</em> insights updated in real-time to maximize your <em>productivity</em> and <em>quality</em>",
@@ -116,11 +116,11 @@
 		},
 
 		"demonstration": {
-			"infotip": "Use our proactive maintenance solutions to avoid breakdowns and keep high quality in your assembly.",
 			"chapters": [
 				{
 					"title": "1. Connected assets",
-					"description": "Description Connected assets.",
+					"description": "Connected assets ensure an <em>easy integration</em> within the assembly process and guarantee <em>traceability</em> and <em>integrity of all the data</em>.",
+					"infotip": "Use our proactive maintenance solutions to avoid breakdowns and keep high quality in your assembly.",
 					"groups": [
 						{
 							"title": "",
@@ -167,7 +167,8 @@
 				},
 				{
 					"title": "2. Platform integration",
-					"description": "Description Platform integration.",
+					"description": "Platform integration is becoming critical due to <em>products variants</em> and <em>line flexibility</em> but also because of the increasing advances in automation technology, and the associated need to <em>simplify processes</em> for easier management.",
+					"infotip": "With dedicated service solutions to platform integration portfolio, Desoutter’s expert team will enable you to maximize your asset efficiency.",
 					"groups": [
 						{
 							"title": "Smart hub asset management",
@@ -233,6 +234,7 @@
 				{
 					"title": "3. Process control - Pivotware",
 					"description": "PIVOTWARE, a process control platform, is a key driver to improve your process quality and overall production efficiency. Design your process, manage it and optimise it over time with this scalable solution which can be deployed on a single station or your complete production line.",
+					"infotip": "Involve Desoutter’s local software project management team from day 1 so you get the full potential of the solution and stay connected with experts through a dedicated support portal throughout the lifetime of the solution.",
 					"groups": [
 						{
 							"title": "",
@@ -282,8 +284,9 @@
 					]
 				},
 				{
-					"title": "4. Data driven solution DeMeter",
+					"title": "4. Data driven solution - DeMeter",
 					"description": "DeMeter is the Desoutter Data Driven Solution that makes data become smart. While collecting the data is getting relatively common nowadays, getting the value from that data to improve your production efficiency is the disruptive purpose of DeMeter as Desoutter has integrated its applications and process expertise in this Data Driven Solution.",
+					"infotip": "As part of Data Driven Solution, you will be connected to our Desoutter expert team to get support, news and even actions implementation based on data analytics.",
 					"groups": [
 						{
 							"title": "",
