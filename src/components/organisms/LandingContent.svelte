@@ -11,7 +11,7 @@
 	const inDuration = 650
 	const outDuration = 550
 
-	$: preSteps = Number($t("section.landing.stages.content.preSteps"))
+	$: preSteps = $json("section.landing.stages.content.preSteps")
 	$: content = $json(`section.landing.stages.content.steps`) as Array<{
 		title: string
 		subtitle: string
