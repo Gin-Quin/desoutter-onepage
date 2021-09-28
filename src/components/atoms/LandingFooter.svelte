@@ -9,8 +9,10 @@
 
 <footer in:fly={{ y: -30, duration: 750, delay }} out:fly={{ y: -30, duration: 450, delay }}>
 	<div class="next" class:done>
-		<ArrowDown />
-		{$t("section.landing.scroll")}
+		<ArrowDown size={done ? "28" : "24"} />
+		{#if !done}
+			{$t("section.landing.scroll")}
+		{/if}
 	</div>
 </footer>
 

@@ -152,7 +152,7 @@
 			<button
 				class="previous-chapter"
 				on:click={previousChapter}
-				transition:fly={{ opacity: 1, y: -200, duration: 400 }}
+				transition:fly={{ opacity: 1, y: -200, duration: 500 }}
 			>
 				<ArrowLeft size="24" />
 				{chapters[currentChapter - 1].title}
@@ -208,7 +208,8 @@
 				<button
 					class="next-chapter"
 					on:click={nextChapter}
-					transition:fly={{ opacity: 1, y: 200, duration: 400 }}
+					in:fly={{ opacity: 1, y: 200, duration: 500, delay: 150 }}
+					out:fly={{ opacity: 1, y: 200, duration: 500, delay: 100 }}
 				>
 					<div />
 					{chapters[currentChapter + 1].title}
