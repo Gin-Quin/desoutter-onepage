@@ -18,6 +18,8 @@
 		items: Array<FactoryItem>
 	}
 
+	const visibleItems: Array<Set<number>> = []
+
 	let imageContainer!: HTMLElement
 	let activeItem: Element | undefined = undefined
 	let tippyInstance: TippyInstance | null = null
@@ -34,6 +36,7 @@
 	) as TranslationObject["section"]["demonstration"]["chapters"]
 
 	onMount(() => {
+		console.log("chapters", chapters)
 		checkIfFullyVisible()
 		factoryController = new FactoryController(imageContainer, (update) => {
 			left = update.left
@@ -71,17 +74,15 @@
 		return chapter == currentChapter && item == currentItem
 	}
 
-	function isItemVisible(
-		currentChapter: number,
-		currentItem: number,
-		chapter: number,
-		item: number
-	): boolean {
-		return chapter < currentChapter || (chapter == currentChapter && item <= currentItem)
+	function isItemVisible(chapter: number, item: number): boolean {
+		return visibleItems[chapter]?.has(item) ?? false
 	}
 
 	async function selectItem(item: FactoryItem) {
 		currentItem = item.index || 0
+		;(visibleItems[currentChapter] || (visibleItems[currentChapter] = new Set<number>())).add(
+			currentItem
+		)
 		factoryController.centerItem(item, getFactoryItemSize(item))
 		tippyInstance?.hide()
 		tippyInstance = null
@@ -243,7 +244,7 @@
 								{item}
 								size={getFactoryItemSize(item)}
 							/>
-						{:else if isItemVisible(currentChapter, currentItem, chapter, itemIndex)}
+						{:else if void currentItem || isItemVisible(chapter, itemIndex)}
 							<FactoryItemCard {item} size={getFactoryItemSize(item)} />
 						{/if}
 					{/each}

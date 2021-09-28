@@ -87,7 +87,7 @@
 			&:hover
 				text-decoration: underline
 
-		button, .button
+		.button
 			border: 1px solid var(--white)
 
 		.inner-footer
