@@ -65,6 +65,9 @@
 		.title
 			font-size: 3.5rem
 			text-transform: uppercase
+			font-family: Montserrat
+			font-weight: bold
+			letter-spacing: 0.05em
 	
 		.description
 			font-size: 5rem

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import FoldedCard from "atoms/FoldedCard.svelte"
 	import LandingHeader from "atoms/LandingHeader.svelte"
 	import LandingMain from "atoms/LandingMain.svelte"
 	import { t } from "svelte-i18n"
@@ -61,10 +60,12 @@
 	.title
 		font-size: 20px
 		font-weight: 300
+		white-space: nowrap
 
 	.subtitle
 		font-size: 54px
 		font-weight: 600
+		white-space: nowrap
 
 	.image-container
 		flex: 1 0 0

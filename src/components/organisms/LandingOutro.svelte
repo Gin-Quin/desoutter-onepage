@@ -99,6 +99,8 @@
 
 		.title
 			font-size: 5rem
+			font-family: "Montserrat"
+			letter-spacing: 0.025em
 
 		.subtitle
 			font-size: 6rem
@@ -123,7 +125,7 @@
 		padding: 8rem 4rem
 		text-align: justify
 		gap: 4rem
-		font-size: 3.5rem
+		font-size: 3.75rem
 
 	aside
 		width: 40%

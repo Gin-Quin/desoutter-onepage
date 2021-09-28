@@ -27,12 +27,14 @@
 	let left = 0
 	let top = 0
 	let zoom = 1
+	let isFullyVisible = false
 
 	$: chapters = $json(
 		"section.demonstration.chapters"
 	) as TranslationObject["section"]["demonstration"]["chapters"]
 
 	onMount(() => {
+		checkIfFullyVisible()
 		factoryController = new FactoryController(imageContainer, (update) => {
 			left = update.left
 			top = update.top
@@ -41,6 +43,11 @@
 	})
 
 	const sleep = (duration: number) => new Promise((resolve) => setTimeout(resolve, duration))
+
+	function checkIfFullyVisible() {
+		const { top } = imageContainer.getBoundingClientRect()
+		if (window.scrollY >= top) isFullyVisible = true
+	}
 
 	function getChapterGroups(chapter: number): Array<Group> {
 		const groups = chapters[chapter].groups as Array<Group>
@@ -136,13 +143,15 @@
 	}
 </script>
 
+<svelte:window on:scroll={checkIfFullyVisible} />
+
 <section id="demonstration">
 	<aside>
 		{#if currentChapter > 0}
 			<button
 				class="previous-chapter"
 				on:click={previousChapter}
-				transition:fly={{ opacity: 1, y: -200, duration: 200 }}
+				transition:fly={{ opacity: 1, y: -200, duration: 400 }}
 			>
 				<ArrowLeft size="24" />
 				{chapters[currentChapter - 1].title}
@@ -193,16 +202,18 @@
 			</div>
 		</div>
 
-		{#if currentChapter < chapters.length - 1}
-			<button
-				class="next-chapter"
-				on:click={nextChapter}
-				transition:fly={{ opacity: 1, y: 200, duration: 200 }}
-			>
-				<div />
-				{chapters[currentChapter + 1].title}
-				<ArrowRight size="24" />
-			</button>
+		{#if isFullyVisible}
+			{#if currentChapter < chapters.length - 1}
+				<button
+					class="next-chapter"
+					on:click={nextChapter}
+					transition:fly={{ opacity: 1, y: 200, duration: 400 }}
+				>
+					<div />
+					{chapters[currentChapter + 1].title}
+					<ArrowRight size="24" />
+				</button>
+			{/if}
 		{/if}
 	</aside>
 

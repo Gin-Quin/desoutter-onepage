@@ -15,11 +15,12 @@
 	.folded-card
 		padding: 10px 18px
 		filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.05))
+		font-family: "Montserrat"
 		font-weight: 700
+		letter-spacing: 0.05em
+		font-size: 5rem
 		position: relative
 		text-align: center
-		// font-family: Montserrat
-		// text-transform: uppercase
 
 		background-image: linear-gradient($color, $color), linear-gradient(to top right, $fold-color 50%, $folded-color 50%), linear-gradient($color, $color), linear-gradient($color, $color), linear-gradient(to top right, $folded-color 50%, $fold-color 50%)
 		background-position-x: 0, 0, $fold-width, right, right

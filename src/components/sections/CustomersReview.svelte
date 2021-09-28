@@ -60,6 +60,8 @@
 		font-size: 9rem
 		font-weight: bold
 		line-height: 10rem
+		font-family: Montserrat
+		letter-spacing: 0.04em
 
 	.description
 		line-height: 7rem
@@ -103,6 +105,8 @@
 				text-transform: uppercase
 				font-size: 3.5rem
 				margin-bottom: 2rem
+				font-family: Montserrat
+				letter-spacing: 0.05em
 			
 			> .name
 				font-size: 6rem

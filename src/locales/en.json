@@ -19,7 +19,7 @@
 					"dot": "#550000"
 				}
 			},
-			"scroll": "Scroll",
+			"scroll": "Scroll down to start the interactive tour",
 			"stages": {
 				"intro": {
 					"steps": [1, 2],
@@ -409,12 +409,58 @@
 		},
 
 		"footer": {
-			"stayConnected": "Stay connected",
-			"signUp": "Sign up for feed to keep up with Desoutter news",
 			"moreThanProductivity": "More Than Productivity",
 			"history": "Founded in 1914 and headquartered in France, Desoutter Industrial Tools is a global leader in electric and pneumatic assembly tools serving a wide range of assembly and manufacturing operations, including Aerospace, Automotive, Light and Heavy Vehicles, Off-Road, General Industry.",
-			"discoverTheBrand": "Discover the brand",
-			"legalNotice": "Legal notice and Privacy policy"
+			"stayConnected": "Stay connected",
+			"signUp": "Sign up for feed to keep up with Desoutter news",
+			"discoverTheBrand": {
+				"label": "Discover the brand",
+				"link": "/"
+			},
+			"legalNotice": {
+				"label": "Legal notice and Privacy policy",
+				"link": "/"
+			},
+			"subscribe": {
+				"label": "Subscribe",
+				"link": "/"
+			},
+			"socialNetworks": [
+				{
+					"name": "Twitter",
+					"link": "/"
+				},
+				{
+					"name": "Instagram",
+					"link": "/"
+				},
+				{
+					"name": "Facebook",
+					"link": "/"
+				}
+			],
+			"navigation": [
+				{
+					"label": "Desoutter",
+					"link": "/"
+				},
+				{
+					"label": "Ecosystem",
+					"link": "/"
+				},
+				{
+					"label": "Solutions",
+					"link": "/"
+				},
+				{
+					"label": "Stories",
+					"link": "/"
+				},
+				{
+					"label": "Contact us",
+					"link": "/"
+				}
+			]
 		}
 	}
 }
