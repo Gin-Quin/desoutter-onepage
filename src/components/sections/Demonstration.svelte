@@ -12,6 +12,7 @@
 	import FactoryController from "utilities/FactoryController"
 	import tippy from "tippy.js"
 	import type { Instance as TippyInstance } from "tippy.js"
+	import { getFactoryItemSize } from "utilities/getFactoryItemSize"
 
 	type Group = {
 		title?: string
@@ -141,10 +142,6 @@
 		tippyInstance = null
 		currentItem = -1
 	}
-
-	function getFactoryItemSize(item: FactoryItem): number {
-		return item.tool ? (item.largeTool ? 324 : 180) : 130
-	}
 </script>
 
 <svelte:window on:scroll={checkIfFullyVisible} />
@@ -242,8 +239,6 @@
 				{#if isFullyVisible && deltaCart}
 					<FactoryItemCard
 						item={{
-							label: "",
-							description: "",
 							tool: "deltaCart",
 							position: {
 								left: 45,

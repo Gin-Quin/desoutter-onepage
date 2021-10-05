@@ -2,10 +2,11 @@
 	import type { FactoryItem } from "types/FactoryItem"
 	import ToolCard from "./ToolCard.svelte"
 	import { fade } from "svelte/transition"
+	import { getFactoryItemSize } from "utilities/getFactoryItemSize"
 
 	export let element: Element | null = null
 	export let active = false
-	export let item: FactoryItem
+	export let item: Pick<FactoryItem, "position" | "tool" | "secondaryTool">
 	export let size: number
 </script>
 
@@ -25,6 +26,10 @@
 		<div class="focus" in:fade={{ duration: 250 }} />
 	{/if}
 </div>
+
+{#if item.secondaryTool}
+	<svelte:self item={item.secondaryTool} {active} size={getFactoryItemSize(item.secondaryTool)} />
+{/if}
 
 <style lang="sass">
 	.factory-item

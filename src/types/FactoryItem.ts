@@ -13,4 +13,12 @@ export type FactoryItem = {
 		height: number
 	}
 	index?: number
+	secondaryTool?: {
+		tool: string
+		position: {
+			left: number
+			top: number
+		}
+		largeTool?: boolean
+	}
 }
