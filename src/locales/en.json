@@ -116,6 +116,7 @@
 		},
 
 		"demonstration": {
+			"deltaCart": true,
 			"chapters": [
 				{
 					"title": "1. Connected assets",

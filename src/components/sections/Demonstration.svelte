@@ -31,6 +31,9 @@
 	let zoom = 1
 	let isFullyVisible = false
 
+	$: deltaCart = $json(
+		"section.demonstration.deltaCart"
+	) as TranslationObject["section"]["demonstration"]["deltaCart"]
 	$: chapters = $json(
 		"section.demonstration.chapters"
 	) as TranslationObject["section"]["demonstration"]["chapters"]
@@ -235,6 +238,21 @@
 					width={factoryController.width}
 					height={factoryController.height}
 				/>
+
+				{#if isFullyVisible && deltaCart}
+					<FactoryItemCard
+						item={{
+							label: "",
+							description: "",
+							tool: "deltaCart",
+							position: {
+								left: 45,
+								top: 16,
+							},
+						}}
+						size={324}
+					/>
+				{/if}
 
 				{#each chapters as _, chapter (chapter)}
 					{#each getChapterItems(chapter) as item, itemIndex (1000 * chapter + itemIndex)}
