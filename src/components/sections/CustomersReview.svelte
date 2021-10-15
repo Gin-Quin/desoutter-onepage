@@ -58,9 +58,9 @@
 	
 	.title
 		font-size: 9rem
-		font-weight: bold
+		font-weight: 300
 		line-height: 10rem
-		font-family: Montserrat
+		font-family: 'Montserrat'
 		letter-spacing: 0.04em
 
 	.description
@@ -100,20 +100,23 @@
 			z-index: 1
 			padding: 7.5rem
 			justify-content: flex-end
+			font-family: 'Montserrat'
+			gap: 0.5rem
 		
 			> .company
 				text-transform: uppercase
 				font-size: 3.5rem
-				margin-bottom: 2rem
-				font-family: Montserrat
+				margin-bottom: 0.5rem
+				font-weight: 300
 				letter-spacing: 0.05em
 			
 			> .name
 				font-size: 6rem
-				font-weight: bold
+				font-weight: 500
 			
 			> .role
-				font-size: 5rem
+				font-size: 4.5rem
+				font-weight: 100
 
 		&:hover > .layer
 			opacity: 0.45

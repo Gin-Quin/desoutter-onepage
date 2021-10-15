@@ -81,6 +81,7 @@
 		color: var(--white)
 		padding: 12.5rem 5%
 		z-index: 100
+		font-family: Montserrat
 
 		a
 			color: var(--white)

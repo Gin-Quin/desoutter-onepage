@@ -15,8 +15,8 @@
 	.folded-card
 		padding: 10px 18px
 		filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.05))
-		font-family: "Montserrat"
-		font-weight: 700
+		font-family: 'Montserrat'
+		font-weight: 500
 		letter-spacing: 0.05em
 		font-size: 5rem
 		position: relative

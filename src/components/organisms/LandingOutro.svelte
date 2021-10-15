@@ -99,7 +99,7 @@
 
 		.title
 			font-size: 5rem
-			font-family: "Montserrat"
+			font-family: 'Montserrat'
 			letter-spacing: 0.025em
 
 		.subtitle

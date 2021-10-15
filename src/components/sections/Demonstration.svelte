@@ -239,7 +239,7 @@
 				{#if isFullyVisible && deltaCart}
 					<FactoryItemCard
 						item={{
-							tool: "deltaCart",
+							tool: "Banco",
 							position: {
 								left: 45,
 								top: 16,
@@ -275,10 +275,11 @@
 		width: 100%
 		flex-direction: row
 		overflow: hidden
+		font-family: Montserrat
 
 	// -- Left panel --
 	aside
-		width: min(35%, 460px)
+		width: 440px
 		gap: 6rem
 		padding: calc(var(--chapter-navigation-height) + 9rem) 6rem
 		background: var(--dark)
@@ -289,14 +290,17 @@
 			gap: 3rem
 
 			> .title
-				font-size: 6.5rem
+				font-size: 6rem
 				letter-spacing: 0.3rem
-				font-weight: bold
-				font-family: Montserrat
+				font-weight: 500
+				font-family: 'Montserrat'
 
 		> .description
-			font-size: 3.5rem
+			font-size: 3.75rem
+			font-weight: 200
 			display: block
+			font-family: Montserrat
+			line-height: 1.5
 
 	.previous-chapter, .next-chapter
 		position: absolute
@@ -310,7 +314,8 @@
 		justify-content: space-between
 		align-items: center
 		font-size: 4.5rem
-		font-weight: bold
+		font-family: Montserrat
+		font-weight: 500
 		cursor: pointer
 		border-radius: 0
 

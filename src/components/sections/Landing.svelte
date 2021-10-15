@@ -125,7 +125,7 @@
 		&.mounted
 			opacity: 1
 
-	section
+	#ecosystem
 		z-index: 100
 		height: 100vh
 		padding: var(--header-height) 0 0
@@ -133,6 +133,7 @@
 		place-items: center
 		background: white
 		position: relative
+		overflow: hidden
 	
 	.inner-section
 		width: 100%

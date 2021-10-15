@@ -66,6 +66,9 @@
 </svg>
 
 <style lang="sass">
+	svg
+		flex-shrink: 0
+		
 	path
 		transition: 250ms
 </style>

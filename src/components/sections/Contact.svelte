@@ -22,8 +22,7 @@
 		background: var(--gray)
 		justify-content: center
 		z-index: 100
-		> .image
-			width: 800px
+		font-family: Montserrat
 	
 	main
 		padding: 12vh 8vw
@@ -101,6 +100,7 @@
 		display: flex !important
 		flex-direction: row
 		gap: 3rem
+		font-family: Montserrat
 
 	:global(.marketoForm button:focus-visible)
 		border-color: var(--black) !important
