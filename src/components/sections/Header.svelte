@@ -37,6 +37,7 @@
 		font-weight: 400
 		z-index: 200
 		position: absolute
+		font-family: Montserrat
 		
 	nav
 		display: contents	
@@ -48,11 +49,13 @@
 		height: 100%
 
 		> button
+			font-family: Montserrat
 			justify-content: center
 			width: 100%
 			height: 100%
 			border-radius: 0
-			font-weight: bold
+			font-weight: 600
+			letter-spacing: 0.1rem
 			padding: 0 6rem
 			gap: 3rem
 			font-size: 4rem

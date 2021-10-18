@@ -107,7 +107,7 @@
 							"description": "<p>Stay <em>connected</em> with your Desoutter <em>expert</em> team to achieve the <em>full potential</em> of your equipment.</p><p>By working with Desoutter Service you will <em>secure</em> and expand the <em>value</em> of Desoutter Ecosystem in your environment.</p><p>It is the key step to implement the Desoutter Data Driven Solutions recommended actions to <em>close the loop</em> for <em>continuous efficiency</em> gains from data analytics.</p>"
 						},
 						{
-							"title": "Project management",
+							"title": "Project Management",
 							"description": "<p>One of your keys to <em>success</em> is the support Desoutter’s project managers bring thanks to their <em>expertise</em> on <em>assembly solutions</em> and to excellence in <em>project management</em>.</p><p>Desoutter <em>customizes</em> tools and solutions according to your exact application and <em>integrates</em> them <em>efficiently</em> in your production environment, based on <em>tested</em> and <em>proven</em> designs in order to secure <em>quality</em> and <em>leadtime</em>.</p>"
 						}
 					]
@@ -175,7 +175,7 @@
 							"title": "Smart hub asset management",
 							"items": [
 								{
-									"label": "Connect",
+									"label": "CONNECT",
 									"tool": "connector",
 									"description": "Smart hub <em>concentrates</em> assets data and <em>guarantees data integrity</em>.<br>The CONNECT is a pioneer taking <em>assets management</em> on your production line to a new level.<br>Whether it’s physically integrated close to the maintenance department for instance or in your server room the CONNECT will deploy our <em>feature management</em> over multiple Tightening Units, through <em>one single point of contact to your network</em>. Tightening Units are defined to fulfill most standard requirements and for more value adding stations you have the flexibility to activate additional features.",
 									"position": { "left": 10, "top": 74 }
@@ -203,13 +203,13 @@
 							"title": "Automation & robotics",
 							"items": [
 								{
-									"label": "Multi",
+									"label": "MULTI",
 									"tool": "multiConnector",
 									"description": "Mutli-spindle solution.<br>MULTI is the most <em>innovative</em>, <em>compact</em> and <em>flexible</em> multi-spindle system, with an <em>optimized</em> design for an easy <em>integration</em> physically and digitally.",
 									"position": { "left": 54, "top": 75 }
 								},
 								{
-									"label": "Rapid",
+									"label": "RAPID",
 									"tool": "bowl+rapidTool",
 									"largeTool": true,
 									"description": "Screw feeding system.<br>Rapid is our standard, complete product offering for <em>automatic screw feeding</em> and <em>tightening</em> solutions to drive productivity and <em>reduce cycle time</em>. ",
