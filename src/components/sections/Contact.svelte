@@ -1,5 +1,22 @@
 <script lang="ts">
+	import { onMount } from "svelte"
+
 	import { _ } from "svelte-i18n"
+
+	onMount(() => {
+		// const { MktoForms2 } = window as any
+		// console.log(`MktoForms2`, MktoForms2)
+		// MktoForms2.whenReady((form: any) => {
+		// 	console.log("MktoForms2 ready")
+		// 	form.onSuccess((values: any, followUpUrl: any) => {
+		// 		console.log("Form success")
+		// 		// form.getFormElem().hide()
+		// 		// $("#successMessageBlock").show()
+		// 		// $("#thank-you-placeholder").html($("#thank-you-message").html())
+		// 		return false
+		// 	})
+		// })
+	})
 </script>
 
 <section id="contact" class="row">
@@ -109,6 +126,9 @@
 		content: "\e163"
 		font-family: "Material Icons"
 		font-size: 5rem
+
+	:global(#thank-you-message)
+		display: none
 
 	@media (max-width: 1280px)
 		#contact
