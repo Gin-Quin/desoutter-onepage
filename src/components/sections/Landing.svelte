@@ -11,6 +11,7 @@
 	import LandingFooter from "atoms/LandingFooter.svelte"
 	import { fly } from "svelte/transition"
 	import Header from "./Header.svelte"
+	import LandingNavigation from "atoms/LandingNavigation.svelte"
 
 	const stages = $json("section.landing.stages") as Record<string, { steps: Array<unknown> }>
 	const stageKeys = Object.keys(stages)
@@ -87,6 +88,10 @@
 				<LandingContent {step} />
 			{:else if currentStage == 2}
 				<LandingOutro {step} />
+			{/if}
+
+			{#if currentStage > 0}
+				<LandingNavigation bind:stage={currentStage} bind:step />
 			{/if}
 		{/if}
 

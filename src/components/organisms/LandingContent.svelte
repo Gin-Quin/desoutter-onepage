@@ -5,8 +5,9 @@
 	import ArrowRight from "icons/ArrowRight.svelte"
 	import FoldedCard from "atoms/FoldedCard.svelte"
 	import ToolCard from "atoms/ToolCard.svelte"
+	import LandingNavigation from "atoms/LandingNavigation.svelte"
 
-	export let step = 0
+	export let step: number
 
 	const inDuration = 650
 	const outDuration = 550
@@ -166,7 +167,7 @@
 			font-size: 6rem
 
 		.description
-			padding: 8rem 0
+			padding: 8rem 0 4rem
 			gap: 2rem
 			font-size: 3.75rem
 
