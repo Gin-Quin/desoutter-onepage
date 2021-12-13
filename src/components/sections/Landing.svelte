@@ -11,7 +11,7 @@
 	import LandingFooter from "atoms/LandingFooter.svelte"
 	import { fly } from "svelte/transition"
 	import Header from "./Header.svelte"
-	import LandingNavigation from "atoms/LandingNavigation.svelte"
+	import LandingNavigation from "molecules/LandingNavigation.svelte"
 
 	const stages = $json("section.landing.stages") as Record<string, { steps: Array<unknown> }>
 	const stageKeys = Object.keys(stages)
@@ -20,13 +20,15 @@
 	let currentStage = 0
 	let step = 0
 	let mounted = false
-	let done = false // last stage done AND last animation finished
+	let lastAnimationFinished = true
 	let scrollController: null | ScrollController = null
 
 	$: stage = stages[stageKeys[currentStage]]
 	$: updateScreenControllerStatus(done)
+	$: isLastStage = isLastStageDone(currentStage, step)
+	$: done = isLastStage && lastAnimationFinished
 
-	function isLastStageDone() {
+	function isLastStageDone(currentStage: number, step: number) {
 		return (
 			currentStage == stageKeys.length - 1 &&
 			step == stages[stageKeys[currentStage]].steps.length - 1
@@ -38,7 +40,7 @@
 	}
 
 	function onScrollDown() {
-		if (isLastStageDone()) return
+		if (isLastStage) return
 
 		step++
 		if (step == stage.steps.length) {
@@ -46,9 +48,10 @@
 			step = 0
 		}
 
-		if (isLastStageDone()) {
+		if (isLastStageDone(currentStage, step)) {
+			lastAnimationFinished = false
 			setTimeout(() => {
-				if (isLastStageDone()) done = true
+				lastAnimationFinished = true
 			}, lastAnimationDuration)
 		}
 	}
@@ -91,7 +94,7 @@
 			{/if}
 
 			{#if currentStage > 0}
-				<LandingNavigation bind:stage={currentStage} bind:step />
+				<LandingNavigation bind:currentStage bind:step />
 			{/if}
 		{/if}
 
