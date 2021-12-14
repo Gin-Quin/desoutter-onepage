@@ -172,36 +172,42 @@
 								{
 									"label": "EABC & EPBC",
 									"tool": "EABC",
+									"wifi": true,
 									"description": "Pistol and angle head <em>transducerized</em> ranges.<br>Highly ergonomic and <em>accurate</em> battery tool for <em>quality critical</em> and <em>safety critical</em> applications.",
 									"position": { "left": 54, "top": 25 }
 								},
 								{
 									"label": "EABS",
 									"tool": "EABS",
+									"wifi": true,
 									"description": "The <em>ONE hand</em> nutrunners.<br><em>Ergonomically</em> designed for one-hand operations, this 30 cm long tool with an extremely <em>compact</em> angle head eliminates space constraints.",
 									"position": { "left": 37, "top": 62 }
 								},
 								{
 									"label": "BLRTC",
 									"tool": "BLRTC",
+									"wifi": true,
 									"description": "Battery <em>electric pulse</em> tool.<br>With his <em>unique technology</em> BLRTC enables <em>reaction free</em> tightening. This means that the worker no longer feels any reaction force when the final torque is reached, and no torque support is required.",
 									"position": { "left": 19, "top": 49 }
 								},
 								{
 									"label": "ELC-W",
 									"tool": "ELC",
+									"wifi": true,
 									"description": "Clutch tool range.<br>ELC-W tools offer an entry-level solution for Industry 4.0 compatible assembly.<br>This <em>connected</em> clutch tool range is a <em>simple</em> and <em>efficient</em> solution for secondary screw joints in your process.",
 									"position": { "left": 47, "top": 71 }
 								},
 								{
 									"label": "QSHIELD",
 									"tool": "Q-SHIELD",
+									"wifi": true,
 									"description": "<em>Digital Wrench</em> for torque & angle measurement.<br>The digital wrench is a unique, <em>flexible</em> device for <em>production</em> and <em>rework stations</em> which provides a <em>high accuracy</em> solution for both torque and angle-controlled joints tightening as well as <em>residual torque checks</em>.",
 									"position": { "left": 70, "top": 37 }
 								},
 								{
 									"label": "EDU",
 									"tool": "EDU",
+									"wifi": true,
 									"description": "Electric Drilling Unit.<br>The <em>smart ready</em> EDU can cover a <em>variety of applications</em> using the same tool thanks to its <em>modular</em> design. Electrification offers unique benefits in terms of process and maintenance optimization compared to the traditional air powered solutions.",
 									"position": { "left": 79, "top": 34 }
 								}

@@ -121,7 +121,11 @@
 			: ""
 		return wrapper(
 			image +
-				`<div class="tippy-inner-content"><div class="tippy-desoutter-title">${item.label}</div><div class="tippy-desoutter-description">${item.description}</div></div>`,
+				`<div class="tippy-inner-content"><div class="tippy-desoutter-title ${
+					item.wifi ? "wifi" : ""
+				}">${item.label}</div><div class="tippy-desoutter-description">${
+					item.description
+				}</div></div>`,
 			rowMode
 		)
 	}

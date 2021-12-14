@@ -6,6 +6,7 @@ export type FactoryItem = {
 		top: number
 	}
 	tool?: string
+	wifi?: boolean
 	largeTool?: boolean
 	image?: {
 		src: string

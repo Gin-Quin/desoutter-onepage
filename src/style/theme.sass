@@ -38,6 +38,24 @@
 
 	.tippy-desoutter-title
 		font-weight: bold
+		display: flex
+		flex-direction: row
+		gap: 12px
+		align-items: center
+
+		&.wifi::after
+			content: ""
+			width: 24px
+			height: 24px
+			position: relative
+			top: -3px
+			background: url('/images/wifi.svg')
+			background-size: contain
+			animation-name: fade
+			animation-direction: alternate
+			animation-duration: 700ms
+			animation-timing-function: ease-in-out
+			animation-iteration-count: 5
 
 	.tippy-desoutter-description
 		display: block
@@ -46,3 +64,9 @@
 			color: var(--primary)
 			font-weight: bold
 			font-style: normal
+
+@keyframes fade
+	0%
+		opacity: 0
+	100%
+		opacity: 1
