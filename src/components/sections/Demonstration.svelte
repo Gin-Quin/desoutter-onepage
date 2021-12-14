@@ -13,6 +13,7 @@
 	import tippy from "tippy.js"
 	import type { Instance as TippyInstance } from "tippy.js"
 	import { getFactoryItemSize } from "utilities/getFactoryItemSize"
+	import StationDome from "atoms/StationDome.svelte"
 
 	type Group = {
 		title?: string
@@ -246,6 +247,9 @@
 								{item}
 								size={getFactoryItemSize(item)}
 							/>
+							{#if item.dome}
+								<StationDome position={item.dome} />
+							{/if}
 						{:else if void currentItem || isItemVisible(chapter, itemIndex)}
 							<FactoryItemCard {item} size={getFactoryItemSize(item)} />
 						{/if}

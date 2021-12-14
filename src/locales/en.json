@@ -237,12 +237,14 @@
 								{
 									"label": "Virtual cable",
 									"tool": "trackingBase",
+									"dome": { "left": 30, "top": 53 },
 									"description": "<em>Station level</em> tracking solution.<br>Virtual Cable is a solution that enables total <em>traceability</em> and <em>control</em> over tools locations and applications. Virtual Cable ensures that the <em>correct wireless tool</em> can only be used for its pre-determined tasks in the <em>correct working area</em>. ",
 									"position": { "left": 36, "top": 54 }
 								},
 								{
 									"label": "Desoutter visio",
 									"tool": "camera",
+									"dome": { "left": 54, "top": 20 },
 									"description": "Bolt level tracking solution.<br>With this solution, operators will perform fastening operations in the right sequence, at the right torque, with the right tool and in the right position.",
 									"position": { "left": 57, "top": 17 }
 								}
