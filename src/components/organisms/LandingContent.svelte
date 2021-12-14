@@ -5,7 +5,6 @@
 	import ArrowRight from "icons/ArrowRight.svelte"
 	import FoldedCard from "atoms/FoldedCard.svelte"
 	import ToolCard from "atoms/ToolCard.svelte"
-	import LandingNavigation from "atoms/LandingNavigation.svelte"
 
 	export let step: number
 
