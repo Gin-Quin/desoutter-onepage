@@ -21,7 +21,7 @@
 	"
 >
 	{#if item.tool}
-		<ToolCard name={item.tool} style="small" transparent {active} />
+		<ToolCard name={item.tool} style="small" transparent {active} randomFly={false} />
 	{:else if active}
 		<div class="focus" in:fade={{ duration: 250 }} />
 	{/if}

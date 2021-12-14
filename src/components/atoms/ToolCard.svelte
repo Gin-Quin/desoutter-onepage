@@ -7,6 +7,7 @@
 	export let duration = 300
 	export let active = false
 	export let transparent = false
+	export let randomFly = true
 </script>
 
 <div
@@ -24,14 +25,14 @@
 		box-shadow: {transparent ? 'none' : 'box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15)'}
 	"
 	in:fly={{
-		x: Math.random() * 100 - 50,
-		y: Math.random() * 100 - 50,
+		x: randomFly ? Math.random() * 100 - 50 : 0,
+		y: randomFly ? Math.random() * 100 - 50 : 0,
 		delay,
 		duration,
 	}}
 	out:fly={{
-		x: Math.random() * 100 - 50,
-		y: Math.random() * 100 - 50,
+		x: randomFly ? Math.random() * 100 - 50 : 0,
+		y: randomFly ? Math.random() * 100 - 50 : 0,
 		duration: 200,
 	}}
 >
