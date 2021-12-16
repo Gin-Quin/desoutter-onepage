@@ -43,7 +43,10 @@
 	
 	main
 		padding: 12vh 8vw
-		flex: 1 0 640px
+		width: 50%
+
+	img
+		width: 50%
 
 	.title
 		font-size: 9rem
