@@ -3,7 +3,7 @@
 	import ArrowLeft from "svelte-material-icons/ArrowLeft.svelte"
 	import ArrowRight from "svelte-material-icons/ArrowRight.svelte"
 	import Information from "svelte-material-icons/Information.svelte"
-	import { json, t } from "svelte-i18n"
+	import { json } from "svelte-i18n"
 	import type { TranslationObject } from "locales/TranslationObject"
 	import type { FactoryItem } from "types/FactoryItem"
 	import MiniPyramid from "atoms/MiniPyramid.svelte"

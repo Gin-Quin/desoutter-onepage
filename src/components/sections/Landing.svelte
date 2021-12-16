@@ -7,9 +7,7 @@
 	import LandingIntro from "organisms/LandingIntro.svelte"
 	import LandingContent from "organisms/LandingContent.svelte"
 	import LandingOutro from "organisms/LandingOutro.svelte"
-	import ArrowDown from "icons/ArrowDown.svelte"
 	import LandingFooter from "atoms/LandingFooter.svelte"
-	import { fly } from "svelte/transition"
 	import Header from "./Header.svelte"
 	import LandingNavigation from "molecules/LandingNavigation.svelte"
 

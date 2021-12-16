@@ -6,7 +6,7 @@
 
 	export let element: Element | null = null
 	export let active = false
-	export let item: Pick<FactoryItem, "position" | "tool" | "secondaryTool">
+	export let item: FactoryItem
 	export let size: number
 </script>
 
@@ -21,7 +21,14 @@
 	"
 >
 	{#if item.tool}
-		<ToolCard name={item.tool} style="small" transparent {active} randomFly={false} />
+		<ToolCard
+			name={item.tool}
+			style="small"
+			transparent
+			{active}
+			flyFrom={item.flyFrom || { x: 0, y: 0 }}
+			flyTo={item.flyTo || { x: 0, y: 0 }}
+		/>
 	{:else if active}
 		<div class="focus" in:fade={{ duration: 250 }} />
 	{/if}

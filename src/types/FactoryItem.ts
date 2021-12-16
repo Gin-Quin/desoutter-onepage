@@ -6,6 +6,8 @@ export type FactoryItem = {
 		top: number
 	}
 	tool?: string
+	flyFrom?: { x: number; y: number }
+	flyTo?: { x: number; y: number }
 	wifi?: boolean
 	dome?: {
 		left: number

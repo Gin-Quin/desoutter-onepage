@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Header from "sections/Header.svelte"
 	import Landing from "sections/Landing.svelte"
 	import Demonstration from "sections/Demonstration.svelte"
 	import Faq from "sections/Faq.svelte"

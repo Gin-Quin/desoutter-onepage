@@ -86,10 +86,6 @@
 		right: 3rem
 		pointer-events: none
 	
-	.focus
-		position: absolute
-		border: 1px solid transparent
-	
 	.option
 		height: 8rem
 		display: flex

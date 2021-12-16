@@ -44,5 +44,5 @@
 		flex-direction: column
 		align-items: center
 		top: 20vh
-		left: 3vw
+		left: 2.75vw
 </style>
