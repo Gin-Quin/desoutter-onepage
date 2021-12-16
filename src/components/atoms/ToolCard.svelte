@@ -15,6 +15,7 @@
 		x: Math.random() * 100 - 50,
 		y: Math.random() * 100 - 50,
 	}
+	console.log("tool", name, flyFrom, flyTo)
 </script>
 
 <div

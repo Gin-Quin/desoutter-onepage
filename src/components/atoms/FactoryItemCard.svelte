@@ -26,8 +26,9 @@
 			style="small"
 			transparent
 			{active}
-			flyFrom={item.flyFrom || { x: 0, y: 0 }}
-			flyTo={item.flyTo || { x: 0, y: 0 }}
+			flyFrom={(active && item.flyFrom) || { x: 0, y: 0 }}
+			flyTo={(active && item.flyTo) || { x: 0, y: 0 }}
+			duration={(active && item.transitionDuration) || 0}
 		/>
 	{:else if active}
 		<div class="focus" in:fade={{ duration: 250 }} />
