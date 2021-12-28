@@ -207,7 +207,6 @@
 								{
 									"label": "EDU",
 									"tool": "EDU",
-									"wifi": true,
 									"description": "Electric Drilling Unit.<br>The <em>smart ready</em> EDU can cover a <em>variety of applications</em> using the same tool thanks to its <em>modular</em> design. Electrification offers unique benefits in terms of process and maintenance optimization compared to the traditional air powered solutions.",
 									"position": { "left": 79, "top": 34 }
 								}
